@@ -1,0 +1,231 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+
+namespace XnaEngine2012
+{
+    // Button Class
+    //public class Button : DrawableGameComponent
+    //{
+    //    // Button texture
+    //    Texture2D texButton;
+
+    //    // SpriteBatch for drawing the button image
+    //    SpriteBatch spriteBatch;
+
+    //    // Button position on the screen
+    //    private Vector2 position;
+    //    public Vector2 Position
+    //    {
+    //        get;
+    //        private set;
+    //    }
+
+    //    // Button color
+    //    Color color;
+
+    //    // The Tapped bool value indicates whether tap in the button region
+    //    public bool Tapped;
+
+    //    // Event handler OnTap to react with tap gesture
+    //    public event EventHandler OnTapped;
+
+    //    // Get the hit region
+    //    public Rectangle HitRegion
+    //    {
+    //        get
+    //        {
+    //            return new Rectangle((int)Position.X, (int)Position.Y, texButton.Width, texButton.Height);
+    //        }
+    //    }
+
+    //    // Initialize the button without text
+    //    public Button(Game game, Vector2 position, SpriteBatch spriteBatch)
+    //        : base(game)
+    //    {
+
+    //        this.Position = position;
+    //        this.spriteBatch = spriteBatch;
+    //        color = Color.White;
+    //    }
+
+    //    protected override void LoadContent()
+    //    {
+    //        texButton = Game.Content.Load<Texture2D>(@"Textures_Menu/thumbstick");
+    //        base.LoadContent();
+    //    }
+
+    //    // Update the button
+    //    public override void Update(GameTime gameTime)
+    //    {
+    //        TouchCollection touchesB = TouchPanel.GetState();
+    //        Vector2 touchPosition;
+    //        if (touchesB.Count > 0 && touchesB[0].State == TouchLocationState.Pressed)
+    //        {
+    //            touchPosition = touchesB[0].Position;
+
+    //            // React to the tap gesture
+    //            Point point = new Point((int)touchPosition.X, (int)touchPosition.Y);
+
+    //            // If tapped button, set the Hovered to true and triger the OnClick event
+    //            if (HitRegion.Contains(point))
+    //            {
+    //                Tapped = true;
+    //                OnTapped(this, null);
+    //            }
+    //            else
+    //            {
+    //                Tapped = false;
+    //            }
+    //        }
+    //        base.Update(gameTime);
+    //    }
+
+    //    // Draw the button
+    //    public override void Draw(GameTime gameTime)
+    //    {
+    //        // Draw the button texture
+    //        spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+    //        if (Tapped)
+    //        {
+    //            spriteBatch.Draw(texButton, HitRegion, null, Color.Red, 0, Vector2.Zero, SpriteEffects.None, 0);
+    //        }
+    //        else
+    //        {
+    //            spriteBatch.Draw(texButton, HitRegion, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 0);
+    //        }
+    //        spriteBatch.End();
+    //        base.Draw(gameTime);
+    //    }
+    //}
+    public enum ButtonStatus
+    {
+        Up,
+        Down,
+        Clicked
+    }
+    public class Button : Control
+    {
+
+        Texture2D texture;
+        Texture2D touchOverlay;
+        Rectangle bounds;
+
+        public ButtonStatus Status {get;set;}
+        // Gets fired when the button is clicked or down
+
+        public delegate void FiredEvent(object sender);
+
+        public event EventHandler Clicked;
+        public event EventHandler Down;
+
+        public event FiredEvent btnClicked;
+        public event FiredEvent btnDown;
+
+        public new Vector2 Position
+        {
+            get { return base.Position; }
+            set
+            {
+
+                base.Position = value;
+
+                bounds = new Rectangle((int)base.Position.X, (int)base.Position.Y, texture.Width, texture.Height);
+
+            }
+        }
+
+        public Button(Texture2D texture, Texture2D touchedOverlay, Vector2 position, string text)
+            : base(position)
+        {
+            base.Text = text;
+            this.texture = texture;
+            this.touchOverlay = touchedOverlay;
+            bounds = new Rectangle((int)position.X, (int)position.Y, texture.Width, texture.Height);
+            Status = ButtonStatus.Up;
+        }
+
+        public override void UpdateInput(InputState input)
+        {
+            if (Enabled)
+            {
+                foreach (TouchLocation tl in input.TouchState)
+                {
+                    if (ContainsPos(tl.Position))
+                    {
+                        if (tl.State == TouchLocationState.Pressed)
+                        {
+                            Status = ButtonStatus.Clicked;
+                            if (Clicked != null)
+                            {
+                               // Fire the clicked event.        
+                                Clicked(this, EventArgs.Empty);
+                            }
+                            if (btnClicked != null)
+                            {
+                                btnClicked(this);
+                            }
+                        }
+                        else
+                        {
+                            Status = ButtonStatus.Down;
+
+                            if (Down != null)
+                            {
+                                // Fire the pressed down event.        
+                                Down(this, EventArgs.Empty);
+                            }
+
+                            if (btnDown != null)
+                            {
+                                btnDown(this);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        protected bool ContainsPos(Vector2 pos)
+        {
+            return bounds.Contains((int)pos.X, (int)pos.Y);
+        }
+
+        public override void Draw(SpriteBatch spriteBatch)
+        {
+            if (Enabled)
+            {
+                spriteBatch.Draw(texture, bounds, Color);
+
+                if (Status == ButtonStatus.Down)
+                {
+                   
+                    spriteBatch.Draw(touchOverlay, bounds, Color.White);
+                }
+
+                //if (Status == ButtonStatus.Clicked)
+                //{
+                //    BlkGame.soundManager.PlaySound("red",false);
+                //}
+
+                //if (Font != null)
+                //{
+                //    Helper.DrawCenteredText(spriteBatch, Font, bounds, Text, Color);
+                //}
+                Status = ButtonStatus.Up;
+            }
+
+        }
+
+        void btn_clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

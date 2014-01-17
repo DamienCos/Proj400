@@ -1,0 +1,153 @@
+#region Using Statements
+using System;
+using System.Threading;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
+
+#endregion
+
+namespace XnaEngine2012
+{
+    /// <summary>
+    /// This screen implements the actual game logic. It is just a
+    /// placeholder to get the idea across: you'll probably want to
+    /// put some more interesting gameplay in here!
+    /// </summary>
+    class GameplayScreen : GameScreen
+    {
+        #region Fields
+       
+        ContentManager content;
+        SpriteFont font;
+        SpriteBatch spriteBatch;
+        ButtonStatus a, b;
+        Button aButton, bButton;
+        Texture2D btn;
+        ControlManager conManager;
+        FixedVirtualThumbstick leftThumbstick;
+        float screenWidth, screenHeight;
+        string text = "Button";
+
+        #endregion
+
+        #region Initialization
+
+        public GameplayScreen()
+        {
+            TransitionOnTime = TimeSpan.FromSeconds(1.5);
+            TransitionOffTime = TimeSpan.FromSeconds(0.5);
+            EnabledGestures = GestureType.Tap;
+            conManager = new ControlManager();
+        }
+
+        public override void LoadContent()
+        {
+            if (content == null)
+                content = new ContentManager(ScreenManager.Game_.Services, "Content");
+            screenWidth = ScreenManager.GraphicsDevice.Viewport.Width;
+            screenHeight = ScreenManager.GraphicsDevice.Viewport.Height;
+
+
+            spriteBatch = ScreenManager.SpriteBatch;
+            font = content.Load<SpriteFont>("menufont");
+            btn = content.Load<Texture2D>(@"Textures_Menu/thumbstick");
+
+            Vector2 aBtnPosition = new Vector2(6.5f * screenWidth / 8.0f, 6.5f * screenHeight / 8.0f);
+            Vector2 bBtnPosition2 = new Vector2(7.0f * screenWidth / 8.0f, 5.6f * screenHeight / 8.0f);
+            Vector2 stickPostion = new Vector2(screenWidth / 8.0f, 6.5f * screenHeight / 8.0f);
+            leftThumbstick = new FixedVirtualThumbstick(ScreenManager.Game_, stickPostion, spriteBatch);
+            leftThumbstick.LoadContent(content);
+            aButton = new Button(btn, btn, aBtnPosition, text);
+            conManager.AddControl("A", aButton);
+            bButton = new Button(btn, btn, bBtnPosition2, text);
+            conManager.AddControl("B", bButton);
+            conManager.AddControl("Stick", leftThumbstick);
+           
+            ScreenManager.Game_.ResetElapsedTime();
+        }
+   
+        public override void UnloadContent()
+        {
+            content.Unload();
+          
+        }
+
+
+        #endregion
+
+        #region Update and Draw
+
+
+        /// <summary>
+        /// Updates the state of the game. This method checks the GameScreen.IsActive
+        /// property, so the game will stop updating when the pause menu is active,
+        /// or if you tab away to a different application.
+        /// </summary>
+        public override void Update(GameTime gameTime, bool otherScreenHasFocus,bool coveredByOtherScreen)
+        {
+            base.Update(gameTime, otherScreenHasFocus, coveredByOtherScreen);
+
+            if (IsActive)
+            {
+                float elapsedTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                conManager.Update(elapsedTime, gameTime);
+            }
+        }
+
+
+        /// <summary>
+        /// Lets the game respond to player input. Unlike the Update method,
+        /// this will only be called when the gameplay screen is active.
+        /// </summary>
+        public override void HandleInput(InputState input)
+        {
+            if (input == null)
+                throw new ArgumentNullException("input");
+
+            // Look up inputs for the active player profile.
+            int playerIndex = (int)ControllingPlayer.Value;
+
+            KeyboardState keyboardState = input.CurrentKeyboardStates[playerIndex];
+            GamePadState gamePadState = input.CurrentGamePadStates[playerIndex];
+
+            // if the user pressed the back button, we return to the main menu
+            PlayerIndex player;
+            if (input.IsNewButtonPress(Buttons.Back, ControllingPlayer, out player))
+            {
+                LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
+            }
+            else
+            {
+                conManager.UpdateInput(input);
+                a = conManager.GetButtonStatus("A");
+                b = conManager.GetButtonStatus("B");
+            }           
+        }
+
+
+        /// <summary>
+        /// Draws the gameplay screen.
+        /// </summary>
+        public override void Draw(GameTime gameTime)
+        {
+            ScreenManager.GraphicsDevice.Clear(ClearOptions.Target,Color.CornflowerBlue, 0, 0);
+
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend);
+            spriteBatch.DrawString(font, "Left Stick Position: " + leftThumbstick.Position.ToString(), new Vector2(25, 0), Color.White);
+            conManager.Draw(spriteBatch);
+            spriteBatch.DrawString(font, "Button press: " + a, new Vector2(25, 30), Color.White);
+            spriteBatch.DrawString(font, "Button press: " + b, new Vector2(25, 60), Color.White);
+            spriteBatch.End();   
+
+            if (TransitionPosition > 0)
+                ScreenManager.FadeBackBufferToBlack(1f - TransitionAlpha);
+        }
+
+
+        #endregion
+    }
+
+}

@@ -1,0 +1,83 @@
+﻿#region Using Statements
+using Microsoft.Xna.Framework;
+using System;
+using Microsoft.Xna.Framework.Input;
+using AndroidTest;
+#endregion
+
+namespace AndroidTest
+{
+    class VolumeScreen: MenuScreen
+    {
+        #region Fields
+
+        MenuEntry volumeMenuEntry;
+        //Vector2 thumbstick;
+
+        float volume { get; set; }
+
+        #endregion
+
+        #region Initialization
+
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        public VolumeScreen()
+            : base("Volume")
+        {
+            // Create our menu entries.
+            volumeMenuEntry = new MenuEntry(string.Empty);
+
+            //volume = Game1.soundManager.SoundVolume;
+            SetVolumeEntryText();
+
+            MenuEntry back = new MenuEntry("Back");
+            
+            // Hook up menu event handlers.
+            volumeMenuEntry.Selected +=  VolMenuEntrySelected;//UngulateMenuEntrySelected;
+         
+            back.Selected += OnCancel;
+            
+            // Add entries to the menu.
+            MenuEntries.Add(volumeMenuEntry);
+         
+            MenuEntries.Add(back);
+        }
+
+
+        /// <summary>
+        /// Fills in the latest values for the options screen menu text.
+        /// </summary>
+        void SetVolumeEntryText()
+        {
+            float foo = volume;
+            volumeMenuEntry.Text = "Volume: " + (foo*10);
+            
+        }
+
+
+        #endregion
+
+        #region Handle Input
+      
+        /// <summary>
+        /// Event handler for volume entry is selected.
+        /// </summary>
+        void VolMenuEntrySelected(object sender, PlayerIndexEventArgs e)
+        {
+            if (volume < 1)
+            {
+                
+
+                SetVolumeEntryText();
+                //Game1.soundManager.SoundVolume = volume;
+            }
+            
+        }
+
+
+        #endregion
+    }
+}
