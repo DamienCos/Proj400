@@ -91,6 +91,7 @@
     <Compile Include="MenuSystem\Screens\MessageBoxScreen.cs" />
     <Compile Include="MenuSystem\Screens\OptionsScreens\OptionsMenuScreen.cs" />
     <Compile Include="MenuSystem\Screens\PlayerIndexEventArgs.cs" />
+    <Compile Include="MenuSystem\PauseScreen.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MenuSystem\ScreenManager.cs" />
     <Compile Include="Audio\SoundManager.cs" />
@@ -99,6 +100,7 @@
     <Compile Include="Controls\ScreenPadState.cs" />
     <Compile Include="Framework\SceneManager.cs" />
     <Compile Include="Framework\TestLevel.cs" />
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\AppManifest.xml">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </None>

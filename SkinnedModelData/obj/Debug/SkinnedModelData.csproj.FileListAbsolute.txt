@@ -1,0 +1,5 @@
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Debug\SkinnedModelData.dll
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Debug\SkinnedModelData.pdb
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.dll
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.pdb
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.csprojResolveAssemblyReference.cache

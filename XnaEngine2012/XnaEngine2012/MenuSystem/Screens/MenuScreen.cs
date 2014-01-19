@@ -163,8 +163,6 @@ namespace AndroidTest
         /// </summary>
         protected virtual void UpdateMenuEntryLocations()
         {
-
-
             // Make the menu slide into place during transitions, using a
             // power curve to make things look more interesting (this makes
             // the movement slow down as it nears the end).

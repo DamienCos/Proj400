@@ -1,0 +1,3 @@
+c:\users\cos\documents\visual studio 2012\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012Content\obj\Windows Phone\Debug\XnaEngine2012Content.contentprojResolveAssemblyReference.cache
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012Content\obj\Windows Phone\Debug\XnaEngine2012Content.contentprojResolveAssemblyReference.cache
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012Content\obj\Windows Phone\Debug\XnaEngine2012Content.contentprojResolveAssemblyReference.cache

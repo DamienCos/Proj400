@@ -134,6 +134,7 @@ namespace AndroidTest
             {
                 screen.LoadContent();
             }
+            //RetrieveGameState();
         }
 
 
@@ -452,6 +453,7 @@ namespace AndroidTest
                 storage.DeleteFile(Path.Combine("ScreenManager", file));
             }
         }
+     
 
         #endregion
     }

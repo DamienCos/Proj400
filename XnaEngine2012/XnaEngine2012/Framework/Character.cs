@@ -27,7 +27,6 @@ namespace AndroidTest
     public class Character: GameObject3D
     {
         private GameAnimatedModel char_Model;
-        //private InputManager im;
         //Movement
         public bool IsGrounded { get; set; }
 
@@ -74,10 +73,10 @@ namespace AndroidTest
 
             inputAction = new InputAction((int)InputActionIds.Jump, VirtualButtonState.Pressed)
             {
-                #if WINDOWS
+#if WINDOWS
                 GamePadButton = Buttons.A,
                 KeyButton = Keys.Space
-                #endif
+#endif
                 S_Pad_Button = Virtual_Button.A
             };
             SceneManager.Input.MapAction(inputAction);

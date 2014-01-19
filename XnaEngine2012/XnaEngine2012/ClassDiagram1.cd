@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="AndroidTest.SoundManager" Collapsed="true">
+    <Position X="28.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AiQAEAAAAAABAAABAQAAAAoIAAAAAAAAoAAAgggAAAA=</HashCode>
+      <FileName>Audio\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.ChaseCam" Collapsed="true">
+    <Position X="7.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EFQAAAABBIAAEAAgABAABGAAEAABAAACAQAAIEAQACA=</HashCode>
+      <FileName>ChaseCam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.InputAction" Collapsed="true">
+    <Position X="31.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAICAAAAAAAAAAAAAAAAEAAAIAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Controls\InputAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.S_Pad_StateEx" Collapsed="true">
+    <Position X="28.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\InputAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.InputManager" Collapsed="true">
+    <Position X="26.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAgAAARAAAAAACAAAAAAABAABQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\InputAction.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.InputState" Collapsed="true">
+    <Position X="28.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAAUBAAAAAAAAAAAACQAAFYAAAAAEAIAAAEAAAAEA=</HashCode>
+      <FileName>Controls\InputState.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.ScreenPad" Collapsed="true">
+    <Position X="26.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>lAUCo00YkAoSIppMDQAgIoAIAAEERWAMVhcQBCQICgQ=</HashCode>
+      <FileName>Controls\ScreenPad.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.Debug2D" Collapsed="true">
+    <Position X="26.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAgAAAAABAAAABAAAAAAAAEAAAAAAAAQ=</HashCode>
+      <FileName>Debug2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.BaseCamera" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Framework\BaseCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.Character">
+    <Position X="0.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAoARQAAAAAAAAAAIQAAAACAAAAICAAAAAQ=</HashCode>
+      <FileName>Framework\Character.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameAnimatedModel" Collapsed="true">
+    <Position X="3" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACABBAAAgAAAgAAAIAAAAAgAAAAAECCAAAAgAQ=</HashCode>
+      <FileName>Framework\GameAnimatedModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameModel" Collapsed="true">
+    <Position X="5.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Framework\GameModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameObject2D" Collapsed="true">
+    <Position X="3.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAACQAAAkwAAgQIEQAAEEAIYAAAAAAIEAAAAAgQ=</HashCode>
+      <FileName>Framework\GameObject2D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameObject3D" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAACQAAAkwAAgQIEQAAAEAIYAAAAAAIEAAAAAAQ=</HashCode>
+      <FileName>Framework\GameObject3D.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameScene" Collapsed="true">
+    <Position X="1" Y="10" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AARCAAIAAAAAAQBAgAAgAAAEAAQAAIAAAAAAAIABAAQ=</HashCode>
+      <FileName>Framework\GameScene.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameSprite" Collapsed="true">
+    <Position X="3.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABQgAAgAAAAAAAEAAQAAAAAAgAAAAgAAAAAQ=</HashCode>
+      <FileName>Framework\GameSprite.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.RenderContext" Collapsed="true">
+    <Position X="26.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAABAAAAIAAAAEAAAAAAAQAAEAAAAAAA=</HashCode>
+      <FileName>Framework\RenderContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.SceneManager" Collapsed="true">
+    <Position X="30" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BA4AAAAAAAAAAwAABACAAAAQEAAAAAQIAAACAAAAAAQ=</HashCode>
+      <FileName>Framework\SceneManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.TestLevel" Collapsed="true">
+    <Position X="1" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQYBAAAAAAAAQAAAAAAAIAAAAAAAAAAAABgAQAAIAA=</HashCode>
+      <FileName>Framework\TestLevel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.Game1" Collapsed="true">
+    <Position X="28.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAKAEAAAAAAAAgAAAAIAgAAAAIAAAAgAAAAAAEAAAAQ=</HashCode>
+      <FileName>Game1.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameplayScreen" Collapsed="true">
+    <Position X="24" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCEEGAAABAAgAAACAAAAAAAAAAAAAAEAAAQAAAAAQ=</HashCode>
+      <FileName>MenuSystem\GameplayScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.GameScreen" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAwAFBCAAARQAgAEEAIAAAAADCBAAA4AAgAGAkYIBAY=</HashCode>
+      <FileName>MenuSystem\GameScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.ScreenManager" Collapsed="true">
+    <Position X="31.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYAVEAgAAAgAwAAAAAAABAAAQAIiBAMRAAAgABCCEQ=</HashCode>
+      <FileName>MenuSystem\ScreenManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.BackgroundScreen" Collapsed="true">
+    <Position X="19.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCEAAAAAAAAgAAAAAAAAAAAAAAABAAAAAAAAAAAAQ=</HashCode>
+      <FileName>MenuSystem\Screens\BackgroundScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.LoadingScreen" Collapsed="true">
+    <Position X="21.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAgAAAAAAAAgAAAAAQAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MenuSystem\Screens\LoadingScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.MainMenuScreen" Collapsed="true">
+    <Position X="10.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAiAAAAAAAAAAAAAAAAAAAAAABAAAAAAAIAAAAAA=</HashCode>
+      <FileName>MenuSystem\Screens\MainMenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.MenuEntry" Collapsed="true">
+    <Position X="30" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAgAgAAAAJABAAAAAAAAIAAAACEQAAAI=</HashCode>
+      <FileName>MenuSystem\Screens\MenuEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.MenuScreen" Collapsed="true">
+    <Position X="8.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQQAACGAAAAAAgAEAAAAgAAAAAAAACAAAAAAAAQAAAA=</HashCode>
+      <FileName>MenuSystem\Screens\MenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.MessageBoxScreen" Collapsed="true">
+    <Position X="17.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQQCAACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAACQ=</HashCode>
+      <FileName>MenuSystem\Screens\MessageBoxScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.ControlsScreen" Collapsed="true">
+    <Position X="3.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAEAAAAAAAAAAAAAAAAACCAA=</HashCode>
+      <FileName>MenuSystem\Screens\OptionsScreens\ControlsScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.HelpScreen" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
+      <FileName>MenuSystem\Screens\OptionsScreens\HelpScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.LeaderBoardScreen" Collapsed="true">
+    <Position X="8.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAABAAAAAAAAAAAAAAAAAAAAAACCAA=</HashCode>
+      <FileName>MenuSystem\Screens\OptionsScreens\LeaderBoardScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.OptionsMenuScreen" Collapsed="true">
+    <Position X="12.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAFAAAAACAAAAAAAAAQAAAAAQAAAAAggAAAACAA=</HashCode>
+      <FileName>MenuSystem\Screens\OptionsScreens\OptionsMenuScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.VolumeScreen" Collapsed="true">
+    <Position X="15" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAADAAA=</HashCode>
+      <FileName>MenuSystem\Screens\OptionsScreens\VolumeScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.PlayerIndexEventArgs" Collapsed="true">
+    <Position X="31.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>MenuSystem\Screens\PlayerIndexEventArgs.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AndroidTest.PauseMenuScreen" Collapsed="true">
+    <Position X="1.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>PauseScreen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="AndroidTest.ScreenPadState" Collapsed="true">
+    <Position X="26.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\ScreenPadState.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AndroidTest.virtualButtons" Collapsed="true">
+    <Position X="30" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAYAA=</HashCode>
+      <FileName>Controls\ScreenPadState.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="AndroidTest.ThumbSticks" Collapsed="true">
+    <Position X="28.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACACAAAAAAAA=</HashCode>
+      <FileName>Controls\ScreenPadState.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AndroidTest.Virtual_Button" Collapsed="true">
+    <Position X="31.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAEAYAA=</HashCode>
+      <FileName>Controls\ScreenPadState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AndroidTest.VirtualButtonState" Collapsed="true">
+    <Position X="26.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAEAAA=</HashCode>
+      <FileName>Controls\ScreenPadState.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AndroidTest.InputActionIds" Collapsed="true">
+    <Position X="28.25" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAEgAAAAAgAAAAAAAAAAABAEEgAQAAAIQAAAAAAAAAQ=</HashCode>
+      <FileName>Framework\Character.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="AndroidTest.ScreenState" Collapsed="true">
+    <Position X="30" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAAEAAA=</HashCode>
+      <FileName>MenuSystem\GameScreen.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="FadeCancelOptions" Collapsed="true">
+    <Position X="26.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAACAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Audio\SoundManager.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

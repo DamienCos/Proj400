@@ -1,0 +1,819 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline" xmlns:Framework="Microsoft.Xna.Framework" xmlns:Processors="Microsoft.Xna.Framework.Content.Pipeline.Processors">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Models\Cube.FBX</Source>
+      <Name>Models\Cube</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Models\Cube.xnb</Output>
+      <Time>2013-08-07T13:43:57.3342304+01:00</Time>
+      <Dependency>
+        <Key>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Cube_0.xml</Key>
+        <Value>2013-11-22T15:23:07.1736397+00:00</Value>
+      </Dependency>
+      <Request>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\metal_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Ground.FBX</Source>
+      <Name>Models\Ground</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Models\Ground.xnb</Output>
+      <Time>2013-08-07T13:43:57.352233+01:00</Time>
+      <Dependency>
+        <Key>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Ground_0.xml</Key>
+        <Value>2013-11-22T15:23:07.4086539+00:00</Value>
+      </Dependency>
+      <Request>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\rust_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Sounds\Click.wav</Source>
+      <Name>Sounds\Click</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Sounds\Click.xnb</Output>
+      <Time>2013-08-07T13:44:07.645542+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\DrumLoop.wav</Source>
+      <Name>Sounds\DrumLoop</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Sounds\DrumLoop.xnb</Output>
+      <Time>2013-08-07T13:44:07.6705455+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\DrumLoop2.wav</Source>
+      <Name>Sounds\DrumLoop2</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Sounds\DrumLoop2.xnb</Output>
+      <Time>2013-08-07T13:44:07.70955+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\Menu.wav</Source>
+      <Name>Sounds\Menu</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Sounds\Menu.xnb</Output>
+      <Time>2013-08-07T13:44:07.7165508+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Sounds\RedButton.wav</Source>
+      <Name>Sounds\RedButton</Name>
+      <Importer>WavImporter</Importer>
+      <Processor>SoundEffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Sounds\RedButton.xnb</Output>
+      <Time>2013-08-07T13:44:07.7365532+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\AnimatedButterfly.png</Source>
+      <Name>Textures\AnimatedButterfly</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\AnimatedButterfly.xnb</Output>
+      <Time>2013-08-07T13:44:18.9429786+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow.png</Source>
+      <Name>Textures\Arrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Arrow.xnb</Output>
+      <Time>2013-08-07T13:44:18.9469798+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow2.png</Source>
+      <Name>Textures\Arrow2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Arrow2.xnb</Output>
+      <Time>2013-08-07T13:44:18.9489796+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow3.png</Source>
+      <Name>Textures\Arrow3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Arrow3.xnb</Output>
+      <Time>2013-08-07T13:44:18.9499791+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow4.png</Source>
+      <Name>Textures\Arrow4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Arrow4.xnb</Output>
+      <Time>2013-08-07T13:44:18+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Arrow5.png</Source>
+      <Name>Textures\Arrow5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Arrow5.xnb</Output>
+      <Time>2013-08-07T13:44:18.9529804+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Ball.png</Source>
+      <Name>Textures\Ball</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Ball.xnb</Output>
+      <Time>2013-08-07T13:44:18.9539807+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\CrossArrow.png</Source>
+      <Name>Textures\CrossArrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\CrossArrow.xnb</Output>
+      <Time>2013-08-07T13:44:18.9639808+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Dog.jpg</Source>
+      <Name>Textures\Dog</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Dog.xnb</Output>
+      <Time>2013-08-07T13:44:18.9859843+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Donut.png</Source>
+      <Name>Textures\Donut</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Donut.xnb</Output>
+      <Time>2013-08-07T13:44:18+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DPSFLogo.png</Source>
+      <Name>Textures\DPSFLogo</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\DPSFLogo.xnb</Output>
+      <Time>2013-08-07T13:44:19.0039862+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\DPSFText.png</Source>
+      <Name>Textures\DPSFText</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\DPSFText.xnb</Output>
+      <Time>2013-08-07T13:44:19.0189882+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ExplosionParticles.png</Source>
+      <Name>Textures\ExplosionParticles</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\ExplosionParticles.xnb</Output>
+      <Time>2013-08-07T13:44:19.0289894+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Fire.png</Source>
+      <Name>Textures\Fire</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Fire.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Flower.png</Source>
+      <Name>Textures\Flower</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Flower.xnb</Output>
+      <Time>2013-08-07T13:44:19.0499919+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Flower2.png</Source>
+      <Name>Textures\Flower2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Flower2.xnb</Output>
+      <Time>2013-08-07T13:44:19.0519927+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Flower3.png</Source>
+      <Name>Textures\Flower3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Flower3.xnb</Output>
+      <Time>2013-08-07T13:44:19.0659941+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Flower4.png</Source>
+      <Name>Textures\Flower4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Flower4.xnb</Output>
+      <Time>2013-08-07T13:44:19.0699953+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Flower5.png</Source>
+      <Name>Textures\Flower5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Flower5.xnb</Output>
+      <Time>2013-08-07T13:44:19.0799955+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Gear.png</Source>
+      <Name>Textures\Gear</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Gear.xnb</Output>
+      <Time>2013-08-07T13:44:19.0909976+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Gear2.png</Source>
+      <Name>Textures\Gear2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Gear2.xnb</Output>
+      <Time>2013-08-07T13:44:19.0989983+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Gear3.png</Source>
+      <Name>Textures\Gear3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Gear3.xnb</Output>
+      <Time>2013-08-07T13:44:19.1039987+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Gear4.png</Source>
+      <Name>Textures\Gear4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Gear4.xnb</Output>
+      <Time>2013-08-07T13:44:19.1130007+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Gear5.png</Source>
+      <Name>Textures\Gear5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Gear5.xnb</Output>
+      <Time>2013-08-07T13:44:19.1200012+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\MoveArrow.png</Source>
+      <Name>Textures\MoveArrow</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\MoveArrow.xnb</Output>
+      <Time>2013-08-07T13:44:19.1310023+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Paper.png</Source>
+      <Name>Textures\Paper</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Paper.xnb</Output>
+      <Time>2013-08-07T13:44:19.1390037+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Particle.bmp</Source>
+      <Name>Textures\Particle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Particle.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\RedCircle.png</Source>
+      <Name>Textures\RedCircle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\RedCircle.xnb</Output>
+      <Time>2013-08-07T13:44:19.1680067+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Shape1.png</Source>
+      <Name>Textures\Shape1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Shape1.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Shape2.png</Source>
+      <Name>Textures\Shape2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Shape2.xnb</Output>
+      <Time>2013-08-07T13:44:19.1790084+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Smoke.png</Source>
+      <Name>Textures\Smoke</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Smoke.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Spark.png</Source>
+      <Name>Textures\Spark</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Spark.xnb</Output>
+      <Time>2013-08-07T13:44:19.2020115+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Splat.png</Source>
+      <Name>Textures\Splat</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Splat.xnb</Output>
+      <Time>2013-08-07T13:44:19.2110124+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star.png</Source>
+      <Name>Textures\Star</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star.xnb</Output>
+      <Time>2013-08-07T13:44:19.2220138+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star2.png</Source>
+      <Name>Textures\Star2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star2.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star3.png</Source>
+      <Name>Textures\Star3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star3.xnb</Output>
+      <Time>2013-08-07T13:44:19.229015+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star4.png</Source>
+      <Name>Textures\Star4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star4.xnb</Output>
+      <Time>2013-08-07T13:44:19.2340154+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star5.png</Source>
+      <Name>Textures\Star5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star5.xnb</Output>
+      <Time>2013-08-07T13:44:19.2380167+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star6.png</Source>
+      <Name>Textures\Star6</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star6.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star7.png</Source>
+      <Name>Textures\Star7</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star7.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star8.png</Source>
+      <Name>Textures\Star8</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star8.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Star9.png</Source>
+      <Name>Textures\Star9</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Star9.xnb</Output>
+      <Time>2013-08-07T13:44:19.2680199+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\StarFish.png</Source>
+      <Name>Textures\StarFish</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\StarFish.xnb</Output>
+      <Time>2013-08-07T13:44:19+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Sun.png</Source>
+      <Name>Textures\Sun</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Sun.xnb</Output>
+      <Time>2013-08-07T13:44:19.2890225+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Sun2.png</Source>
+      <Name>Textures\Sun2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Sun2.xnb</Output>
+      <Time>2013-08-07T13:44:19.2950231+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Sun3.png</Source>
+      <Name>Textures\Sun3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Sun3.xnb</Output>
+      <Time>2013-08-07T13:44:19.3030242+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\ThrowingStar.png</Source>
+      <Name>Textures\ThrowingStar</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\ThrowingStar.xnb</Output>
+      <Time>2013-08-07T13:44:19.3090248+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Wheel.png</Source>
+      <Name>Textures\Wheel</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Wheel.xnb</Output>
+      <Time>2013-08-07T13:44:19.3170262+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\WhiteSquare.png</Source>
+      <Name>Textures\WhiteSquare</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\WhiteSquare.xnb</Output>
+      <Time>2013-08-07T13:44:19.3190263+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\WhiteSquare1.png</Source>
+      <Name>Textures\WhiteSquare1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\WhiteSquare1.xnb</Output>
+      <Time>2013-08-07T13:44:19.3210261+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\WhiteSquare10.png</Source>
+      <Name>Textures\WhiteSquare10</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\WhiteSquare10.xnb</Output>
+      <Time>2013-08-07T13:44:19.3240271+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\WhiteSquare2.png</Source>
+      <Name>Textures\WhiteSquare2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\WhiteSquare2.xnb</Output>
+      <Time>2013-08-07T13:44:19.3220263+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\WordBubble.png</Source>
+      <Name>Textures\WordBubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\WordBubble.xnb</Output>
+      <Time>2013-08-07T13:44:19.3320278+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\X.png</Source>
+      <Name>Textures\X</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\X.xnb</Output>
+      <Time>2013-08-07T13:44:19.3380285+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\AnimatedExplosion.tga</Source>
+      <Name>Textures\AnimatedExplosion</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\AnimatedExplosion.xnb</Output>
+      <Time>2013-08-07T13:44:18.9459789+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Bubble.tga</Source>
+      <Name>Textures\Bubble</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Bubble.xnb</Output>
+      <Time>2013-08-07T13:44:18.9589814+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\Cloud.tga</Source>
+      <Name>Textures\Cloud</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\Cloud.xnb</Output>
+      <Time>2013-08-07T13:44:18.9609808+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\CloudLight.tga</Source>
+      <Name>Textures\CloudLight</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\CloudLight.xnb</Output>
+      <Time>2013-08-07T13:44:18.9619811+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\background.png</Source>
+      <Name>Textures_Menu\background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\background.xnb</Output>
+      <Time>2013-08-07T13:44:33.7298592+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\blank.png</Source>
+      <Name>Textures_Menu\blank</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\blank.xnb</Output>
+      <Time>2013-08-07T13:44:33+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\gradient.png</Source>
+      <Name>Textures_Menu\gradient</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\gradient.xnb</Output>
+      <Time>2013-08-07T13:44:33+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures\BackGround.png</Source>
+      <Name>Textures\BackGround</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures\BackGround.xnb</Output>
+      <Time>2013-08-21T22:09:07.3986853+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\ABXY_buttons.png</Source>
+      <Name>Textures_Menu\ABXY_buttons</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\ABXY_buttons.xnb</Output>
+      <Time>2013-09-27T02:39:29.3299903+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\Dpad_All.png</Source>
+      <Name>Textures_Menu\Dpad_All</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\Dpad_All.xnb</Output>
+      <Time>2013-09-27T02:39:29.3309901+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\ThumbBase.png</Source>
+      <Name>Textures_Menu\ThumbBase</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\ThumbBase.xnb</Output>
+      <Time>2013-09-27T02:39:29.3319904+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Textures_Menu\ThumbStick.png</Source>
+      <Name>Textures_Menu\ThumbStick</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Textures_Menu\ThumbStick.xnb</Output>
+      <Time>2013-09-27T02:39:29+01:00</Time>
+    </Item>
+    <Item>
+      <Source>gamefont.spritefont</Source>
+      <Name>gamefont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\gamefont.xnb</Output>
+      <Time>2013-08-07T13:44:49.5918756+01:00</Time>
+    </Item>
+    <Item>
+      <Source>menufont.spritefont</Source>
+      <Name>menufont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\menufont.xnb</Output>
+      <Time>2013-08-21T22:51:01.926438+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Vampire.x</Source>
+      <Name>Models\Vampire</Name>
+      <Importer>XImporter</Importer>
+      <Processor>SkinnedModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Models\Vampire.xnb</Output>
+      <Time>2013-08-21T22:07:10.8628847+01:00</Time>
+      <Dependency>
+        <Key>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Vampire_0.xml</Key>
+        <Value>2013-11-22T15:23:08.6217243+00:00</Value>
+      </Dependency>
+      <Request>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Models\Vampire_Diffuse_0.xnb</Request>
+    </Item>
+    <Item>
+      <Source>Models\Cube.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Cube_0.xml</Output>
+      <Time>2013-08-07T13:43:57.3342304+01:00</Time>
+    </Item>
+    <Item>
+      <Source>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\FBX\1ADF26FE\Cube.fbm\metal.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\metal_0.xnb</Output>
+      <Time>2013-11-22T15:23:07.122637+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Ground.FBX</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Ground_0.xml</Output>
+      <Time>2013-08-07T13:43:57.352233+01:00</Time>
+    </Item>
+    <Item>
+      <Source>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\FBX\6B6C27EE\Ground.fbm\rust.jpg</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\rust_0.xnb</Output>
+      <Time>2013-11-22T15:23:07.4006532+00:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Vampire.x</Source>
+      <Importer>XImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\Models\Vampire_0.xml</Output>
+      <Time>2013-08-21T22:07:10.8628847+01:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Vampire_Diffuse.dds</Source>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Parameters>
+        <Data Key="ColorKeyColor" Type="Framework:Color">FFFF00FF</Data>
+        <Data Key="ColorKeyEnabled" Type="bool">true</Data>
+        <Data Key="TextureFormat" Type="Processors:TextureProcessorOutputFormat">DxtCompressed</Data>
+        <Data Key="GenerateMipmaps" Type="bool">true</Data>
+        <Data Key="ResizeToPowerOfTwo" Type="bool">false</Data>
+        <Data Key="PremultiplyAlpha" Type="bool">true</Data>
+      </Parameters>
+      <Options>None</Options>
+      <Output>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\Models\Vampire_Diffuse_0.xnb</Output>
+      <Time>2013-08-21T22:07:10.8818845+01:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{B59166E3-10BC-4C1E-B2E1-CF89AB5FA51F}</ContentProjectGUID>
+      <TargetPlatform>WindowsPhone</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Release</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012Content\</RootDirectory>
+      <LoggerRootDirectory>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\</LoggerRootDirectory>
+      <IntermediateDirectory>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Release\</IntermediateDirectory>
+      <OutputDirectory>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Release\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\bin\x86\Release\SkinnedModelPipeline.dll</Key>
+        <Value>2013-11-22T15:23:06.7636158+00:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2012-09-06T14:52:54+01:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2013-08-10T01:16:27.4698732+01:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>

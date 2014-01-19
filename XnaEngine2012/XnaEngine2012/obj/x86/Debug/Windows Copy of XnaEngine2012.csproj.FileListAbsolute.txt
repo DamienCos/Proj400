@@ -1,0 +1,2 @@
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\x86\Debug\Windows Copy of XnaEngine2012.csprojResolveAssemblyReference.cache
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt

@@ -30,6 +30,7 @@ namespace AndroidTest
             // Create our menu entries.
             MenuEntry playGameMenuEntry = new MenuEntry("Play Game");
             MenuEntry optionsMenuEntry = new MenuEntry("Options");
+            MenuEntry blank = new MenuEntry("");
             MenuEntry exitMenuEntry = new MenuEntry("Exit");
 
             // Hook up menu event handlers.
@@ -40,6 +41,7 @@ namespace AndroidTest
             // Add entries to the menu.
             MenuEntries.Add(playGameMenuEntry);
             MenuEntries.Add(optionsMenuEntry);
+            MenuEntries.Add(blank);
             MenuEntries.Add(exitMenuEntry);
         }
 
@@ -73,7 +75,7 @@ namespace AndroidTest
         /// </summary>
         protected override void OnCancel(PlayerIndex playerIndex)
         {
-
+            ScreenManager.Game.Dispose(); // clone fix
             ScreenManager.Game.Exit();
 
             //const string message = "Are you sure?";

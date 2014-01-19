@@ -9,6 +9,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
+using System.IO.IsolatedStorage;
+using System.IO;
 
 namespace AndroidTest
 {
@@ -21,10 +23,8 @@ namespace AndroidTest
         ScreenManager screenManager;
         // By preloading any assets used by UI rendering, we avoid framerate glitches
         // when they suddenly need to be loaded in the middle of a menu transition.
-        static readonly string[] preloadAssets =
-        {
-            @"Textures_Menu\gradient",
-        };
+        static readonly string[] preloadAssets = {@"Textures_Menu\gradient",};
+        
         #endregion
 
         public Game1()
@@ -40,9 +40,7 @@ namespace AndroidTest
 
             // Create the screen manager component.
             screenManager = new ScreenManager(this);
-            //soundManager = new SoundManager(this);
-            //soundManager.SoundVolume = 0.2f;
-            //Components.Add(soundManager);
+
             Components.Add(screenManager);
 
             // attempt to deserialize the screen manager from disk. if that
@@ -61,7 +59,6 @@ namespace AndroidTest
         {
             // serialize the screen manager whenever the game exits
             screenManager.SerializeState();
-
             base.OnExiting(sender, args);
         }
 
@@ -88,41 +85,43 @@ namespace AndroidTest
         /// </summary>
         protected override void LoadContent()
         {
+            //this line resizes screen to proper size on Nexus 7
+            graphics.GraphicsDevice.Viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight); 
             foreach (string asset in preloadAssets)
             {
                 Content.Load<object>(asset);
             }
             //soundManager.LoadSound();
-
         }
+        
 
-
-        //protected override void UnloadContent()
-        //{
-        //    // TODO: Unload any non ContentManager content here
-        //}
+        protected override void UnloadContent()
+        {
+            Content.Unload();
+        }
 
 
         //protected override void Update(GameTime gameTime)
         //{
         //    // Allows the game to exit
-        //    //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-        //    //    this.Exit();
+        //    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+        //        this.Exit();
 
-        //    // TODO: Add your update logic here
+        //   //  TODO: Add your update logic here
 
         //    base.Update(gameTime);
         //}
 
-
+         
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
-
-
-
             base.Draw(gameTime);
         }
+
+       
+
+
     }
 
 

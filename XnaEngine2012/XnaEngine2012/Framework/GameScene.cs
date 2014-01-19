@@ -10,9 +10,12 @@ namespace AndroidTest
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
 
+        //public  Microsoft.Xna.Framework.Game Game { get; set; }
+
         public GameScene(string name)
         {
             SceneName = name;
+            //Game = g;
             SceneObjects2D = new List<GameObject2D>();
             SceneObjects3D = new List<GameObject3D>();
         }

@@ -1,0 +1,4 @@
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Release\SkinnedModelData.dll
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Release\SkinnedModelData.pdb
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Release\SkinnedModelData.dll
+F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Release\SkinnedModelData.pdb

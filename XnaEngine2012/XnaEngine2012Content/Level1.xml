@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Levels>
+  <LevelNo>1</LevelNo>
+  <Name>Test</Name>
+  <CharX>10</CharX>
+  <CharY>20</CharY>
+  <CharZ>0</CharZ>
+</Levels>

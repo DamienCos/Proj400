@@ -3,6 +3,10 @@ using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using System.IO.IsolatedStorage;
+using System.IO;
+using System;
 
 namespace AndroidTest
 {
@@ -15,12 +19,9 @@ namespace AndroidTest
         public static InputManager Input { get { return RenderContext.Input; } }
         public static SpriteFont font;
         public static Character tempChar { get;  set; }
-       
-        
-
+      
         static SceneManager()
-        {
-           
+        {         
             GameScenes = new List<GameScene>();
             RenderContext = new RenderContext
             {
@@ -40,8 +41,17 @@ namespace AndroidTest
         public static void RemoveGameScene(GameScene gameScene)
         {
             GameScenes.Remove(gameScene);
-
             if (ActiveScene == gameScene) ActiveScene = null;
+        }
+
+        public static void RemoveGameScene(string name)
+        {
+            var chosenScene = GameScenes.FirstOrDefault(scene => scene.SceneName.Equals(name));
+            if (chosenScene != null)
+            {
+                GameScenes.Remove(chosenScene);
+            }
+            if (ActiveScene == chosenScene) ActiveScene = null;
         }
 
         public static bool SetActiveScene(string name)
@@ -69,7 +79,7 @@ namespace AndroidTest
         {
             GameScenes.ForEach(scene => scene.LoadContent(contentManager));
             //Debug2D.LoadContent(contentManager);
-            font = contentManager.Load<SpriteFont>("menufont");
+            font = contentManager.Load<SpriteFont>("menufont");          
         }
 
         public static void Update(GameTime gameTime)
@@ -80,7 +90,6 @@ namespace AndroidTest
                 RenderContext.Input.Update();
                //enderContext.Camera.Update();
                 ActiveScene.Update(RenderContext);
-
             }
         }
 
@@ -128,5 +137,7 @@ namespace AndroidTest
                 RenderContext.SpriteBatch.End();
             }
         }
+
+        
     }
 }
