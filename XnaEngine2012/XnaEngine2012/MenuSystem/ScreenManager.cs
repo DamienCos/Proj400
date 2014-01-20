@@ -126,7 +126,7 @@ namespace AndroidTest
             ContentManager content = Game.Content;
 
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            font = content.Load<SpriteFont>("menufont");
+            font = content.Load<SpriteFont>("gamefont");
             blankTexture = content.Load<Texture2D>(@"Textures_Menu/blank");
 
             // Tell each of the screens to load their content.
@@ -134,7 +134,6 @@ namespace AndroidTest
             {
                 screen.LoadContent();
             }
-            //RetrieveGameState();
         }
 
 

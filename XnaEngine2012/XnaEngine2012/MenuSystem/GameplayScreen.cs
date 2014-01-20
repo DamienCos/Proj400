@@ -52,9 +52,9 @@ namespace AndroidTest
             screenWidth = ScreenManager.GraphicsDevice.Viewport.Width;
             screenHeight = ScreenManager.GraphicsDevice.Viewport.Height;
 #endif
-#if ANDROID/// this maybe display bug on android
+#if ANDROID/// this maybe display bug on android 
             screenWidth = 1280;
-            screenHeight = 720;
+            screenHeight = 720; //800
 #endif
             spriteBatch = ScreenManager.SpriteBatch;
             SceneManager.RenderContext.SpriteBatch = spriteBatch;
@@ -150,8 +150,7 @@ namespace AndroidTest
             }
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
-                SceneManager.RemoveGameScene("Test");
-                //ScreenManager.Game_.Exit();
+                SceneManager.RemoveGameScene("Test");  // change this to generic screen name
             }
 
         }

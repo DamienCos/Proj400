@@ -16,13 +16,16 @@ namespace AndroidTest
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+//# if WINDOWSPHONE
         public static Vector2 ScreenSize = new Vector2(800f, 480f);
+//# endif
+# if ANDROID
+        public static Vector2 ScreenSize = new Vector2(1280, 800f);
+# endif
         #region Fields
         public GraphicsDeviceManager graphics;
-        //SpriteBatch spriteBatch;
         ScreenManager screenManager;
-        // By preloading any assets used by UI rendering, we avoid framerate glitches
-        // when they suddenly need to be loaded in the middle of a menu transition.
+
         static readonly string[] preloadAssets = {@"Textures_Menu\gradient",};
         
         #endregion
@@ -76,8 +79,14 @@ namespace AndroidTest
         /// </summary>
         private void InitializeLandscapeGraphics()
         {
+# if WINDOWSPHONE
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 480;
+# endif
+#if ANDROID/// this maybe display bug on android 
+            screenWidth = 1280;
+            screenHeight = 800;
+#endif
         }
 
         /// <summary>
@@ -91,7 +100,6 @@ namespace AndroidTest
             {
                 Content.Load<object>(asset);
             }
-            //soundManager.LoadSound();
         }
         
 
