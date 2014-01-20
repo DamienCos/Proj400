@@ -48,7 +48,7 @@ namespace AndroidTest
         {
             if (content == null)
                 content = new ContentManager(ScreenManager.Game_.Services, "Content");
-# if WINDOWSPHONE
+# if WINDOWS_PHONE
             screenWidth = ScreenManager.GraphicsDevice.Viewport.Width;
             screenHeight = ScreenManager.GraphicsDevice.Viewport.Height;
 #endif

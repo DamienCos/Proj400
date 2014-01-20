@@ -1,0 +1,1 @@
+﻿ScreenSize in Game1 - ifdef wont work(static?)

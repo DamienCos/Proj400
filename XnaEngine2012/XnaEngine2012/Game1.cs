@@ -16,9 +16,9 @@ namespace AndroidTest
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-//# if WINDOWSPHONE
+# if WINDOWS_PHONE
         public static Vector2 ScreenSize = new Vector2(800f, 480f);
-//# endif
+# endif
 # if ANDROID
         public static Vector2 ScreenSize = new Vector2(1280, 800f);
 # endif
@@ -126,10 +126,6 @@ namespace AndroidTest
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
         }
-
-       
-
-
     }
 
 

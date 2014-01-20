@@ -29,7 +29,7 @@ namespace AndroidTest
             
             AddSceneObject(ground);
 
-            //Initialize The Hero
+            //Initialize The Player
             character = new Character();
             AddSceneObject(character);
 
@@ -49,6 +49,7 @@ namespace AndroidTest
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
             {
                 SaveLevel(SceneManager.tempChar.WorldPosition);
+               
             }
             base.Update(renderContext);
         }
@@ -57,7 +58,7 @@ namespace AndroidTest
         {
             using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
             {
-                XDocument document;
+                XDocument document;               
                 if (storage.FileExists("Level1Update.xml"))
                 {
                     using (var stream1 = storage.OpenFile("Level1Update.xml", FileMode.Open))
@@ -73,7 +74,7 @@ namespace AndroidTest
                                     CharY = (float)query.Element("CharY"),
                                     CharZ = (float)query.Element("CharZ")
                                 });
-
+                   
                     foreach (Level l in data)
                     {
                         thisLevel = l;

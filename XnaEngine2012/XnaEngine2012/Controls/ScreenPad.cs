@@ -402,7 +402,7 @@ namespace AndroidTest
 
         public void Update()
         {
-#if WINDOWS_PHONE
+#if WINDOWS_PHONE || ANDROID
             leftTouch = null;
             rightTouch = null;
             fireTouch = null;
