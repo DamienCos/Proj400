@@ -19,7 +19,7 @@ namespace AndroidTest
         ContentManager content;
         SpriteFont font;
         SpriteBatch spriteBatch;
-        Texture2D btn;
+       // Texture2D btn;
         /// <summary>
         /// The actual gamescreen controls
         /// </summary>
@@ -146,12 +146,14 @@ namespace AndroidTest
             PlayerIndex player;
             if (input.IsNewButtonPress(Buttons.Back, ControllingPlayer, out player))
             {
+                SceneManager.RemoveGameScene("Test");  // change this to generic screen name - may cause blue screen flash when changing
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
+                
             }
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            {
-                SceneManager.RemoveGameScene("Test");  // change this to generic screen name
-            }
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //{
+            //    SceneManager.RemoveGameScene("Test");  // change this to generic screen name
+            //}
 
         }
 

@@ -11,7 +11,7 @@ namespace AndroidTest
         MenuEntry helpMenuEntry;
 
 
-        static int volume = 0;
+        //static int volume = 0;
 
         #endregion
 

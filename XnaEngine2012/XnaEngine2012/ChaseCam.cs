@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AndroidTest
 {
-    public class ChaseCam: BaseCamera
+    public class ChaseCam : BaseCamera
     {
         public Vector3 Position { get; private set; }
         public Vector3 Target { get; private set; }
@@ -16,7 +16,7 @@ namespace AndroidTest
         public Vector3 FollowTargetRotation { get; private set; }
 
         public Vector3 PositionOffset { get; set; }
-        public Vector3 TargetOffset   { get; set; }
+        public Vector3 TargetOffset { get; set; }
 
         public Vector3 RelativeCameraRotation { get; set; }
 
@@ -79,7 +79,7 @@ namespace AndroidTest
             //this.Projection = Matrix.CreatePerspectiveFieldOfView(
             //    MathHelper.ToRadians(45), aspectRatio, 0.1f, 100000.0f);
             this.Projection = Matrix.CreateOrthographic(640, 360, 0.1f, 300);
-             
+
         }
 
         public void Move(Vector3 NewFollowTargetPosition,
@@ -94,7 +94,7 @@ namespace AndroidTest
             this.RelativeCameraRotation += RotationChange;
         }
 
-        public override void  Update(RenderContext renderContext)
+        public override void Update(RenderContext renderContext)
         {
             base.Update(renderContext);
             // Sum the rotations of the model and the camera to ensure it 
@@ -122,10 +122,10 @@ namespace AndroidTest
             // Obtain the up vector from the matrix
             Vector3 up = Vector3.Transform(Vector3.Up, rotation);
 
-           //Recalculate the view matrix
+            //Recalculate the view matrix
             View = Matrix.CreateLookAt(Position, Target, up);
-            
-           
+
+
         }
     }
 }
