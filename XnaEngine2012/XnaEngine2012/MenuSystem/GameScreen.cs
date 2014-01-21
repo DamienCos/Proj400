@@ -341,7 +341,6 @@ namespace AndroidTest
         /// </summary>
         public virtual void Draw(GameTime gameTime) { }
 
-
         #endregion
 
         #region Public Methods

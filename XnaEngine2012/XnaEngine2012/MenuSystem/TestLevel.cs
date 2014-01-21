@@ -16,12 +16,12 @@ namespace AndroidTest
 
         public Vector3 pos { get; set; }
         //public LevelData thisLevel { get; set; }
-        Stream stream;
-        XDocument doc;
+        //Stream stream;
+        //XDocument doc;
 
         public override void Initialize()
         {
-            LoadLevel();
+            SceneManager.LoadLevel();
            
             ground = new GameModel(@"Models/Cube");
 
@@ -41,19 +41,20 @@ namespace AndroidTest
             SceneManager.RenderContext.Camera = cam;
         
             character.Reset(pos);
-            SceneManager.tempChar = character;
+            SceneManager.thisLevel = thisLevel;
             base.Initialize();
         }
 
         public override void Update(RenderContext renderContext)
         {   // save level current state if back button pressed
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            {
-                SaveLevel(SceneManager.tempChar.WorldPosition);
-                //SceneManager.SerializeState();
-                SceneManager.ActiveScene.Deactivated();
-            }
-            
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //{
+            //    SceneManager.SaveLevel(thisLevel);
+            //    //SceneManager.SerializeState();
+            //    SceneManager.ActiveScene.Deactivated();
+            //}
+            thisLevel.CharX = character.WorldPosition.X;
+
             base.Update(renderContext);
         }
 

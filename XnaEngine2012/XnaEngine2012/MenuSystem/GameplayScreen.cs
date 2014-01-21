@@ -19,10 +19,7 @@ namespace AndroidTest
         ContentManager content;
         SpriteFont font;
         SpriteBatch spriteBatch;
-       // Texture2D btn;
-        /// <summary>
-        /// The actual gamescreen controls
-        /// </summary>
+        // The gamescreen controls
         ScreenPad screenPad;
 
         float screenWidth, screenHeight;
@@ -42,8 +39,7 @@ namespace AndroidTest
             // Activate the first scene.
             SceneManager.AddGameScene(new TestLevel());
             SceneManager.SetActiveScene("Test");   
-
-           
+   
             SceneManager.Initialize();         
         }
 
@@ -147,7 +143,8 @@ namespace AndroidTest
             PlayerIndex player;
             if (input.IsNewButtonPress(Buttons.Back, ControllingPlayer, out player))
             {
-                SceneManager.RemoveGameScene();  // Removes active scene - may cause blue screen flash when changing
+                SceneManager.RemoveActiveScene();  // Removes active scene - may cause blue screen flash when changing
+                SceneManager.SaveLevel(SceneManager.ActiveScene.thisLevel);
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
                 
             }

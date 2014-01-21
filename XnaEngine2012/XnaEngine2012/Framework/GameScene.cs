@@ -1,11 +1,12 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Xml.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using System.IO.IsolatedStorage;
-using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 
 namespace AndroidTest
@@ -15,18 +16,26 @@ namespace AndroidTest
         public string SceneName { get; private set; }
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
-        public Stream stream;
-        public XDocument doc;
+        //public Stream stream;
+        //public XDocument doc;
+
+        //public PlayerIndex? ControllingPlayer
+        //{
+        //    get { return controllingPlayer; }
+        //    internal set { controllingPlayer = value; }
+        //}
+
+        //PlayerIndex? controllingPlayer;
 
         public LevelData thisLevel { get; set; }
 
-        public bool IsSerializable
-        {
-            get { return isSerializable; }
-            protected set { isSerializable = value; }
-        }
+        //public bool IsSerializable
+        //{
+        //    get { return isSerializable; }
+        //    protected set { isSerializable = value; }
+        //}
 
-        bool isSerializable = true;
+        //bool isSerializable = true;
 
         public GameScene(string name)
         {
@@ -119,112 +128,7 @@ namespace AndroidTest
             SceneObjects3D.ForEach(sceneObject => sceneObject.Draw(renderContext));
         }
 
-        public void LoadLevel()
-        {
-#if WINDOWS_PHONE
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
-#else
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
-#endif            
-            using (storage)
-            {
-                XDocument document;
-                if (storage.FileExists("TestData.xml"))
-                {
-                    using (var stream1 = storage.OpenFile("TestData.xml", FileMode.Open))
-                    {
-                        document = XDocument.Load(stream1);
-                    }
-
-                    var data = (from query in document.Descendants("Levels")
-                                select new LevelData()
-                                {
-                                    LevelName = (string)query.Element("LevelName"),
-                                    CharX = (float)query.Element("CharX"),
-                                    CharY = (float)query.Element("CharY"),
-                                    CharZ = (float)query.Element("CharZ")
-                                });
-
-                    foreach (LevelData l in data)
-                    {
-                        thisLevel = l;
-                    }
-                }
-                else
-                {   // if first time use, use default settings from content to seed level settings
-                    stream = TitleContainer.OpenStream("Content/TestData.xml");
-                    doc = XDocument.Load(stream);
-                    var data = (from query in doc.Descendants("Levels")
-                                select new LevelData()
-                                {
-                                    LevelName = (string)query.Element("LevelName"),
-                                    CharX = (float)query.Element("CharX"),
-                                    CharY = (float)query.Element("CharY"),
-                                    CharZ = (float)query.Element("CharZ")
-                                });
-
-                    foreach (LevelData l in data)
-                    {
-                        thisLevel = l;
-                    }
-                }
-            }
-        }
-
-        public void SaveLevel(Vector3 pos)
-        {
-#if WINDOWS_PHONE
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
-#else
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
-#endif
-            
-            using (storage)
-            {
-                XDocument document;
-                XElement levelRootNode = null;
-                // Check if there is a file to  write to
-                if (storage.FileExists("TestData.xml"))
-                {
-                    using (var stream = storage.OpenFile("TestData.xml", FileMode.Open))
-                    {
-                        document = XDocument.Load(stream);
-                    }
-                    levelRootNode = document.Descendants("Levels").FirstOrDefault();
-                }
-                else
-                {
-                    document = new XDocument();
-                }
-                // If new file add data
-                if (levelRootNode == null)
-                {
-                    levelRootNode = new XElement("Levels",
-                                    new XElement("LevelName", "xyz"),
-                                    new XElement("CharX", pos.X),
-                                    new XElement("CharY", pos.Y),
-                                    new XElement("CharZ", pos.Z));
-                    document.Add(levelRootNode);
-                }
-                else 
-                {   //If file exists, clear it and re-write new data
-                    document.RemoveNodes();
-                    //adds updated data to isolated storage
-                    levelRootNode = new XElement("Levels",
-                                    new XElement("LevelName", "Test"),
-                                    new XElement("CharX", pos.X),
-                                    new XElement("CharY", pos.Y),
-                                    new XElement("CharZ", pos.Z));
-                    document.Add(levelRootNode);
-                }
-                using (Stream stream = storage.CreateFile("TestData.xml"))
-                {
-                    document.Save(stream);
-                }
-            }
-        }
-
-      
+       
 
     }
 }

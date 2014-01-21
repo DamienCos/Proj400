@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Input;
 using System.IO.IsolatedStorage;
 using System.IO;
 using System;
+using System.Xml.Linq;
 
 namespace AndroidTest
 {
@@ -19,7 +20,8 @@ namespace AndroidTest
         public static InputManager Input { get { return RenderContext.Input; } }
         public static SpriteFont font;
         public static Character tempChar { get;  set; }
-      
+        public static LevelData thisLevel { get; set; }
+
         static SceneManager()
         {         
             GameScenes = new List<GameScene>();
@@ -44,14 +46,19 @@ namespace AndroidTest
             if (ActiveScene == gameScene) ActiveScene = null;
         }
 
-        public static void RemoveGameScene()
+        public static void RemoveGameScene(string name)
         {
-            //var chosenScene = GameScenes.FirstOrDefault(scene => scene.SceneName.Equals(name));
-            //if (chosenScene != null)
-            //{
-            //    GameScenes.Remove(chosenScene);
-            //}
-            //if (ActiveScene == chosenScene) ActiveScene = null;
+            var chosenScene = GameScenes.FirstOrDefault(scene => scene.SceneName.Equals(name));
+            if (chosenScene != null)
+            {
+                GameScenes.Remove(chosenScene);
+            }
+            if (ActiveScene == chosenScene) ActiveScene = null;
+            //GameScenes.Remove(ActiveScene);
+        }
+
+        public static void RemoveActiveScene()
+        {
             GameScenes.Remove(ActiveScene);
         }
 
@@ -117,8 +124,8 @@ namespace AndroidTest
                     RenderContext.SpriteBatch.DrawString
                         (font, string.Format("B: {0}", (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed).ToString()), new Vector2(0, 140), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("Char Postion: {0}",
-                        tempChar.WorldPosition.ToString()), new Vector2(0, 170), Color.White);
+                        (font, string.Format("Char Postion: {0}",new Vector3(thisLevel.CharX,thisLevel.CharY,thisLevel.CharZ).ToString())
+                        , new Vector2(0, 170), Color.White);
                 } 
                 #endregion
 
@@ -140,7 +147,110 @@ namespace AndroidTest
             }
         }
 
-       
+        public static void LoadLevel()
+        {
+#if WINDOWS_PHONE
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+#else
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
+#endif
+            using (storage)
+            {
+                XDocument document;
+                if (storage.FileExists("TestData.xml"))
+                {
+                    using (var stream1 = storage.OpenFile("TestData.xml", FileMode.Open))
+                    {
+                        document = XDocument.Load(stream1);
+                    }
+
+                    var data = (from query in document.Descendants("Levels")
+                                select new LevelData()
+                                {
+                                    LevelName = (string)query.Element("LevelName"),
+                                    CharX = (float)query.Element("CharX"),
+                                    CharY = (float)query.Element("CharY"),
+                                    CharZ = (float)query.Element("CharZ")
+                                });
+
+                    foreach (LevelData l in data)
+                    {
+                        ActiveScene.thisLevel = l;
+                    }
+                }
+                else
+                {   // if first time use, use default settings from content to seed level settings
+                    Stream stream = TitleContainer.OpenStream("Content/TestData.xml");
+                    XDocument doc = XDocument.Load(stream);
+                    var data = (from query in doc.Descendants("Levels")
+                                select new LevelData()
+                                {
+                                    LevelName = (string)query.Element("LevelName"),
+                                    CharX = (float)query.Element("CharX"),
+                                    CharY = (float)query.Element("CharY"),
+                                    CharZ = (float)query.Element("CharZ")
+                                });
+
+                    foreach (LevelData l in data)
+                    {
+                        ActiveScene.thisLevel = l;
+                    }
+                }
+            }
+        }
+
+        public static void SaveLevel(LevelData ld)
+        {
+#if WINDOWS_PHONE
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+#else
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
+#endif
+
+            using (storage)
+            {
+                XDocument document;
+                XElement levelRootNode = null;
+                // Check if there is a file to  write to
+                if (storage.FileExists("TestData.xml"))
+                {
+                    using (var stream = storage.OpenFile("TestData.xml", FileMode.Open))
+                    {
+                        document = XDocument.Load(stream);
+                    }
+                    levelRootNode = document.Descendants("Levels").FirstOrDefault();
+                }
+                else
+                {
+                    document = new XDocument();
+                }
+                // If new file add data
+                if (levelRootNode == null)
+                {
+                    levelRootNode = new XElement("Levels",
+                                    new XElement("LevelName", "xyz"),
+                                    new XElement("CharX", ld.CharX),
+                                    new XElement("CharY", ld.CharY),
+                                    new XElement("CharZ", ld.CharZ));
+                    document.Add(levelRootNode);
+                }
+                else
+                {   //If file exists, clear it and re-write new data
+                    document.RemoveNodes();
+                    //adds updated data to isolated storage
+                    levelRootNode = new XElement("Levels",
+                                    new XElement("LevelName", "Test"),
+                                    new XElement("CharX", ld.CharX),
+                                    new XElement("CharY", ld.CharY),
+                                    new XElement("CharZ", ld.CharZ));
+                    document.Add(levelRootNode);
+                }
+                using (Stream stream = storage.CreateFile("TestData.xml"))
+                {
+                    document.Save(stream);
+                }
+            }
+        }
 
     }
 }
