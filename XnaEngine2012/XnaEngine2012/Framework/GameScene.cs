@@ -15,8 +15,9 @@ namespace AndroidTest
         public string SceneName { get; private set; }
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
-        Stream stream;
-        XDocument doc;
+        public Stream stream;
+        public XDocument doc;
+
         public LevelData thisLevel { get; set; }
 
         public bool IsSerializable
@@ -117,7 +118,6 @@ namespace AndroidTest
         {
             SceneObjects3D.ForEach(sceneObject => sceneObject.Draw(renderContext));
         }
-//using (StreamReader sr = new StreamReader(Game.Activity.Assets.Open("Content/TestData.xml"))
 
         public void LoadLevel()
         {
@@ -139,7 +139,7 @@ namespace AndroidTest
                     var data = (from query in document.Descendants("Levels")
                                 select new LevelData()
                                 {
-                                    LevelName = (string)query.Element("Name"),
+                                    LevelName = (string)query.Element("LevelName"),
                                     CharX = (float)query.Element("CharX"),
                                     CharY = (float)query.Element("CharY"),
                                     CharZ = (float)query.Element("CharZ")
@@ -157,7 +157,7 @@ namespace AndroidTest
                     var data = (from query in doc.Descendants("Levels")
                                 select new LevelData()
                                 {
-                                    LevelName = (string)query.Element("Name"),
+                                    LevelName = (string)query.Element("LevelName"),
                                     CharX = (float)query.Element("CharX"),
                                     CharY = (float)query.Element("CharY"),
                                     CharZ = (float)query.Element("CharZ")
@@ -200,10 +200,10 @@ namespace AndroidTest
                 if (levelRootNode == null)
                 {
                     levelRootNode = new XElement("Levels",
-                                   new XElement("LevelName", "Test"),
-                                   new XElement("CharX", pos.X),
-                                   new XElement("CharY", pos.Y),
-                                   new XElement("CharZ", pos.Z));
+                                    new XElement("LevelName", "xyz"),
+                                    new XElement("CharX", pos.X),
+                                    new XElement("CharY", pos.Y),
+                                    new XElement("CharZ", pos.Z));
                     document.Add(levelRootNode);
                 }
                 else 
@@ -224,15 +224,7 @@ namespace AndroidTest
             }
         }
 
-        /// <summary>
-        /// Tells the scene to serialize its state into the given stream.
-        /// </summary>
-        public virtual void Serialize(Stream stream) { }
-
-        /// <summary>
-        /// Tells the scene to deserialize its state from the given stream.
-        /// </summary>
-        public virtual void Deserialize(Stream stream) { }
+      
 
     }
 }
