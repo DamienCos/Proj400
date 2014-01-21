@@ -30,7 +30,6 @@ namespace AndroidTest
         public GameScene(string name)
         {
             SceneName = name;
-            //Game = g;
             SceneObjects2D = new List<GameObject2D>();
             SceneObjects3D = new List<GameObject3D>();
         }
@@ -118,22 +117,28 @@ namespace AndroidTest
         {
             SceneObjects3D.ForEach(sceneObject => sceneObject.Draw(renderContext));
         }
+//using (StreamReader sr = new StreamReader(Game.Activity.Assets.Open("Content/TestData.xml"))
 
-        public virtual void LoadLevel()
+        public void LoadLevel()
         {
-            using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
+#if WINDOWS_PHONE
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+#else
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
+#endif            
+            using (storage)
             {
                 XDocument document;
-                if (storage.FileExists("Level1Update.xml"))
+                if (storage.FileExists("TestData.xml"))
                 {
-                    using (var stream1 = storage.OpenFile("Level1Update.xml", FileMode.Open))
+                    using (var stream1 = storage.OpenFile("TestData.xml", FileMode.Open))
                     {
                         document = XDocument.Load(stream1);
                     }
+
                     var data = (from query in document.Descendants("Levels")
                                 select new LevelData()
                                 {
-                                    LevelNo = (int)query.Element("LevelNo"),
                                     LevelName = (string)query.Element("Name"),
                                     CharX = (float)query.Element("CharX"),
                                     CharY = (float)query.Element("CharY"),
@@ -147,12 +152,11 @@ namespace AndroidTest
                 }
                 else
                 {   // if first time use, use default settings from content to seed level settings
-                    stream = TitleContainer.OpenStream("Content\\Level1.xml");
+                    stream = TitleContainer.OpenStream("Content/TestData.xml");
                     doc = XDocument.Load(stream);
                     var data = (from query in doc.Descendants("Levels")
                                 select new LevelData()
                                 {
-                                    LevelNo = (int)query.Element("LevelNo"),
                                     LevelName = (string)query.Element("Name"),
                                     CharX = (float)query.Element("CharX"),
                                     CharY = (float)query.Element("CharY"),
@@ -167,16 +171,22 @@ namespace AndroidTest
             }
         }
 
-        public virtual void SaveLevel(Vector3 pos)
+        public void SaveLevel(Vector3 pos)
         {
-            using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
+#if WINDOWS_PHONE
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+#else
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
+#endif
+            
+            using (storage)
             {
                 XDocument document;
                 XElement levelRootNode = null;
                 // Check if there is a file to  write to
-                if (storage.FileExists("Level1Update.xml"))
+                if (storage.FileExists("TestData.xml"))
                 {
-                    using (var stream = storage.OpenFile("Level1Update.xml", FileMode.Open))
+                    using (var stream = storage.OpenFile("TestData.xml", FileMode.Open))
                     {
                         document = XDocument.Load(stream);
                     }
@@ -190,28 +200,24 @@ namespace AndroidTest
                 if (levelRootNode == null)
                 {
                     levelRootNode = new XElement("Levels",
-                                   new XElement("LevelNo", 1),
-                                   new XElement("Name", "Test"),
+                                   new XElement("LevelName", "Test"),
                                    new XElement("CharX", pos.X),
                                    new XElement("CharY", pos.Y),
                                    new XElement("CharZ", pos.Z));
                     document.Add(levelRootNode);
                 }
-                else // If file exists, clear it and re-write new data
-                {    //clears document in isolated storage
+                else 
+                {   //If file exists, clear it and re-write new data
                     document.RemoveNodes();
                     //adds updated data to isolated storage
                     levelRootNode = new XElement("Levels",
-                                    new XElement("LevelNo", 1),
-                                    new XElement("Name", "Test"),
+                                    new XElement("LevelName", "Test"),
                                     new XElement("CharX", pos.X),
                                     new XElement("CharY", pos.Y),
                                     new XElement("CharZ", pos.Z));
                     document.Add(levelRootNode);
                 }
-
-
-                using (Stream stream = storage.CreateFile("Level1Update.xml"))
+                using (Stream stream = storage.CreateFile("TestData.xml"))
                 {
                     document.Save(stream);
                 }
