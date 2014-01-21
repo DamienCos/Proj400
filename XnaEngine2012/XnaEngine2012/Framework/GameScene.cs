@@ -1,6 +1,12 @@
+using System.IO;
+using System.Linq;
+using System.Xml.Linq;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
+using System.IO.IsolatedStorage;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.Graphics;
+
 
 namespace AndroidTest
 {
@@ -9,8 +15,17 @@ namespace AndroidTest
         public string SceneName { get; private set; }
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
+        Stream stream;
+        XDocument doc;
+        public LevelData thisLevel { get; set; }
 
-        //public  Microsoft.Xna.Framework.Game Game { get; set; }
+        public bool IsSerializable
+        {
+            get { return isSerializable; }
+            protected set { isSerializable = value; }
+        }
+
+        bool isSerializable = true;
 
         public GameScene(string name)
         {
@@ -44,20 +59,20 @@ namespace AndroidTest
             }
         }
 
-        public void RemoveSceneObject(GameObject2D sceneObject)
-        {
-            if (SceneObjects2D.Remove(sceneObject))
-            {
-                sceneObject.Scene = null;
-            }
-        }
-
         public void AddSceneObject(GameObject3D sceneObject)
         {
             if (!SceneObjects3D.Contains(sceneObject))
             {
                 sceneObject.Scene = this;
                 SceneObjects3D.Add(sceneObject);
+            }
+        }
+
+        public void RemoveSceneObject(GameObject2D sceneObject)
+        {
+            if (SceneObjects2D.Remove(sceneObject))
+            {
+                sceneObject.Scene = null;
             }
         }
 
@@ -103,5 +118,115 @@ namespace AndroidTest
         {
             SceneObjects3D.ForEach(sceneObject => sceneObject.Draw(renderContext));
         }
+
+        public virtual void LoadLevel()
+        {
+            using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                XDocument document;
+                if (storage.FileExists("Level1Update.xml"))
+                {
+                    using (var stream1 = storage.OpenFile("Level1Update.xml", FileMode.Open))
+                    {
+                        document = XDocument.Load(stream1);
+                    }
+                    var data = (from query in document.Descendants("Levels")
+                                select new LevelData()
+                                {
+                                    LevelNo = (int)query.Element("LevelNo"),
+                                    LevelName = (string)query.Element("Name"),
+                                    CharX = (float)query.Element("CharX"),
+                                    CharY = (float)query.Element("CharY"),
+                                    CharZ = (float)query.Element("CharZ")
+                                });
+
+                    foreach (LevelData l in data)
+                    {
+                        thisLevel = l;
+                    }
+                }
+                else
+                {   // if first time use, use default settings from content to seed level settings
+                    stream = TitleContainer.OpenStream("Content\\Level1.xml");
+                    doc = XDocument.Load(stream);
+                    var data = (from query in doc.Descendants("Levels")
+                                select new LevelData()
+                                {
+                                    LevelNo = (int)query.Element("LevelNo"),
+                                    LevelName = (string)query.Element("Name"),
+                                    CharX = (float)query.Element("CharX"),
+                                    CharY = (float)query.Element("CharY"),
+                                    CharZ = (float)query.Element("CharZ")
+                                });
+
+                    foreach (LevelData l in data)
+                    {
+                        thisLevel = l;
+                    }
+                }
+            }
+        }
+
+        public virtual void SaveLevel(Vector3 pos)
+        {
+            using (var storage = IsolatedStorageFile.GetUserStoreForApplication())
+            {
+                XDocument document;
+                XElement levelRootNode = null;
+                // Check if there is a file to  write to
+                if (storage.FileExists("Level1Update.xml"))
+                {
+                    using (var stream = storage.OpenFile("Level1Update.xml", FileMode.Open))
+                    {
+                        document = XDocument.Load(stream);
+                    }
+                    levelRootNode = document.Descendants("Levels").FirstOrDefault();
+                }
+                else
+                {
+                    document = new XDocument();
+                }
+                // If new file add data
+                if (levelRootNode == null)
+                {
+                    levelRootNode = new XElement("Levels",
+                                   new XElement("LevelNo", 1),
+                                   new XElement("Name", "Test"),
+                                   new XElement("CharX", pos.X),
+                                   new XElement("CharY", pos.Y),
+                                   new XElement("CharZ", pos.Z));
+                    document.Add(levelRootNode);
+                }
+                else // If file exists, clear it and re-write new data
+                {    //clears document in isolated storage
+                    document.RemoveNodes();
+                    //adds updated data to isolated storage
+                    levelRootNode = new XElement("Levels",
+                                    new XElement("LevelNo", 1),
+                                    new XElement("Name", "Test"),
+                                    new XElement("CharX", pos.X),
+                                    new XElement("CharY", pos.Y),
+                                    new XElement("CharZ", pos.Z));
+                    document.Add(levelRootNode);
+                }
+
+
+                using (Stream stream = storage.CreateFile("Level1Update.xml"))
+                {
+                    document.Save(stream);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Tells the scene to serialize its state into the given stream.
+        /// </summary>
+        public virtual void Serialize(Stream stream) { }
+
+        /// <summary>
+        /// Tells the scene to deserialize its state from the given stream.
+        /// </summary>
+        public virtual void Deserialize(Stream stream) { }
+
     }
 }

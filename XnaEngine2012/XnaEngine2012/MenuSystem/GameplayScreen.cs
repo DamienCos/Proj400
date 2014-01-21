@@ -39,8 +39,11 @@ namespace AndroidTest
             EnabledGestures = GestureType.Tap;
             _renderContext = new RenderContext();
 
+            // Activate the first scene.
             SceneManager.AddGameScene(new TestLevel());
-            SceneManager.SetActiveScene("Test");
+            SceneManager.SetActiveScene("Test");   
+
+           
             SceneManager.Initialize();         
         }
 
@@ -83,8 +86,6 @@ namespace AndroidTest
         {
             content.Unload();
         }
-
-
         #endregion
 
         #region Update and Draw
@@ -146,15 +147,11 @@ namespace AndroidTest
             PlayerIndex player;
             if (input.IsNewButtonPress(Buttons.Back, ControllingPlayer, out player))
             {
-                SceneManager.RemoveGameScene("Test");  // change this to generic screen name - may cause blue screen flash when changing
+                SceneManager.RemoveGameScene();  // Removes active scene - may cause blue screen flash when changing
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
                 
             }
-            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-            //{
-            //    SceneManager.RemoveGameScene("Test");  // change this to generic screen name
-            //}
-
+           
         }
 
         #endregion

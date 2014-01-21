@@ -270,9 +270,3 @@ bin\Windows Phone\Debug\
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\XnaEngine2012.xap
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\XapCacheFile.xml
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\XnaEngine2012.csprojResolveAssemblyReference.cache
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\XnaEngine2012.xap
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\XapCacheFile.xml
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\AppManifest.xaml
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\WMAppManifest.xml.g
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\WMAppManifest.xml
-bin\Windows Phone\Debug\
