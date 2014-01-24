@@ -7,6 +7,8 @@ namespace AndroidTest
 {
     public abstract class GameObject3D
     {
+        public int id { get; set; }
+        public string modelPath { get; set; }
         public Vector3 LocalPosition { get; set; }
         public Vector3 WorldPosition { get; private set; }
 

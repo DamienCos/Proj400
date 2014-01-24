@@ -1,26 +1,26 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
+using System.IO.IsolatedStorage;
 using System.Linq;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using System.IO.IsolatedStorage;
-using System.IO;
-using System;
-using System.Xml.Linq;
 
 namespace AndroidTest
 {
     static class SceneManager
     {
-        public static Microsoft.Xna.Framework.Game MainGame { get; set; }
-        public static List<GameScene> GameScenes { get; private set; }
-        public static GameScene ActiveScene { get; private set; }
-        public static RenderContext RenderContext { get; private set; }
-        public static InputManager Input { get { return RenderContext.Input; } }
-        public static SpriteFont font;
-        public static Character tempChar { get;  set; }
-        public static LevelData thisLevel { get; set; }
+        public static Game            MainGame      { get; set; }
+        public static List<GameScene> GameScenes    { get;  set; }
+        public static GameScene       ActiveScene   { get; private set; }
+        public static RenderContext   RenderContext { get; private set; }
+        public static InputManager    Input         { get { return RenderContext.Input; } }
+        public static SpriteFont      font;
+        public static LevelData       thisLevel     { get; set; }
 
         static SceneManager()
         {         
@@ -30,10 +30,10 @@ namespace AndroidTest
                 //Default Camera
                 Camera = new ChaseCam(),
                 Input = new InputManager(),
-                Hero = tempChar
             };
         }
 
+        #region Add/Remove/Activate GameScenes
         public static void AddGameScene(GameScene gameScene)
         {
             if (!GameScenes.Contains(gameScene))
@@ -76,7 +76,8 @@ namespace AndroidTest
             }
 
             return chosenScene != null;
-        }
+        } 
+        #endregion
 
         public static void Initialize()
         {
@@ -86,7 +87,6 @@ namespace AndroidTest
         public static void LoadContent(ContentManager contentManager)
         {
             GameScenes.ForEach(scene => scene.LoadContent(contentManager));
-            //Debug2D.LoadContent(contentManager);
             font = contentManager.Load<SpriteFont>("menufont");          
         }
 
@@ -98,6 +98,47 @@ namespace AndroidTest
                 RenderContext.Input.Update();
                 ActiveScene.Update(RenderContext);
             }
+        }
+
+        /// <summary>
+        /// This takes a snapshot of all the game object values to save to Isolated storage. Called when back button pressed
+        /// </summary>
+        public static void UpdateLevelData()
+        {
+            thisLevel.GameObject3D.Clear();
+            foreach (GameObject3D c in ActiveScene.SceneObjects3D)
+            {
+                if (c.GetType() == typeof(BaseCamera))
+                {
+                }
+                else if (c.id == 1)
+                {
+                    
+                    thisLevel.character.PositionX = c.WorldPosition.X;
+                    thisLevel.character.PositionY = c.WorldPosition.Y;
+                    thisLevel.character.PositionZ = c.WorldPosition.Z;
+                    thisLevel.character.RotationX = c.WorldRotation.X;
+                    thisLevel.character.RotationY = c.WorldRotation.Y;
+                    thisLevel.character.RotationZ = c.WorldRotation.Z;
+                    thisLevel.character.RotationW = c.WorldRotation.W;
+                }
+                else
+                {
+                    Object3D_Data temp = new Object3D_Data();
+                    temp.id = c.id;
+                    temp.model_Path = c.modelPath;
+                    temp.PositionX = c.WorldPosition.X;
+                    temp.PositionY = c.WorldPosition.Y;
+                    temp.PositionZ = c.WorldPosition.Z;
+                    temp.RotationX = c.WorldRotation.X;
+                    temp.RotationY = c.WorldRotation.Y;
+                    temp.RotationZ = c.WorldRotation.Z;
+                    temp.RotationW = c.WorldRotation.W;
+                    thisLevel.GameObject3D.Add(temp);
+                }
+            }
+            
+
         }
 
         public static void Draw()
@@ -124,8 +165,11 @@ namespace AndroidTest
                     RenderContext.SpriteBatch.DrawString
                         (font, string.Format("B: {0}", (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed).ToString()), new Vector2(0, 140), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("Char Postion: {0}",new Vector3(thisLevel.CharX,thisLevel.CharY,thisLevel.CharZ).ToString())
+                        (font, string.Format("Char Postion: {0}", new Vector3(thisLevel.character.PositionX, thisLevel.character.PositionY, thisLevel.character.PositionZ).ToString())
                         , new Vector2(0, 170), Color.White);
+                    //RenderContext.SpriteBatch.DrawString
+                    //    (font, string.Format("Char Postion: {0}", .ToString())
+                    //    , new Vector2(0, 170), Color.White);
                 } 
                 #endregion
 
@@ -146,8 +190,8 @@ namespace AndroidTest
                 RenderContext.SpriteBatch.End();
             }
         }
-
-        public static void LoadLevel()
+        
+        public static void SaveLevel(LevelData saveData)
         {
 #if WINDOWS_PHONE
             IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
@@ -156,101 +200,54 @@ namespace AndroidTest
 #endif
             using (storage)
             {
-                XDocument document;
+                //delete any existing file
                 if (storage.FileExists("TestData.xml"))
-                {
-                    using (var stream1 = storage.OpenFile("TestData.xml", FileMode.Open))
-                    {
-                        document = XDocument.Load(stream1);
-                    }
-
-                    var data = (from query in document.Descendants("Levels")
-                                select new LevelData()
-                                {
-                                    LevelName = (string)query.Element("LevelName"),
-                                    CharX = (float)query.Element("CharX"),
-                                    CharY = (float)query.Element("CharY"),
-                                    CharZ = (float)query.Element("CharZ")
-                                });
-
-                    foreach (LevelData l in data)
-                    {
-                        ActiveScene.thisLevel = l;
-                    }
-                }
-                else
-                {   // if first time use, use default settings from content to seed level settings
-                    Stream stream = TitleContainer.OpenStream("Content/TestData.xml");
-                    XDocument doc = XDocument.Load(stream);
-                    var data = (from query in doc.Descendants("Levels")
-                                select new LevelData()
-                                {
-                                    LevelName = (string)query.Element("LevelName"),
-                                    CharX = (float)query.Element("CharX"),
-                                    CharY = (float)query.Element("CharY"),
-                                    CharZ = (float)query.Element("CharZ")
-                                });
-
-                    foreach (LevelData l in data)
-                    {
-                        ActiveScene.thisLevel = l;
-                    }
-                }
-            }
-        }
-
-        public static void SaveLevel(LevelData ld)
-        {
-#if WINDOWS_PHONE
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
-#else
-            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
-#endif
-
-            using (storage)
-            {
-                XDocument document;
-                XElement levelRootNode = null;
-                // Check if there is a file to  write to
+                    storage.DeleteFile("TestData.xml");
+                //create file for data
+                if (!storage.FileExists("TestData.xml"))
+                    storage.CreateFile("TestData.xml").Dispose();
+             
+                //create new savegame file
                 if (storage.FileExists("TestData.xml"))
                 {
                     using (var stream = storage.OpenFile("TestData.xml", FileMode.Open))
                     {
-                        document = XDocument.Load(stream);
+                        XmlSerializer serializer = new XmlSerializer(typeof(LevelData));
+                        serializer.Serialize(stream, saveData);
                     }
-                    levelRootNode = document.Descendants("Levels").FirstOrDefault();
-                }
-                else
-                {
-                    document = new XDocument();
-                }
-                // If new file add data
-                if (levelRootNode == null)
-                {
-                    levelRootNode = new XElement("Levels",
-                                    new XElement("LevelName", "xyz"),
-                                    new XElement("CharX", ld.CharX),
-                                    new XElement("CharY", ld.CharY),
-                                    new XElement("CharZ", ld.CharZ));
-                    document.Add(levelRootNode);
-                }
-                else
-                {   //If file exists, clear it and re-write new data
-                    document.RemoveNodes();
-                    //adds updated data to isolated storage
-                    levelRootNode = new XElement("Levels",
-                                    new XElement("LevelName", "Test"),
-                                    new XElement("CharX", ld.CharX),
-                                    new XElement("CharY", ld.CharY),
-                                    new XElement("CharZ", ld.CharZ));
-                    document.Add(levelRootNode);
-                }
-                using (Stream stream = storage.CreateFile("TestData.xml"))
-                {
-                    document.Save(stream);
                 }
             }
         }
 
+        public static LevelData LoadLevel()
+        {
+            LevelData data;
+#if WINDOWS_PHONE
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForApplication();
+#else
+            IsolatedStorageFile storage = IsolatedStorageFile.GetUserStoreForDomain();
+#endif
+            using (storage)
+            {
+                if (storage.FileExists("TestData.xml"))
+                {
+                    using (var fstream = storage.OpenFile("TestData.xml", FileMode.Open))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(LevelData));
+                        data = (LevelData)serializer.Deserialize(fstream);
+                    }
+                    return data;
+                }
+                else
+                {
+                    using (var stream = TitleContainer.OpenStream("Content/TestData.xml"))
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(LevelData));
+                        data = (LevelData)serializer.Deserialize(stream);
+                    }
+                    return data;
+                }
+            }
+       }
     }
 }

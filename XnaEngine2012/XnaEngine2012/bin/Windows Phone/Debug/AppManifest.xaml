@@ -1,6 +1,10 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="XnaEngine2012" EntryPointType="AndroidTest.Game1" RuntimeVersion="3.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="XnaEngine2012" Source="XnaEngine2012.dll" />
+    <AssemblyPart x:Name="BEPUik" Source="BEPUik.dll" />
+    <AssemblyPart x:Name="BepuPhysics" Source="BepuPhysics.dll" />
+    <AssemblyPart x:Name="BEPUutilities" Source="BEPUutilities.dll" />
+    <AssemblyPart x:Name="ConversionHelper" Source="ConversionHelper.dll" />
     <AssemblyPart x:Name="SkinnedModelData" Source="SkinnedModelData.dll" />
   </Deployment.Parts>
 </Deployment>

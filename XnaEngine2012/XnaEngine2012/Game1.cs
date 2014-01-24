@@ -1,4 +1,4 @@
- using System;
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -6,6 +6,7 @@ namespace AndroidTest
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
+
 # if WINDOWS_PHONE
         public static Vector2 ScreenSize = new Vector2(800f, 480f);
 # endif

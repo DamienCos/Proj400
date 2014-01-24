@@ -5,22 +5,28 @@ using System.Text;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
+using System.Xml.Serialization;
 
 namespace AndroidTest
 {
     public class GameModel : GameObject3D
     {
-        private readonly string _assetFile;
+
         private Model _model;
 
         public GameModel(string assetFile)
         {
-            _assetFile = assetFile;
+            modelPath = assetFile;
+        }
+
+        public GameModel()
+        {
+
         }
 
         public override void LoadContent(ContentManager contentManager)
         {
-            _model = contentManager.Load<Model>(_assetFile);
+            _model = contentManager.Load<Model>(modelPath);
 
             base.LoadContent(contentManager);
         }
@@ -47,8 +53,7 @@ namespace AndroidTest
                 }
 
                 mesh.Draw();
-            }
-
+            }              
             base.Draw(renderContext);
         }
     }

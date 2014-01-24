@@ -17,7 +17,7 @@ namespace AndroidTest
         #region Fields
 
         ContentManager content;
-        SpriteFont font;
+        //SpriteFont font;
         SpriteBatch spriteBatch;
         // The gamescreen controls
         ScreenPad screenPad;
@@ -38,8 +38,7 @@ namespace AndroidTest
 
             // Activate the first scene.
             SceneManager.AddGameScene(new TestLevel());
-            SceneManager.SetActiveScene("Test");   
-   
+            SceneManager.SetActiveScene("Test");     
             SceneManager.Initialize();         
         }
 
@@ -59,8 +58,6 @@ namespace AndroidTest
             SceneManager.RenderContext.SpriteBatch = spriteBatch;
             SceneManager.RenderContext.GraphicsDevice = ScreenManager.GraphicsDevice;
             SceneManager.LoadContent(content);
-
-            font = content.Load<SpriteFont>("menufont");
 
             #region Screenpads
            
@@ -142,11 +139,12 @@ namespace AndroidTest
             // if the user pressed the back button, we return to the main menu/Exit game
             PlayerIndex player;
             if (input.IsNewButtonPress(Buttons.Back, ControllingPlayer, out player))
-            {
-                SceneManager.RemoveActiveScene();  // Removes active scene - may cause blue screen flash when changing
-                SceneManager.SaveLevel(SceneManager.ActiveScene.thisLevel);
+            {                              
+                SceneManager.UpdateLevelData();
+                SceneManager.SaveLevel(SceneManager.thisLevel);
                 LoadingScreen.Load(ScreenManager, false, ControllingPlayer, new BackgroundScreen(), new MainMenuScreen());
-                
+                SceneManager.RemoveActiveScene();  // Removes active scene - may cause blue screen flash when changing
+                SceneManager.ActiveScene.SceneObjects3D.Clear();
             }
            
         }

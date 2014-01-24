@@ -41,24 +41,24 @@ namespace AndroidTest
 
         public override void Initialize()
         {
-            char_Model = new GameAnimatedModel("Models\\Vampire");
+            char_Model = new GameAnimatedModel(modelPath);
             char_Model.Scale(0.8f, 0.8f, 0.8f);
             AddChild(char_Model);
             
             //Initialize Movement Parameters
             _runAcceleration = RUN_SPEED / RUN_ACCELERATION_TIME;
-
-            //ADD INPUTACTIONS
+            Rotate(LocalRotation.X, LocalRotation.Y, LocalRotation.Z);
+            #region ADD INPUTACTIONS
             var inputAction = new InputAction((int)InputActionIds.Rotate, VirtualButtonState.Pressed)
             {
 #if WINDOWS
                 GamePadButton = Buttons.LeftThumbstickLeft,
                 KeyButton = Keys.Left
 #endif
-                S_Pad_Button = Virtual_Button.thumbstick
+        S_Pad_Button = Virtual_Button.thumbstick
             };
             SceneManager.Input.MapAction(inputAction);
-           
+
 
             inputAction = new InputAction((int)InputActionIds.MoveForWard, VirtualButtonState.Pressed)
             {
@@ -69,7 +69,7 @@ namespace AndroidTest
                 S_Pad_Button = Virtual_Button.thumbstick
             };
             SceneManager.Input.MapAction(inputAction);
-           
+
 
             inputAction = new InputAction((int)InputActionIds.Jump, VirtualButtonState.Pressed)
             {
@@ -80,7 +80,7 @@ namespace AndroidTest
                 S_Pad_Button = Virtual_Button.A
             };
             SceneManager.Input.MapAction(inputAction);
-            
+
 
             inputAction = new InputAction((int)InputActionIds.MoveForWard, VirtualButtonState.Pressed)
             {
@@ -100,7 +100,8 @@ namespace AndroidTest
 #endif
                 S_Pad_Button = Virtual_Button.B
             };
-            SceneManager.Input.MapAction(inputAction);
+            SceneManager.Input.MapAction(inputAction); 
+            #endregion
 
             base.Initialize();
         }
@@ -120,22 +121,24 @@ namespace AndroidTest
             else if (renderContext.Input.screenPad.LeftStick.Y == 0)
                 IsGrounded = false;// true;
 
+            #region Player input
+
             //Handle RUN_LEFT
             if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
             {
-               
-                if (IsGrounded) 
+
+                if (IsGrounded)
                     char_Model.PlayAnimation("Run", true, RUN_ACCELERATION_TIME);
                 else
                     char_Model.PlayAnimation("Idle", true, RUN_ACCELERATION_TIME);
 
                 _direction = -1;
                 Rotate(0, -0, 0);
-             
+
                 //
-               // _velocity.X -= _runAcceleration * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds/10;
-                temp += renderContext.Input.screenPad.LeftStick.X *8;
-                _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y *2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
+                // _velocity.X -= _runAcceleration * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds/10;
+                temp += renderContext.Input.screenPad.LeftStick.X * 8;
+                _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
                 Rotate(0, -temp, 0);
             }
             if (renderContext.Input.screenPad.LeftStick.Y == 0)
@@ -163,14 +166,13 @@ namespace AndroidTest
             _velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
 
             //Handle JUMPING
-            //...
+            //... 
+            #endregion
 
             //Calculate new position, based on the current velocity
             var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
             var newPosition = LocalPosition + new Vector3(totalMovement, 0);
-            Translate(newPosition);
-
-           
+            Translate(newPosition);         
 
             base.Update(renderContext);
         }

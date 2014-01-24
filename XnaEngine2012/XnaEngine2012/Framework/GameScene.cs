@@ -8,35 +8,21 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
+using BEPUphysics.Entities.Prefabs;
+using BEPUphysics;
+using BEPUphysics.Entities;
+using Vector3 = BEPUutilities.Vector3;
+
 
 namespace AndroidTest
 {
+    
     public abstract class GameScene
     {
         public string SceneName { get; private set; }
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
-        //public Stream stream;
-        //public XDocument doc;
-
-        //public PlayerIndex? ControllingPlayer
-        //{
-        //    get { return controllingPlayer; }
-        //    internal set { controllingPlayer = value; }
-        //}
-
-        //PlayerIndex? controllingPlayer;
-
-        public LevelData thisLevel { get; set; }
-
-        //public bool IsSerializable
-        //{
-        //    get { return isSerializable; }
-        //    protected set { isSerializable = value; }
-        //}
-
-        //bool isSerializable = true;
-
+              
         public GameScene(string name)
         {
             SceneName = name;
@@ -77,6 +63,7 @@ namespace AndroidTest
             }
         }
 
+        
         public void RemoveSceneObject(GameObject2D sceneObject)
         {
             if (SceneObjects2D.Remove(sceneObject))

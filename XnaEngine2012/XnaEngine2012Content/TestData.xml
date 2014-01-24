@@ -1,7 +1,28 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Levels>
+<LevelData>
   <LevelName>Test</LevelName>
-  <CharX>10</CharX>
-  <CharY>80</CharY>
-  <CharZ>0</CharZ>
-</Levels>
+  <character>
+    <id>1</id>
+    <modelPath>Models\\Vampire</modelPath>
+    <PositionX>100</PositionX>
+    <PositionY>10</PositionY>
+    <PositionZ>0</PositionZ>
+    <RotationX>0</RotationX>
+    <RotationY>0</RotationY>
+    <RotationZ>80</RotationZ>
+    <RotationW>0</RotationW>
+  </character>  
+  <GameObject3D>
+    <Object3D_Data>
+      <id>2</id>
+      <model_Path>Models\\Cube</model_Path>
+      <PositionX>-100</PositionX>
+      <PositionY>10</PositionY>
+      <PositionZ>0</PositionZ>
+      <RotationX>0</RotationX>
+      <RotationY>10</RotationY>
+      <RotationZ>0</RotationZ>
+      <RotationW>0</RotationW>
+    </Object3D_Data>
+  </GameObject3D>
+</LevelData>

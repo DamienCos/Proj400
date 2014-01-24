@@ -435,8 +435,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Level1.xml">
-      <Name>Level1</Name>
+    <None Include="LevelSeedData.xml">
+      <Name>LevelSeedData</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

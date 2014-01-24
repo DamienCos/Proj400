@@ -51,6 +51,18 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BEPUik">
+      <HintPath>..\..\bin\Windows Phone\Debug\BEPUik.dll</HintPath>
+    </Reference>
+    <Reference Include="BepuPhysics">
+      <HintPath>..\..\bin\Windows Phone\Debug\BepuPhysics.dll</HintPath>
+    </Reference>
+    <Reference Include="BEPUutilities">
+      <HintPath>..\..\bin\Windows Phone\Debug\BEPUutilities.dll</HintPath>
+    </Reference>
+    <Reference Include="ConversionHelper">
+      <HintPath>..\..\bin\Windows Phone\Debug\ConversionHelper.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
@@ -62,6 +74,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Net" />
+    <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChaseCam.cs" />
@@ -115,9 +128,6 @@
     <Content Include="Game.ico" />
     <Content Include="PhoneGameThumb.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
-    </Content>
-    <Content Include="TestData.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
