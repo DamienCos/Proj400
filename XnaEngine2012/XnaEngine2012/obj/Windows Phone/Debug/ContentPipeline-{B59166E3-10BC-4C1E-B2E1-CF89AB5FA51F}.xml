@@ -11,7 +11,7 @@
       <Time>2013-08-07T13:43:57.3342304+01:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Cube_0.xml</Key>
-        <Value>2014-01-22T11:12:55.8116614+00:00</Value>
+        <Value>2014-01-25T07:21:31.4573807+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\metal_0.xnb</Request>
     </Item>
@@ -25,7 +25,7 @@
       <Time>2013-11-23T22:58:42.7463452+00:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Ground_0.xml</Key>
-        <Value>2014-01-22T11:12:56.2076836+00:00</Value>
+        <Value>2014-01-25T07:21:31.8424036+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\rust_0.xnb</Request>
     </Item>
@@ -696,7 +696,7 @@
       <Time>2013-08-21T22:07:10.8628847+01:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Vampire_0.xml</Key>
-        <Value>2014-01-22T11:12:57.6167632+00:00</Value>
+        <Value>2014-01-25T07:21:33.1194754+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\Models\Vampire_Diffuse_0.xnb</Request>
     </Item>
@@ -721,7 +721,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\metal_0.xnb</Output>
-      <Time>2014-01-22T11:12:55.6836541+00:00</Time>
+      <Time>2014-01-25T07:21:31.341375+00:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.FBX</Source>
@@ -744,7 +744,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\rust_0.xnb</Output>
-      <Time>2014-01-22T11:12:56.198683+00:00</Time>
+      <Time>2014-01-25T07:21:31.8334026+00:00</Time>
     </Item>
     <Item>
       <Source>Models\Vampire.x</Source>
@@ -784,7 +784,7 @@
     <Assemblies>
       <Assembly>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll</Key>
-        <Value>2014-01-22T11:12:55.2886321+00:00</Value>
+        <Value>2014-01-25T07:21:30.2753141+00:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>

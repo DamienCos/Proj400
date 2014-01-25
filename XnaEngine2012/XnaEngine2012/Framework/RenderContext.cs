@@ -13,6 +13,7 @@ namespace AndroidTest
         public GraphicsDevice GraphicsDevice { get; set; }
         public GameTime GameTime { get; set; }
         public BaseCamera Camera { get; set; }
+        //public Camera2 Camera { get; set; }
         public InputManager Input { get; set; }
         public Character Hero { get; set; }
     }

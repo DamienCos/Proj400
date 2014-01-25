@@ -24,18 +24,18 @@ namespace AndroidTest
     }
 
 
-    public class Character: GameObject3D
+    public class Character : GameObject3D
     {
         private GameAnimatedModel char_Model;
         //Movement
         public bool IsGrounded { get; set; }
 
-        private const int   RUN_SPEED = 170;
+        private const int RUN_SPEED = 170;
         private const float RUN_ACCELERATION_TIME = 0.2f;
 
-        private float   _runAcceleration;
+        private float _runAcceleration;
         private Vector2 _velocity;
-        private int     _direction;
+        private int _direction;
         float temp = 0;
         public RenderContext renderContext { get; set; }
 
@@ -44,7 +44,7 @@ namespace AndroidTest
             char_Model = new GameAnimatedModel(modelPath);
             char_Model.Scale(0.8f, 0.8f, 0.8f);
             AddChild(char_Model);
-            
+
             //Initialize Movement Parameters
             _runAcceleration = RUN_SPEED / RUN_ACCELERATION_TIME;
             Rotate(LocalRotation.X, LocalRotation.Y, LocalRotation.Z);
@@ -55,7 +55,7 @@ namespace AndroidTest
                 GamePadButton = Buttons.LeftThumbstickLeft,
                 KeyButton = Keys.Left
 #endif
-        S_Pad_Button = Virtual_Button.thumbstick
+                S_Pad_Button = Virtual_Button.thumbstick
             };
             SceneManager.Input.MapAction(inputAction);
 
@@ -100,7 +100,7 @@ namespace AndroidTest
 #endif
                 S_Pad_Button = Virtual_Button.B
             };
-            SceneManager.Input.MapAction(inputAction); 
+            SceneManager.Input.MapAction(inputAction);
             #endregion
 
             base.Initialize();
@@ -172,7 +172,11 @@ namespace AndroidTest
             //Calculate new position, based on the current velocity
             var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
             var newPosition = LocalPosition + new Vector3(totalMovement, 0);
-            Translate(newPosition);         
+            if (newPosition.X > 240)
+                newPosition.X = 240;
+            if (newPosition.X < -270)
+                newPosition.X = -270;
+            Translate(newPosition);
 
             base.Update(renderContext);
         }

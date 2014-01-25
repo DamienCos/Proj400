@@ -74,20 +74,20 @@ namespace SkinnedModelData
         /// <summary>
         /// Starts decoding the specified animation clip.
         /// </summary>
-        public void StartClip(AnimationClip clip, bool loop, float blendTime )
+        public void StartClip(AnimationClip clip, bool loop, float blendTime)
         {
-            if(IsPauzed)
+            if (IsPauzed)
             {
                 IsPauzed = false;
                 return;
             }
 
-            if(clip==null)
+            if (clip == null)
                 throw new ArgumentNullException("clip");
 
             if (_currentAnimationClip.Clip == clip || _targetAnimationClip.Clip == clip) return;
 
-            if (blendTime>0 && _currentAnimationClip.Clip != null)
+            if (blendTime > 0 && _currentAnimationClip.Clip != null)
             {
                 _currentBlendTime = TimeSpan.Zero;
                 _totalBlendTime = TimeSpan.FromSeconds(blendTime);
@@ -104,7 +104,7 @@ namespace SkinnedModelData
 
         public void StartClip()
         {
-            if(IsPauzed)
+            if (IsPauzed)
             {
                 IsPauzed = false;
             }
@@ -122,7 +122,7 @@ namespace SkinnedModelData
         public void Update(TimeSpan time, bool relativeToCurrentTime,
                            Matrix rootTransform)
         {
-            UpdateBoneTransforms(time, relativeToCurrentTime);      
+            UpdateBoneTransforms(time, relativeToCurrentTime);
             UpdateWorldTransforms(rootTransform);
             UpdateSkinTransforms();
         }
@@ -142,13 +142,13 @@ namespace SkinnedModelData
         /// <param name="relativeToCurrentTime"></param>
         private void UpdateBoneTransforms(TimeSpan time, bool relativeToCurrentTime)
         {
-            if(_currentAnimationClip.Clip==null)
+            if (_currentAnimationClip.Clip == null)
             {
                 boneTransforms = skinningDataValue.BindPose.ToArray();
                 return;
             }
 
-            time = TimeSpan.FromMilliseconds(time.TotalMilliseconds*animationSpeed);
+            time = TimeSpan.FromMilliseconds(time.TotalMilliseconds * animationSpeed);
 
             _currentAnimationClip.UpdateBoneTransforms(time, relativeToCurrentTime);
 
@@ -162,9 +162,9 @@ namespace SkinnedModelData
 
                 _currentBlendTime += time;
 
-                var blendFactor = (float) (_currentBlendTime.TotalSeconds/_totalBlendTime.TotalSeconds);
+                var blendFactor = (float)(_currentBlendTime.TotalSeconds / _totalBlendTime.TotalSeconds);
 
-                if(blendFactor>=1.0f)
+                if (blendFactor >= 1.0f)
                 {
                     _currentAnimationClip.CopyFrom(_targetAnimationClip);
                     _targetAnimationClip.Reset(true);
@@ -174,7 +174,7 @@ namespace SkinnedModelData
                 Quaternion currentRotation, targetRotation, finalRotation;
                 Vector3 currentTranslation, targetTranslation, finalTranslation;
 
-                for(var i=0; i<boneTransforms.Length;++i)
+                for (var i = 0; i < boneTransforms.Length; ++i)
                 {
                     //ROTATION LERP
                     currentRotation =
@@ -191,12 +191,12 @@ namespace SkinnedModelData
                     Vector3.Lerp(ref currentTranslation, ref targetTranslation, blendFactor, out finalTranslation);
 
                     //FINAL MATRIX
-                    boneTransforms[i] = Matrix.CreateFromQuaternion(finalRotation)*
+                    boneTransforms[i] = Matrix.CreateFromQuaternion(finalRotation) *
                                         Matrix.CreateTranslation(finalTranslation);
                 }
             }
 
-            
+
         }
 
 

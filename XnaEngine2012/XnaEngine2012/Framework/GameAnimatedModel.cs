@@ -19,8 +19,8 @@ namespace AndroidTest
         private float _speedScale = 1f;
 
         private string _initClipName;
-        private bool   _initLoop;
-        private float  _initBlendTime;
+        private bool _initLoop;
+        private float _initBlendTime;
 
         public GameAnimatedModel(string assetFile)
         {
@@ -55,7 +55,7 @@ namespace AndroidTest
         }
 
 
-        public void PlayAnimation(string clipName, bool loop , float blendTime )
+        public void PlayAnimation(string clipName, bool loop, float blendTime)
         {
             if (_animationPlayer == null)
             {

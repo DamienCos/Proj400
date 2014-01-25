@@ -1,12 +1,3 @@
-#region File Description
-//-----------------------------------------------------------------------------
-// SkinningData.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-#endregion
-
 #region Using Statements
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -48,7 +39,7 @@ namespace SkinnedModelData
         [ContentSerializer]
         public List<string> BoneNames { get; private set; }
 
-            /// <summary>
+        /// <summary>
         /// Gets a collection of animation clips. These are stored by name in a
         /// dictionary, so there could for instance be clips for "Walk", "Run",
         /// "JumpReallyHigh", etc.

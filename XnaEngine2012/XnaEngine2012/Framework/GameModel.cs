@@ -53,7 +53,7 @@ namespace AndroidTest
                 }
 
                 mesh.Draw();
-            }              
+            }
             base.Draw(renderContext);
         }
     }

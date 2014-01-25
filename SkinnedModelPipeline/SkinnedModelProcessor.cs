@@ -1,22 +1,4 @@
-﻿#region File Description
-//-----------------------------------------------------------------------------
-// SkinnedModelProcessor.cs
-//
-// Microsoft XNA Community Game Platform
-// Copyright (C) Microsoft Corporation. All rights reserved.
-//-----------------------------------------------------------------------------
-
-
-//-----------------------------------------------------------------------------
-// MergeAnimationsProcessor Extension
-//
-// Shawn Hargreaves Blog
-// http://blogs.msdn.com/b/shawnhar/archive/2010/06/18/merging-animation-files.aspx
-//-----------------------------------------------------------------------------
-
-#endregion
-
-#region Using Statements
+﻿#region Using Statements
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -55,11 +37,11 @@ namespace SkinnedModelPipeline
             ChangeAnimationName(input, context);
 
             //1. Merge all the fbx-animation files
-            if(!string.IsNullOrWhiteSpace(MergeAnimations))
+            if (!string.IsNullOrWhiteSpace(MergeAnimations))
             {
-                foreach (var mergeFile in MergeAnimations.Split(';').Select(s=>s.Trim()).Where(s=>!string.IsNullOrWhiteSpace(s)))
+                foreach (var mergeFile in MergeAnimations.Split(';').Select(s => s.Trim()).Where(s => !string.IsNullOrWhiteSpace(s)))
                 {
-                    MergeAnimation(input,context,mergeFile);
+                    MergeAnimation(input, context, mergeFile);
                 }
             }
 
@@ -119,7 +101,7 @@ namespace SkinnedModelPipeline
         {
             var skeleton = MeshHelper.FindSkeleton(input);
 
-            if (skeleton!=null && skeleton.Animations.Count == 1)
+            if (skeleton != null && skeleton.Animations.Count == 1)
             {
                 if (name == null)
                 {
@@ -133,7 +115,7 @@ namespace SkinnedModelPipeline
                     name = name.Split('.').First();
                 }
 
-                if(name.Contains('@'))
+                if (name.Contains('@'))
                 {
                     name = name.Split('@').Last();
 
@@ -162,7 +144,7 @@ namespace SkinnedModelPipeline
 
             var rootBone = MeshHelper.FindSkeleton(input);
 
-            if(rootBone==null)
+            if (rootBone == null)
             {
                 context.Logger.LogWarning(null, input.Identity, "Source model has no root bone.");
                 return;
@@ -170,15 +152,15 @@ namespace SkinnedModelPipeline
 
             var mergeRoot = MeshHelper.FindSkeleton(mergeModel);
 
-            if(mergeRoot == null)
+            if (mergeRoot == null)
             {
-                context.Logger.LogWarning(null, input.Identity, "Merge model '{0}' has no root bone.",mergeFile);
+                context.Logger.LogWarning(null, input.Identity, "Merge model '{0}' has no root bone.", mergeFile);
                 return;
             }
 
             foreach (var animationName in mergeRoot.Animations.Keys)
             {
-                if(rootBone.Animations.ContainsKey(animationName))
+                if (rootBone.Animations.ContainsKey(animationName))
                 {
                     context.Logger.LogWarning(null, input.Identity, "Cannot merge animation '{0}' from '{1}', because this animation already exists.", animationName, mergeFile);
                     continue;

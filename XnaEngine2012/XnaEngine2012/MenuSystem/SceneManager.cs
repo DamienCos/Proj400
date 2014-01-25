@@ -14,16 +14,16 @@ namespace AndroidTest
 {
     static class SceneManager
     {
-        public static Game            MainGame      { get; set; }
-        public static List<GameScene> GameScenes    { get;  set; }
-        public static GameScene       ActiveScene   { get; private set; }
-        public static RenderContext   RenderContext { get; private set; }
-        public static InputManager    Input         { get { return RenderContext.Input; } }
-        public static SpriteFont      font;
-        public static LevelData       thisLevel     { get; set; }
+        public static Game MainGame { get; set; }
+        public static List<GameScene> GameScenes { get; set; }
+        public static GameScene ActiveScene { get; private set; }
+        public static RenderContext RenderContext { get; private set; }
+        public static InputManager Input { get { return RenderContext.Input; } }
+        public static SpriteFont font;
+        public static LevelData thisLevel { get; set; }
 
         static SceneManager()
-        {         
+        {
             GameScenes = new List<GameScene>();
             RenderContext = new RenderContext
             {
@@ -76,7 +76,7 @@ namespace AndroidTest
             }
 
             return chosenScene != null;
-        } 
+        }
         #endregion
 
         public static void Initialize()
@@ -87,7 +87,7 @@ namespace AndroidTest
         public static void LoadContent(ContentManager contentManager)
         {
             GameScenes.ForEach(scene => scene.LoadContent(contentManager));
-            font = contentManager.Load<SpriteFont>("menufont");          
+            font = contentManager.Load<SpriteFont>("menufont");
         }
 
         public static void Update(GameTime gameTime)
@@ -113,7 +113,7 @@ namespace AndroidTest
                 }
                 else if (c.id == 1)
                 {
-                    
+
                     thisLevel.character.PositionX = c.WorldPosition.X;
                     thisLevel.character.PositionY = c.WorldPosition.Y;
                     thisLevel.character.PositionZ = c.WorldPosition.Z;
@@ -137,7 +137,7 @@ namespace AndroidTest
                     thisLevel.GameObject3D.Add(temp);
                 }
             }
-            
+
 
         }
 
@@ -170,7 +170,7 @@ namespace AndroidTest
                     //RenderContext.SpriteBatch.DrawString
                     //    (font, string.Format("Char Postion: {0}", .ToString())
                     //    , new Vector2(0, 170), Color.White);
-                } 
+                }
                 #endregion
 
 #endif
@@ -190,7 +190,7 @@ namespace AndroidTest
                 RenderContext.SpriteBatch.End();
             }
         }
-        
+
         public static void SaveLevel(LevelData saveData)
         {
 #if WINDOWS_PHONE
@@ -206,7 +206,7 @@ namespace AndroidTest
                 //create file for data
                 if (!storage.FileExists("TestData.xml"))
                     storage.CreateFile("TestData.xml").Dispose();
-             
+
                 //create new savegame file
                 if (storage.FileExists("TestData.xml"))
                 {
@@ -248,6 +248,6 @@ namespace AndroidTest
                     return data;
                 }
             }
-       }
+        }
     }
 }

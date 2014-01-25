@@ -17,8 +17,8 @@ namespace AndroidTest
         public GraphicsDeviceManager graphics;
         ScreenManager screenManager;
 
-        static readonly string[] preloadAssets = {@"Textures_Menu\gradient",};
-        
+        static readonly string[] preloadAssets = { @"Textures_Menu\gradient", };
+
         #endregion
 
         public Game1()
@@ -86,13 +86,13 @@ namespace AndroidTest
         protected override void LoadContent()
         {
             //this line resizes screen to proper size on Nexus 7
-            graphics.GraphicsDevice.Viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight); 
+            graphics.GraphicsDevice.Viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
             foreach (string asset in preloadAssets)
             {
                 Content.Load<object>(asset);
             }
         }
-        
+
 
         protected override void UnloadContent()
         {
@@ -111,7 +111,7 @@ namespace AndroidTest
         //    base.Update(gameTime);
         //}
 
-         
+
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
