@@ -11,7 +11,6 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics.Entities.Prefabs;
 using BEPUphysics;
 using BEPUphysics.Entities;
-using Vector3 = BEPUutilities.Vector3;
 
 
 namespace AndroidTest

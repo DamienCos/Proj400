@@ -51,18 +51,7 @@
     <XnaCompressContent>false</XnaCompressContent>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BEPUik">
-      <HintPath>..\..\bin\Windows Phone\Debug\BEPUik.dll</HintPath>
-    </Reference>
-    <Reference Include="BepuPhysics">
-      <HintPath>..\..\bin\Windows Phone\Debug\BepuPhysics.dll</HintPath>
-    </Reference>
-    <Reference Include="BEPUutilities">
-      <HintPath>..\..\bin\Windows Phone\Debug\BEPUutilities.dll</HintPath>
-    </Reference>
-    <Reference Include="ConversionHelper">
-      <HintPath>..\..\bin\Windows Phone\Debug\ConversionHelper.dll</HintPath>
-    </Reference>
+    <Reference Include="BEPUphysics, Version=1.2.0.0, Culture=neutral, PublicKeyToken=31f6a8732a21de19, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Xna.Framework" />
     <Reference Include="Microsoft.Xna.Framework.Game" />
     <Reference Include="Microsoft.Xna.Framework.Graphics" />
@@ -77,6 +66,16 @@
     <Reference Include="System.Xml.Serialization, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Character\Camera.cs" />
+    <Compile Include="Character\CharacterController.cs" />
+    <Compile Include="Character\CharacterControllerInput.cs" />
+    <Compile Include="Character\HorizontalMotionConstraint.cs" />
+    <Compile Include="Character\ICharacterTag.cs" />
+    <Compile Include="Character\QueryManager.cs" />
+    <Compile Include="Character\StanceManager.cs" />
+    <Compile Include="Character\StepManager.cs" />
+    <Compile Include="Character\SupportFinder.cs" />
+    <Compile Include="Character\VerticalMotionConstraint.cs" />
     <Compile Include="ChaseCam.cs" />
     <Compile Include="Debug2D.cs" />
     <Compile Include="Framework\Character.cs" />

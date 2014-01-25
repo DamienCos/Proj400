@@ -6,6 +6,7 @@ using System.Xml.Linq;
 using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using BEPUphysics;
 
 namespace AndroidTest
 {
@@ -22,6 +23,7 @@ namespace AndroidTest
 
         public override void Initialize()
         {
+            #region Load level from storage
             int id = 1; // the player character will always have an id of 1
             SceneManager.LoadLevel();
             level = SceneManager.LoadLevel();
@@ -50,8 +52,10 @@ namespace AndroidTest
                         AddSceneObject(model);
                     }
                 }
-            }
+            } 
+            #endregion
 
+            Space s = new Space();
             var cam = new BaseCamera();
             cam.Translate(0, 0, 20);
             AddSceneObject(cam);
