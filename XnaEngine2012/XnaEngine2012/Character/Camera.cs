@@ -11,9 +11,9 @@ using System;
 namespace AndroidTest
 {
     /// <summary>
-    /// Simple camera class for moving around the demos area.
+    /// Simple camera class 
     /// </summary>
-    public class Camera
+    public class Camera :BaseCamera
     {
         /// <summary>
         /// Gets the game associated with the camera.
@@ -24,10 +24,10 @@ namespace AndroidTest
             private set;
         }
 
-        /// <summary>
-        /// Gets or sets the position of the camera.
-        /// </summary>
-        public Vector3 Position { get; set; }
+        ///// <summary>
+        ///// Gets or sets the position of the camera.
+        ///// </summary>
+        //public Vector3 Position { get; set; }
 
         private float yaw;
         private float pitch;
@@ -62,26 +62,26 @@ namespace AndroidTest
         /// </summary>
         public float Speed { get; set; }
 
-        /// <summary>
-        /// Gets the view matrix of the camera.
-        /// </summary>
-        public Matrix ViewMatrix { get; private set; }
+        ///// <summary>
+        ///// Gets the view matrix of the camera.
+        ///// </summary>
+        //public Matrix ViewMatrix { get; private set; }
 
-        /// <summary>
-        /// Gets or sets the projection matrix of the camera.
-        /// </summary>
-        public Matrix ProjectionMatrix { get; set; }
+        ///// <summary>
+        ///// Gets or sets the projection matrix of the camera.
+        ///// </summary>
+        //public Matrix ProjectionMatrix { get; set; }
 
         /// <summary>
         /// Gets the world transformation of the camera.
         /// </summary>
-        public Matrix WorldMatrix { get; private set; }
+        //public Matrix WorldMatrix { get; private set; }
 
         /// <summary>
         /// Whether or not to use the default free-flight camera controls.
         /// Set to false when using vehicles or character controllers.
         /// </summary>
-        public bool UseMovementControls = true;
+        public bool UseMovementControls = false;
 
         #region Chase Camera Mode
 
@@ -145,18 +145,31 @@ namespace AndroidTest
         /// <param name="pitch">Initial pitch angle of the camera.</param>
         /// <param name="yaw">Initial yaw value of the camera.</param>
         /// <param name="projectionMatrix">Projection matrix used.</param>
-        public Camera(Game1 game, Vector3 position, float speed, float pitch, float yaw, Matrix projectionMatrix)
+        //public Camera(Game1 game, Vector3 position, float speed, float pitch, float yaw, Matrix projectionMatrix)
+        //{
+        //    this.Game = game;
+        //    Position = position;
+        //    Speed = speed;
+        //    Yaw = yaw;
+        //    Pitch = pitch;
+        //    ProjectionMatrix = projectionMatrix;
+
+        //    rayCastFilter = RayCastFilter;
+        //}
+
+        //The raycast filter limits the results retrieved from the Space.RayCast while in chase camera mode.
+
+        public Camera(Vector3 position, float speed, float pitch, float yaw)
         {
-            this.Game = game;
-            Position = position;
+            //LocalPosition = position;
+            //LocalRotation = new Quaternion(pitch, yaw, 0, 0);
             Speed = speed;
             Yaw = yaw;
             Pitch = pitch;
-            ProjectionMatrix = projectionMatrix;
-
+            //ProjectionMatrix = projectionMatrix;
             rayCastFilter = RayCastFilter;
         }
-        //The raycast filter limits the results retrieved from the Space.RayCast while in chase camera mode.
+
         Func<BroadPhaseEntry, bool> rayCastFilter;
         bool RayCastFilter(BroadPhaseEntry entry)
         {
@@ -169,7 +182,7 @@ namespace AndroidTest
         /// <param name="distance">Distance to move.</param>
         public void MoveForward(float distance)
         {
-            Position += WorldMatrix.Forward * distance;
+            LocalPosition += WorldMatrix.Forward * distance;
         }
 
         /// <summary>
@@ -178,7 +191,7 @@ namespace AndroidTest
         /// <param name="distance">Distance to move.</param>
         public void MoveRight(float distance)
         {
-            Position += WorldMatrix.Right * distance;
+            LocalPosition += WorldMatrix.Right * distance;
         }
 
         /// <summary>
@@ -187,7 +200,7 @@ namespace AndroidTest
         /// <param name="distance">Distanec to move.</param>
         public void MoveUp(float distance)
         {
-            Position += new Vector3(0, distance, 0);
+            LocalPosition += new Vector3(0, distance, 0);
         }
 
 
@@ -198,12 +211,11 @@ namespace AndroidTest
         /// <param name="keyboardInput">Input for this frame from the keyboard.</param>
         /// <param name="mouseInput">Input for this frame from the mouse.</param>
         /// <param name="gamePadInput">Input for this frame from the game pad.</param>
-#if !WINDOWS
-        public void Update(float dt, KeyboardState keyboardInput, GamePadState gamePadInput)
+#if WINDOWS_PHONE || ANDROID
+        public void Update(float dt)
         {
-            Yaw += gamePadInput.ThumbSticks.Right.X * -1.5f * dt;
-            Pitch += gamePadInput.ThumbSticks.Right.Y * 1.5f * dt;
-
+            Yaw += SceneManager.Input.screenPad.LeftStick.X * -1.5f * dt;
+            Pitch += 0;// SceneManager.Input.screenPad.LeftStick.Y * 1.5f * dt;
 #else
         public void Update(float dt, KeyboardState keyboardInput, MouseState mouseInput, GamePadState gamePadInput)
         {
@@ -213,6 +225,9 @@ namespace AndroidTest
                 Yaw += (200 - mouseInput.X) * dt * .12f;
                 Pitch += (200 - mouseInput.Y) * dt * .12f;
             }
+            // this maybe wrong
+            Yaw += gamePadInput.ThumbSticks.Right.X * -1.5f * dt; renderContext.Input.screenPad.LeftStick.Y
+            Pitch += gamePadInput.ThumbSticks.Right.Y * 1.5f * dt;
 #endif
 
             WorldMatrix = Matrix.CreateFromAxisAngle(Vector3.Right, Pitch) * Matrix.CreateFromAxisAngle(Vector3.Up, Yaw);
@@ -231,24 +246,24 @@ namespace AndroidTest
                 RayCastResult result;
                 if (entityToChase.Space.RayCast(new Ray(lookAt, backwards), distanceToTarget, rayCastFilter, out result))
                 {
-                    Position = lookAt + (result.HitData.T) * backwards; //Put the camera just before any hit spot.
+                    LocalPosition = lookAt + (result.HitData.T) * backwards; //Put the camera just before any hit spot.
                 }
                 else
-                    Position = lookAt + (distanceToTarget) * backwards;
+                    LocalPosition = lookAt + (distanceToTarget) * backwards;
             }
+            #region temp
             else if (UseMovementControls)
             {
                 //Only move around if the camera has control over its own position.
                 float distance = Speed * dt;
-#if !WINDOWS
-                MoveForward(gamePadInput.ThumbSticks.Left.Y * distance);
-                MoveRight(gamePadInput.ThumbSticks.Left.X * distance);
-                if (gamePadInput.IsButtonDown(Buttons.LeftStick))
-                    MoveUp(distance);
-                if (gamePadInput.IsButtonDown(Buttons.RightStick))
-                    MoveUp(-distance);
-#endif
 
+                MoveForward(SceneManager.Input.screenPad.LeftStick.Y * distance);
+                //MoveRight(gamePadInput.ThumbSticks.Left.X * distance);
+                //if (gamePadInput.IsButtonDown(Buttons.LeftStick))
+                //    MoveUp(distance);
+                //if (gamePadInput.IsButtonDown(Buttons.RightStick))
+                //    MoveUp(-distance);
+#if WINDOWS
                 if (keyboardInput.IsKeyDown(Keys.E))
                     MoveForward(distance);
                 if (keyboardInput.IsKeyDown(Keys.D))
@@ -260,11 +275,16 @@ namespace AndroidTest
                 if (keyboardInput.IsKeyDown(Keys.A))
                     MoveUp(distance);
                 if (keyboardInput.IsKeyDown(Keys.Z))
-                    MoveUp(-distance);
+                    MoveUp(-distance); 
+#endif
             }
+            #endregion
 
-            WorldMatrix = WorldMatrix * Matrix.CreateTranslation(Position);
-            ViewMatrix = Matrix.Invert(WorldMatrix);
+            WorldMatrix = WorldMatrix * Matrix.CreateTranslation(LocalPosition);
+            View = Matrix.Invert(WorldMatrix);
         }
+
+
+
     }
 }

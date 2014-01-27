@@ -1,14 +1,12 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 
 namespace AndroidTest
 {
     public abstract class GameObject3D
+
     {
         public int id { get; set; }
         public string modelPath { get; set; }

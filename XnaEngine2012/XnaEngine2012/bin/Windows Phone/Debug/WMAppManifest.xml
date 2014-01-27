@@ -25,7 +25,7 @@
     <Tokens>
       <PrimaryToken TokenID="XnaEngine2012Token" TaskName="_default">
         <TemplateType5>
-          <BackgroundImageURI IsRelative="true" IsResource="false">Background.png</BackgroundImageURI>
+          <BackgroundImageURI IsRelative="true" IsResource="true">res://StartMenu!AppIconGeneric.png</BackgroundImageURI>
           <Count>0</Count>
           <Title>XnaEngine2012</Title>
         </TemplateType5>

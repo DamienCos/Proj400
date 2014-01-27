@@ -6,14 +6,13 @@ namespace AndroidTest
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-
+        #region Fields
 # if WINDOWS_PHONE
         public static Vector2 ScreenSize = new Vector2(800f, 480f);
 # endif
 # if ANDROID
         public static Vector2 ScreenSize = new Vector2(1280, 800f);
 # endif
-        #region Fields
         public GraphicsDeviceManager graphics;
         ScreenManager screenManager;
 
@@ -46,8 +45,16 @@ namespace AndroidTest
                 screenManager.AddScreen(new MainMenuScreen(), null);
             }
             SceneManager.MainGame = this;
+            this.Window.OrientationChanged += new EventHandler<EventArgs>(Window_OrientationChanged);
+            
         }
 
+        // this is for the Android display bug(when orientation changed)
+        protected void Window_OrientationChanged(Object o, EventArgs arguments)
+        {
+            InitializeLandscapeGraphics();
+            graphics.GraphicsDevice.Viewport = new Viewport(0, 0, graphics.PreferredBackBufferWidth, graphics.PreferredBackBufferHeight);
+        }
 
         protected override void OnExiting(object sender, System.EventArgs args)
         {
@@ -93,24 +100,21 @@ namespace AndroidTest
             }
         }
 
-
         protected override void UnloadContent()
         {
             Content.Unload();
         }
 
+        protected override void Update(GameTime gameTime)
+        {
+            // Allows the game to exit
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
+            //    this.Exit();
+            this.Window.OrientationChanged += new EventHandler<EventArgs>(Window_OrientationChanged);
+           
 
-        //protected override void Update(GameTime gameTime)
-        //{
-        //    // Allows the game to exit
-        //    if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-        //        this.Exit();
-
-        //   //  TODO: Add your update logic here
-
-        //    base.Update(gameTime);
-        //}
-
+            base.Update(gameTime);
+        }
 
         protected override void Draw(GameTime gameTime)
         {

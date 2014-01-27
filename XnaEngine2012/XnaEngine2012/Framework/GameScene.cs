@@ -11,6 +11,10 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics.Entities.Prefabs;
 using BEPUphysics;
 using BEPUphysics.Entities;
+using BEPUphysics.DataStructures;
+using BEPUphysics.MathExtensions;
+using BEPUphysics.CollisionShapes.ConvexShapes;
+using BEPUphysics.BroadPhaseEntries;
 
 
 namespace AndroidTest
@@ -21,13 +25,22 @@ namespace AndroidTest
         public string SceneName { get; private set; }
         public List<GameObject2D> SceneObjects2D { get; private set; }
         public List<GameObject3D> SceneObjects3D { get; private set; }
-              
-        public GameScene(string name)
+
+        public Space Space;
+
+        public GameObject3D levelModel;
+        public string levelModelName { get; private set; }
+
+        public GameScene(string name, string modelName)
         {
             SceneName = name;
             SceneObjects2D = new List<GameObject2D>();
             SceneObjects3D = new List<GameObject3D>();
+            Space = new Space();
+            levelModelName = modelName;
         }
+
+      
 
         public override bool Equals(object obj)
         {
@@ -92,12 +105,14 @@ namespace AndroidTest
         {
             SceneObjects2D.ForEach(sceneObject => sceneObject.LoadContent(contentManager));
             SceneObjects3D.ForEach(sceneObject => sceneObject.LoadContent(contentManager));
+          
         }
 
         public virtual void Update(RenderContext renderContext)
         {
             SceneObjects2D.ForEach(sceneObject => sceneObject.Update(renderContext));
             SceneObjects3D.ForEach(sceneObject => sceneObject.Update(renderContext));
+            Space.Update();
         }
 
         public virtual void Draw2D(RenderContext renderContext, bool drawInFrontOf3D)

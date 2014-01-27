@@ -6,11 +6,12 @@ using BEPUphysics.Constraints;
 using BEPUphysics.DataStructures;
 using BEPUphysics.Entities;
 using Microsoft.Xna.Framework;
-using BEPUphysics.BroadPhaseEntries.MobileCollidables;
+using BEPUphysics.BroadPhaseEntries;
 using BEPUphysics.MathExtensions;
 using BEPUphysics;
 using System.Diagnostics;
 using Microsoft.Xna.Framework.Input;
+using BEPUphysics.BroadPhaseEntries.MobileCollidables;
 
 namespace AndroidTest
 {

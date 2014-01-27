@@ -13,7 +13,7 @@ namespace AndroidTest
 
         public BaseCamera()
         {
-            Projection = Matrix.CreateOrthographic(640, 360, 0.1f, 300);
+            Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.PiOver4, 1.6f, 1f, 10000);//Matrix.CreateOrthographic(640, 360, 0.1f, 300);
         }
 
         public virtual void BuildViewMatrix()

@@ -7,6 +7,11 @@ using System.Xml.Serialization;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using BEPUphysics;
+using BEPUphysics.DataStructures;
+using BEPUphysics.BroadPhaseEntries;
+using BEPUphysics.MathExtensions;
+using BEPUphysics.CollisionShapes.ConvexShapes;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace AndroidTest
 {
@@ -18,8 +23,9 @@ namespace AndroidTest
         public List<GameObject3D> gameObj3D = new List<GameObject3D>();
         public List<Object3D_Data> levelData = new List<Object3D_Data>();
         public LevelData level { get; set; }
+       
 
-        public TestLevel() : base("Test") { }
+        public TestLevel() : base("Test","Ground") { }
 
         public override void Initialize()
         {
@@ -33,14 +39,15 @@ namespace AndroidTest
                 character = new Character();
                 character.id = id;
                 character.modelPath = level.character.modelPath;
-                //id++;
+                character.charInput = new CharacterControllerInput(Space,character);
                 character.LocalPosition = new Vector3(level.character.PositionX, level.character.PositionY, level.character.PositionZ);
                 character.LocalRotation = new Quaternion(level.character.RotationX, level.character.RotationY, level.character.RotationZ, level.character.RotationW);
                 AddSceneObject(character);
                 foreach (Object3D_Data g in level.GameObject3D)
                 {
-                    if (g.GetType() == typeof(BaseCamera))
+                    if (g.GetType() == typeof(ChaseCamera))
                     {
+                        continue;
                     }
                     else
                     {
@@ -55,9 +62,19 @@ namespace AndroidTest
             } 
             #endregion
 
-            Space s = new Space();
-            var cam = new BaseCamera();
-            cam.Translate(0, 0, 20);
+            //var playgroundModel = new GameModel(this.levelModelName);
+            //var levelModel = SceneManager.MainGame.Content.Load<Model>(this.levelModelName);
+            ////This is a little convenience method used to extract vertices and indices from a model.
+            ////It doesn't do anything special; any approach that gets valid vertices and indices will work.
+            //TriangleMesh.GetVerticesAndIndicesFromModel(levelModel, out staticTriangleVertices, out staticTriangleIndices);
+            //var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices, new AffineTransform(new Vector3(.01f, .01f, .01f), Quaternion.Identity, new Vector3(0, 0, 0)));
+            //staticMesh.Sidedness = TriangleSidedness.Counterclockwise;
+
+            //Space.Add(staticMesh);
+            //AddSceneObject(playgroundModel); // may have to change this
+
+            var cam = new ChaseCamera();//new BaseCamera();
+            cam.Translate(0, 0, 400);
             AddSceneObject(cam);
 
             SceneManager.RenderContext.Camera = cam;

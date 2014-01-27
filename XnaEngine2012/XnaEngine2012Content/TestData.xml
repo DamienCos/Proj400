@@ -4,23 +4,34 @@
   <character>
     <id>1</id>
     <modelPath>Models\\Vampire</modelPath>
-    <PositionX>100</PositionX>
+    <PositionX>0</PositionX>
     <PositionY>10</PositionY>
     <PositionZ>0</PositionZ>
     <RotationX>0</RotationX>
     <RotationY>0</RotationY>
-    <RotationZ>80</RotationZ>
+    <RotationZ>0</RotationZ>
     <RotationW>0</RotationW>
   </character>  
   <GameObject3D>
     <Object3D_Data>
       <id>2</id>
       <model_Path>Models\\Cube</model_Path>
-      <PositionX>-100</PositionX>
+      <PositionX>-10</PositionX>
       <PositionY>10</PositionY>
       <PositionZ>0</PositionZ>
       <RotationX>0</RotationX>
       <RotationY>10</RotationY>
+      <RotationZ>0</RotationZ>
+      <RotationW>0</RotationW>
+    </Object3D_Data>
+    <Object3D_Data>
+      <id>0</id>
+      <model_Path>Models\\Ground</model_Path>
+      <PositionX>0</PositionX>
+      <PositionY>0</PositionY>
+      <PositionZ>0</PositionZ>
+      <RotationX>0</RotationX>
+      <RotationY>0</RotationY>
       <RotationZ>0</RotationZ>
       <RotationW>0</RotationW>
     </Object3D_Data>

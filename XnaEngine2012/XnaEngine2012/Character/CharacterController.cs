@@ -9,7 +9,7 @@ using BEPUphysics.UpdateableSystems;
 using BEPUphysics;
 using Microsoft.Xna.Framework;
 using BEPUphysics.MathExtensions;
-using BEPUphysics.BroadPhaseEntries.MobileCollidables;
+using BEPUphysics.BroadPhaseEntries;
 using BEPUphysics.BroadPhaseSystems;
 using BEPUphysics.NarrowPhaseSystems.Pairs;
 using BEPUphysics.Materials;
@@ -21,6 +21,7 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics.Entities;
 using BEPUphysics.Threading;
 using System.Threading;
+using BEPUphysics.BroadPhaseEntries.MobileCollidables;
 
 namespace AndroidTest
 {

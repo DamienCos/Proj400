@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using BEPUphysics.BroadPhaseEntries.MobileCollidables;
+using BEPUphysics.BroadPhaseEntries;
 using BEPUphysics.CollisionShapes.ConvexShapes;
 using Microsoft.Xna.Framework;
 using BEPUphysics.MathExtensions;
@@ -375,7 +375,7 @@ namespace AndroidTest
             //Now we need to ray cast out from the center of the character in the direction of this normal to check for obstructions.
             //Compute the ray origin location.  Fire it out of the top of the character; if we're stepping, this must be a valid location.
             //Putting it as high as possible helps to reject more invalid step geometry.
-            Ray ray;
+            Microsoft.Xna.Framework.Ray ray;
             float downRayLength = character.Body.Height;// MaximumStepHeight + upStepMargin;
             Vector3.Multiply(ref down, character.Body.Height * .5f - downRayLength, out ray.Position);
             Vector3.Add(ref ray.Position, ref position, out ray.Position);

@@ -7,9 +7,9 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace AndroidTest
 {
-    public class ChaseCam : BaseCamera
+    public class ChaseCam : GameObject3D
     {
-        public Vector3 Position { get; private set; }
+       // public Vector3 Position { get; private set; }
         public Vector3 Target { get; private set; }
 
         public Vector3 FollowTargetPosition { get; private set; }
@@ -57,7 +57,7 @@ namespace AndroidTest
         protected int Width { get; set; }
         protected int Height { get; set; }
 
-        float FieldOfView = MathHelper.PiOver4;
+        //float FieldOfView = MathHelper.PiOver4;
 
         private void generateFrustum()
         {
@@ -76,9 +76,9 @@ namespace AndroidTest
 
             float aspectRatio = (float)width / height;
 
-            //this.Projection = Matrix.CreatePerspectiveFieldOfView(
-            //    MathHelper.ToRadians(45), aspectRatio, 0.1f, 100000.0f);
-            this.Projection = Matrix.CreateOrthographic(640, 360, 0.1f, 300);
+            this.Projection = Matrix.CreatePerspectiveFieldOfView(
+                MathHelper.ToRadians(45), aspectRatio, 0.1f, 100000.0f);
+            //this.Projection = Matrix.CreateOrthographic(640, 360, 0.1f, 300);
 
         }
 
@@ -113,7 +113,7 @@ namespace AndroidTest
                 Vector3.Transform(PositionOffset, rotation);
 
             // Interpolate between the current position and desired position
-            Position = Vector3.Lerp(Position, desiredPosition, Springiness);
+            LocalPosition = Vector3.Lerp(LocalPosition, desiredPosition, Springiness);
 
             // Calculate the new target using the rotation matrix
             Target = FollowTargetPosition +
@@ -123,7 +123,7 @@ namespace AndroidTest
             Vector3 up = Vector3.Transform(Vector3.Up, rotation);
 
             //Recalculate the view matrix
-            View = Matrix.CreateLookAt(Position, Target, up);
+            View = Matrix.CreateLookAt(LocalPosition, Target, up);
 
 
         }

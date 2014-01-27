@@ -20,7 +20,8 @@
     <XapFilename>$(AssemblyName).xap</XapFilename>
     <SilverlightManifestTemplate>Properties\AppManifest.xml</SilverlightManifestTemplate>
     <XnaWindowsPhoneManifestTemplate>Properties\WMAppManifest.xml</XnaWindowsPhoneManifestTemplate>
-    <TileImage>Background.png</TileImage>
+    <TileImage>
+    </TileImage>
     <TileTitle>XnaEngine2012</TileTitle>
     <SupportedCultures>
     </SupportedCultures>
@@ -79,6 +80,7 @@
     <Compile Include="ChaseCam.cs" />
     <Compile Include="Debug2D.cs" />
     <Compile Include="Framework\Character.cs" />
+    <Compile Include="Framework\ChaseCamera.cs" />
     <Compile Include="Framework\GameScene.cs" />
     <Compile Include="Controls\InputAction.cs" />
     <Compile Include="LevelData.cs" />

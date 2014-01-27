@@ -28,7 +28,8 @@ namespace AndroidTest
             RenderContext = new RenderContext
             {
                 //Default Camera
-                Camera = new ChaseCam(),
+                //Camera = new BaseCamera(),
+                Camera = new ChaseCamera(),
                 Input = new InputManager(),
             };
         }
@@ -108,7 +109,7 @@ namespace AndroidTest
             thisLevel.GameObject3D.Clear();
             foreach (GameObject3D c in ActiveScene.SceneObjects3D)
             {
-                if (c.GetType() == typeof(BaseCamera))
+                if (c.GetType() == typeof(ChaseCamera))
                 {
                 }
                 else if (c.id == 1)

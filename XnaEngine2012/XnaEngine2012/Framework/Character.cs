@@ -26,7 +26,8 @@ namespace AndroidTest
 
     public class Character : GameObject3D
     {
-        private GameAnimatedModel char_Model;
+        private GameAnimatedModel char_Model ;
+        public CharacterControllerInput charInput { get; set; }
         //Movement
         public bool IsGrounded { get; set; }
 
@@ -48,6 +49,9 @@ namespace AndroidTest
             //Initialize Movement Parameters
             _runAcceleration = RUN_SPEED / RUN_ACCELERATION_TIME;
             Rotate(LocalRotation.X, LocalRotation.Y, LocalRotation.Z);
+
+            charInput = new CharacterControllerInput(Scene.Space, this);
+            charInput.Activate();
             #region ADD INPUTACTIONS
             var inputAction = new InputAction((int)InputActionIds.Rotate, VirtualButtonState.Pressed)
             {
@@ -174,8 +178,8 @@ namespace AndroidTest
             var newPosition = LocalPosition + new Vector3(totalMovement, 0);
             if (newPosition.X > 240)
                 newPosition.X = 240;
-            if (newPosition.X < -270)
-                newPosition.X = -270;
+            if (newPosition.X < -240)
+                newPosition.X = -240;
             Translate(newPosition);
 
             base.Update(renderContext);
