@@ -27,6 +27,7 @@ namespace Blocker
         public List<GameObject3D> SceneObjects3D { get; private set; }
 
         public Space Space;
+        public ChaseCamera camera;
 
         public GameObject3D levelModel;
         public string levelModelName { get; private set; }
@@ -92,7 +93,7 @@ namespace Blocker
             }
         }
 
-        public virtual void Activated() { }
+        public virtual void Activated() {}
         public virtual void Deactivated() { }
 
         public virtual void Initialize()

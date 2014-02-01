@@ -21,6 +21,7 @@ namespace Blocker
         public static InputManager Input { get { return RenderContext.Input; } }
         public static SpriteFont font;
         public static LevelData thisLevel { get; set; }
+        public static Character c { get; set; }
 
         static SceneManager()
         {
@@ -158,16 +159,27 @@ namespace Blocker
                         (font, string.Format("Left Stick: {0}",
                         Input.CurrentScreenPadState.ThumbSticks.Left.ToString()), Vector2.Zero, Color.White);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("X: {0}", (Input.CurrentScreenPadState.Buttons.X == VirtualButtonState.Pressed).ToString()), new Vector2(0, 50), Color.Black);
+                        (font, string.Format("Cam Pos: {0}", ActiveScene.camera.LocalPosition.ToString())
+                        , new Vector2(0, 50), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("Y: {0}", (Input.CurrentScreenPadState.Buttons.Y == VirtualButtonState.Pressed).ToString()), new Vector2(0, 80), Color.Black);
+                        (font, string.Format("Char Position: {0}", c.LocalPosition.ToString())
+                        , new Vector2(0, 80), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("A: {0}", (Input.CurrentScreenPadState.Buttons.A == VirtualButtonState.Pressed).ToString()), new Vector2(0, 110), Color.Black);
+                       (font, string.Format("Controller Pos: {0}", c.charInput.CharacterController.Body.Position.ToString())
+                       , new Vector2(0, 110), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("B: {0}", (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed).ToString()), new Vector2(0, 140), Color.Black);
+                      (font, string.Format("Controller Rot: {0}", c.charInput.CharacterController.Body.Orientation.ToString())
+                      , new Vector2(0, 140), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                        (font, string.Format("Char Postion: {0}", new Vector3(thisLevel.character.PositionX, thisLevel.character.PositionY, thisLevel.character.PositionZ).ToString())
-                        , new Vector2(0, 170), Color.White);
+                      (font, string.Format("Char Rot: {0}", c.LocalRotation.ToString())
+                      , new Vector2(0, 170), Color.Black);
+                    //RenderContext.SpriteBatch.DrawString
+                    //    (font, string.Format("A: {0}", (Input.CurrentScreenPadState.Buttons.A == VirtualButtonState.Pressed).ToString()), new Vector2(0, 110), Color.Black);
+                    //RenderContext.SpriteBatch.DrawString
+                    //    (font, string.Format("B: {0}", (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed).ToString()), new Vector2(0, 140), Color.Black);
+                    //RenderContext.SpriteBatch.DrawString
+                    //    (font, string.Format("Char Postion: {0}", new Vector3(thisLevel.character.PositionX, thisLevel.character.PositionY, thisLevel.character.PositionZ).ToString())
+                    //    , new Vector2(0, 170), Color.White);
                     //RenderContext.SpriteBatch.DrawString
                     //    (font, string.Format("Char Postion: {0}", .ToString())
                     //    , new Vector2(0, 170), Color.White);

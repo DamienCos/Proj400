@@ -23,7 +23,8 @@ namespace Blocker
         public List<GameObject3D> gameObj3D = new List<GameObject3D>();
         public List<Object3D_Data> levelData = new List<Object3D_Data>();
         public LevelData level { get; set; }
-       
+        //ChaseCamera camera;
+        bool cameraSpringEnabled = false;
 
         public TestLevel() : base("Test","Ground") { }
 
@@ -43,6 +44,7 @@ namespace Blocker
                 character.LocalPosition = new Vector3(level.character.PositionX, level.character.PositionY, level.character.PositionZ);
                 character.LocalRotation = new Quaternion(level.character.RotationX, level.character.RotationY, level.character.RotationZ, level.character.RotationW);
                 AddSceneObject(character);
+                character.charInput.Activate(); SceneManager.c = character;
                 foreach (Object3D_Data g in level.GameObject3D)
                 {
                     if (g.GetType() == typeof(ChaseCamera))
@@ -62,22 +64,23 @@ namespace Blocker
             } 
             #endregion
 
-            //var playgroundModel = new GameModel(this.levelModelName);
-            //var levelModel = SceneManager.MainGame.Content.Load<Model>(this.levelModelName);
-            ////This is a little convenience method used to extract vertices and indices from a model.
-            ////It doesn't do anything special; any approach that gets valid vertices and indices will work.
-            //TriangleMesh.GetVerticesAndIndicesFromModel(levelModel, out staticTriangleVertices, out staticTriangleIndices);
-            //var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices, new AffineTransform(new Vector3(.01f, .01f, .01f), Quaternion.Identity, new Vector3(0, 0, 0)));
-            //staticMesh.Sidedness = TriangleSidedness.Counterclockwise;
+         
+            //var cam = new ChaseCamera();//new BaseCamera();
+           // cam.Translate(0, 0, 400);
+            //chaseCamera.ActivateChaseCameraMode(character.charInput.CharacterController.Body, new Vector3(0, 0, 0), true, 400);
+            camera = new ChaseCamera();
+            // Set the camera offsets
+            camera.DesiredPositionOffset = new Vector3(0.0f, 200.0f, 4000.0f);
+            camera.LookAtOffset = new Vector3(0.0f, 80.0f, 00.0f);
 
-            //Space.Add(staticMesh);
-            //AddSceneObject(playgroundModel); // may have to change this
+            // Set camera perspective
+            camera.NearPlaneDistance = 1.0f;
+            camera.FarPlaneDistance = 10000.0f;
+            UpdateCameraChaseTarget();
+            camera.Reset();
+            AddSceneObject(camera);
 
-            var cam = new ChaseCamera();//new BaseCamera();
-            cam.Translate(0, 0, 400);
-            AddSceneObject(cam);
-
-            SceneManager.RenderContext.Camera = cam;
+            SceneManager.RenderContext.Camera = camera;
             SceneManager.thisLevel = level;
 
             base.Initialize();
@@ -85,10 +88,27 @@ namespace Blocker
 
         public override void Update(RenderContext renderContext)
         {
+            UpdateCameraChaseTarget();
+
+            // The chase camera's update behavior is the springs, but we can
+            // use the Reset method to have a locked, spring-less camera
+           // if (cameraSpringEnabled)
+                camera.Update(renderContext);
+            //else
+            //    camera.Reset();
+
             base.Update(renderContext);
         }
 
-
+        /// <summary>
+        /// Update the values to be chased by the camera
+        /// </summary>
+        private void UpdateCameraChaseTarget()
+        {
+            camera.ChasePosition = character.LocalPosition;
+            camera.ChaseDirection = character.Direction;
+            camera.Up = new Vector3(0, 1, 0f);//character.Up;
+        }
 
     }
 }

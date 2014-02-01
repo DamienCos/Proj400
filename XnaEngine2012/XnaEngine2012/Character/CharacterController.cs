@@ -34,7 +34,7 @@ namespace Blocker
         /// <summary>
         /// Gets the physical body of the character.  Do not use this reference to modify the character's height and radius.  Instead, use the BodyRadius property and the StanceManager's StandingHeight and CrouchingHeight properties.
         /// </summary>
-        public Cylinder Body { get; private set; }
+        public Cylinder Body { get;  set; }
 
         /// <summary>
         /// Gets the manager responsible for finding places for the character to step up and down to.

@@ -33,11 +33,34 @@ namespace Blocker
 
         private const int RUN_SPEED = 170;
         private const float RUN_ACCELERATION_TIME = 0.2f;
+        /// <summary>
+        /// Full speed at which ship can rotate; measured in radians per second.
+        /// </summary>
+        private const float RotationRate = 1.5f;
 
         private float _runAcceleration;
         private Vector2 _velocity;
         private int _direction;
         float temp = 0;
+        /// <summary>
+        /// Direction player is facing.
+        /// </summary>
+        public Vector3 Direction;
+
+        /// <summary>
+        /// player's up vector.
+        /// </summary>
+        public Vector3 Up;
+
+        private Vector3 right;
+        /// <summary>
+        /// player's right vector.
+        /// </summary>
+        public Vector3 Right
+        {
+            get { return right; }
+        }
+
         public RenderContext renderContext { get; set; }
 
         public override void Initialize()
@@ -119,11 +142,39 @@ namespace Blocker
 
         public override void Update(RenderContext renderContext)
         {
+            float dt = renderContext.GameTime.TotalGameTime.Seconds;
             //Temporary set IsGrounded to True.
             if (renderContext.Input.screenPad.LeftStick.Y > 0.23 || renderContext.Input.screenPad.LeftStick.Y < -0.23)
                 IsGrounded = true;
             else if (renderContext.Input.screenPad.LeftStick.Y == 0)
                 IsGrounded = false;// true;
+
+            Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
+
+            // Create rotation matrix from rotation amount
+            Matrix rotationMatrix =
+                Matrix.CreateFromAxisAngle(Right, rotationAmount.Y) *
+                Matrix.CreateRotationY(rotationAmount.X);
+
+            // Rotate orientation vectors
+            Direction = Vector3.TransformNormal(Direction, rotationMatrix);
+            Up = Vector3.TransformNormal(Up, rotationMatrix);
+
+            // Re-normalize orientation vectors
+            // Without this, the matrix transformations may introduce small rounding
+            // errors which add up over time and could destabilize the ship.
+            if (Direction != Vector3.Zero)
+            Direction.Normalize();
+            if(Up != Vector3.Zero)
+            Up.Normalize();
+
+            // Re-calculate Right
+            right = Vector3.Cross(Direction, Up);
+
+            // The same instability may cause the 3 orientation vectors may
+            // also diverge. Either the Up or Direction vector needs to be
+            // re-computed with a cross product to ensure orthagonality
+            Up = Vector3.Cross(Right, Direction);
 
             #region Player input
 
@@ -181,7 +232,7 @@ namespace Blocker
             if (newPosition.X < -240)
                 newPosition.X = -240;
             Translate(newPosition);
-
+            charInput.Update(dt);
             base.Update(renderContext);
         }
 
