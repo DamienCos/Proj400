@@ -9,7 +9,7 @@ using BEPUphysics.CollisionRuleManagement;
 using BEPUphysics.MathExtensions;
 using BEPUphysics;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class ChaseCamera: BaseCamera
     {

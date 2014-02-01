@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class BaseCamera : GameObject3D
     {

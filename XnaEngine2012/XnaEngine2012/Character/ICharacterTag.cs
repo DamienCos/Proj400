@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using BEPUphysics.Entities;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Defines a class which uniquely identifies a character.

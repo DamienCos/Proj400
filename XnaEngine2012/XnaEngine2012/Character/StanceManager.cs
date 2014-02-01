@@ -9,7 +9,7 @@ using BEPUphysics.DataStructures;
 using BEPUphysics.Settings;
 using BEPUphysics;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Handles a character's stances, like standing or crouching, and their transitions.

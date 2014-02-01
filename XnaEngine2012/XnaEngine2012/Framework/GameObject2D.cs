@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using System.Diagnostics;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class GameObject2D
     {

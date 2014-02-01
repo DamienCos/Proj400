@@ -13,7 +13,7 @@ using System.Diagnostics;
 using BEPUphysics.Settings;
 using BEPUphysics.BroadPhaseEntries.MobileCollidables;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Keeps a character glued to the ground, if possible.

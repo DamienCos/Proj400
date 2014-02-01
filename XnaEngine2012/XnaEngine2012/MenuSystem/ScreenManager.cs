@@ -17,10 +17,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input.Touch;
 using System.IO;
 using System.IO.IsolatedStorage;
-using AndroidTest;
+using Blocker;
 #endregion
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// The screen manager is a component which manages one or more GameScreen

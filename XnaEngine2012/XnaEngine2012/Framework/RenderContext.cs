@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class RenderContext
     {

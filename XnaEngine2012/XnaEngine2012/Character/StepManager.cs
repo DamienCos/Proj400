@@ -16,7 +16,7 @@ using BEPUphysics;
 using System.Diagnostics;
 using BEPUphysics.CollisionRuleManagement;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Checks to see if a character is capable of stepping up or down onto a new support object.

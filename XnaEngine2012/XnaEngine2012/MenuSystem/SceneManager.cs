@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace AndroidTest
+namespace Blocker
 {
     static class SceneManager
     {
@@ -88,7 +88,7 @@ namespace AndroidTest
         public static void LoadContent(ContentManager contentManager)
         {
             GameScenes.ForEach(scene => scene.LoadContent(contentManager));
-            font = contentManager.Load<SpriteFont>("menufont");
+            font = contentManager.Load<SpriteFont>("menufont"); // this is for debug
         }
 
         public static void Update(GameTime gameTime)

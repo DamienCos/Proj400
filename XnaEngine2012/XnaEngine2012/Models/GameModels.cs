@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 //using BEPUphysics.Entities;
 
 
-namespace AndroidTest
+namespace Blocker
 {   
     //Class for static models
     //public class GameModels

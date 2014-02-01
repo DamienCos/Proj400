@@ -5,7 +5,7 @@ using System;
 using System.Diagnostics;
 using BEPUphysics.BroadPhaseEntries;
 
-namespace AndroidTest
+namespace Blocker
 {
      //<summary>
      //Handles input and movement of a character in the game.

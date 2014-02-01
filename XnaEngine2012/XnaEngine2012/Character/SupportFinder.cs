@@ -11,7 +11,7 @@ using BEPUphysics.CollisionRuleManagement;
 using BEPUphysics.BroadPhaseSystems;
 using System.Diagnostics;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Analyzes the contacts on the character's body to find supports.

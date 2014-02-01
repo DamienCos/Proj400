@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace AndroidTest
+namespace Blocker
 {
    /// <summary>  
     /// The pause menu comes up over the top of the game,  

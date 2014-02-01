@@ -10,8 +10,9 @@ using BEPUphysics.DataStructures;
 using BEPUphysics.BroadPhaseEntries;
 using BEPUphysics.MathExtensions;
 using BEPUphysics.CollisionShapes.ConvexShapes;
+using BEPUphysics.Collidables;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class GameModel : GameObject3D
     {
@@ -34,11 +35,15 @@ namespace AndroidTest
         public override void LoadContent(ContentManager contentManager)
         {
             _model = contentManager.Load<Model>(modelPath);
-            if (modelPath == "Models\\Ground")
+            if (modelPath == "Models\\\\Ground")
             {////This is a little convenience method used to extract vertices and indices from a model.
                 ////It doesn't do anything special; any approach that gets valid vertices and indices will work.
-                TriangleMesh.GetVerticesAndIndicesFromModel(_model, out staticTriangleVertices, out staticTriangleIndices);
-                var staticMesh = new StaticMesh(staticTriangleVertices, staticTriangleIndices, new AffineTransform(new Vector3(.01f, .01f, .01f), Quaternion.Identity, new Vector3(0, 0, 0)));
+                //TriangleMesh.GetVerticesAndIndicesFromModel(_model, out staticTriangleVertices, out staticTriangleIndices);
+
+                Dictionary<string, object> tagData = (Dictionary<string, object>)_model.Tag;
+                Vector3[] vertices = (Vector3[])tagData["Vertices"];
+                int[] indices = (int[])tagData["Indices"];
+                var staticMesh = new StaticMesh(vertices, indices, new AffineTransform(new Vector3(.01f, .01f, .01f), Quaternion.Identity, new Vector3(0, 0, 0)));
                 staticMesh.Sidedness = TriangleSidedness.Counterclockwise;
 
                 Scene.Space.Add(staticMesh);
@@ -46,10 +51,13 @@ namespace AndroidTest
             base.LoadContent(contentManager);
         }
 
+
         public override void Draw(RenderContext renderContext)
         {
             var transforms = new Matrix[_model.Bones.Count];
             _model.CopyAbsoluteBoneTransformsTo(transforms);
+
+            _model.Tag = _model.Tag;
 
             foreach (ModelMesh mesh in _model.Meshes)
             {

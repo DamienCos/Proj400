@@ -5,7 +5,7 @@
     <id>1</id>
     <modelPath>Models\\Vampire</modelPath>
     <PositionX>0</PositionX>
-    <PositionY>10</PositionY>
+    <PositionY>0</PositionY>
     <PositionZ>0</PositionZ>
     <RotationX>0</RotationX>
     <RotationY>0</RotationY>
@@ -17,10 +17,10 @@
       <id>2</id>
       <model_Path>Models\\Cube</model_Path>
       <PositionX>-10</PositionX>
-      <PositionY>10</PositionY>
+      <PositionY>0</PositionY>
       <PositionZ>0</PositionZ>
       <RotationX>0</RotationX>
-      <RotationY>10</RotationY>
+      <RotationY>0</RotationY>
       <RotationZ>0</RotationZ>
       <RotationW>0</RotationW>
     </Object3D_Data>

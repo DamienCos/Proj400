@@ -16,7 +16,7 @@ using BEPUphysics.Settings;
 using BEPUphysics;
 using BEPUphysics.BroadPhaseSystems;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Helps a character identify supports by finding contacts and ray cast intersections with its immediate surroundings.

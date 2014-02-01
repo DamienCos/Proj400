@@ -33,12 +33,12 @@
     <Compile Include="Models\Cube.FBX">
       <Name>Cube</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>TrianglePickingProcessor</Processor>
     </Compile>
     <Compile Include="Models\Ground.FBX">
       <Name>Ground</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>TrianglePickingProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -103,6 +103,10 @@
       <Project>{d675a66a-bf64-4947-9988-fec3c57f8f38}</Project>
       <Name>SkinnedModelPipeline</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\VerticesIndicesProcessor\VerticesIndicesProcessor.csproj">
+      <Project>{41A772EB-F3A6-4AB2-B7DC-7225DF5CBE6B}</Project>
+      <Name>VerticesIndicesProcessor</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Vampire.x">
@@ -139,15 +143,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="LevelSeedData.xml">
-      <Name>LevelSeedData</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TestData.xml">

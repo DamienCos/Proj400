@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class Game1 : Microsoft.Xna.Framework.Game
     {

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Content;
 
 
-namespace AndroidTest
+namespace Blocker
 {
     public class SoundManager : GameComponent
     {

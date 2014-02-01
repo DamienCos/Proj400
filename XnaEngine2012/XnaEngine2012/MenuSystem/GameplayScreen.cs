@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 
 #endregion
 
-namespace AndroidTest
+namespace Blocker
 {
    
     class GameplayScreen : GameScreen

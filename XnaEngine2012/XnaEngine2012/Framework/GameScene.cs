@@ -17,7 +17,7 @@ using BEPUphysics.CollisionShapes.ConvexShapes;
 using BEPUphysics.BroadPhaseEntries;
 
 
-namespace AndroidTest
+namespace Blocker
 {
     
     public abstract class GameScene

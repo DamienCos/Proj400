@@ -8,7 +8,7 @@ using BEPUphysics.CollisionRuleManagement;
 using BEPUphysics.MathExtensions;
 using System;
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Simple camera class 

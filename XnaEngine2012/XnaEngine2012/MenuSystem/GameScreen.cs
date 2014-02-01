@@ -14,7 +14,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using System.IO;
 #endregion
 
-namespace AndroidTest
+namespace Blocker
 {
     /// <summary>
     /// Enum describes the screen transition state.

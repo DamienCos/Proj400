@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 using Microsoft.Xna.Framework;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class GameAnimatedModel : GameObject3D
     {

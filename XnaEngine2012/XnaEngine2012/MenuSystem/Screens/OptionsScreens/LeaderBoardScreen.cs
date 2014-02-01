@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework;
 #endregion
 
-namespace AndroidTest
+namespace Blocker
 {
     class LeaderBoardScreen : MenuScreen
     {

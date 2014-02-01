@@ -13,7 +13,7 @@ using BEPUphysics.MathExtensions;
 using BEPUphysics.CollisionShapes.ConvexShapes;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace AndroidTest
+namespace Blocker
 {
     public class TestLevel : GameScene
     {
@@ -55,7 +55,7 @@ namespace AndroidTest
                         model = new GameModel(g.model_Path);
                         model.id = id;
                         model.LocalPosition = new Vector3(g.PositionX, g.PositionY, g.PositionZ);
-                        // model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
+                        //model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
                         AddSceneObject(model);
                     }
                 }

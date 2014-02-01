@@ -3,24 +3,24 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System.Diagnostics;
 
-namespace AndroidTest
+namespace Blocker
 {
     public abstract class GameObject3D
 
     {
-        public int id { get; set; }
-        public string modelPath { get; set; }
-        public Vector3 LocalPosition { get; set; }
-        public Vector3 WorldPosition { get; private set; }
+        public int id                       { get; set; }
+        public string  modelPath            { get; set; }
+        public Vector3 LocalPosition        { get; set; }
+        public Vector3 WorldPosition        { get; private set; }
 
-        public Quaternion LocalRotation { get; set; }
-        public Quaternion WorldRotation { get; private set; }
+        public Quaternion LocalRotation     { get; set; }
+        public Quaternion WorldRotation     { get; private set; }
 
-        public Vector3 LocalScale { get; set; }
-        public Vector3 WorldScale { get; private set; }
+        public Vector3 LocalScale           { get; set; }
+        public Vector3 WorldScale           { get; private set; }
 
-        public GameObject3D Parent { get; private set; }
-        public List<GameObject3D> Children { get; private set; }
+        public GameObject3D Parent          { get; private set; }
+        public List<GameObject3D> Children  { get; private set; }
 
         protected Matrix WorldMatrix;
 

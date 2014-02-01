@@ -5,13 +5,13 @@
       <Source>Models\Cube.FBX</Source>
       <Name>Models\Cube</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>TrianglePickingProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\Models\Cube.xnb</Output>
       <Time>2013-08-07T13:43:57.3342304+01:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Cube_0.xml</Key>
-        <Value>2014-01-27T15:36:58.180249+00:00</Value>
+        <Value>2014-01-31T21:25:45.9689567+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\metal_0.xnb</Request>
     </Item>
@@ -19,13 +19,13 @@
       <Source>Models\Ground.FBX</Source>
       <Name>Models\Ground</Name>
       <Importer>FbxImporter</Importer>
-      <Processor>ModelProcessor</Processor>
+      <Processor>TrianglePickingProcessor</Processor>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\Models\Ground.xnb</Output>
       <Time>2013-11-23T22:58:42.7463452+00:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Ground_0.xml</Key>
-        <Value>2014-01-27T15:36:58.5942728+00:00</Value>
+        <Value>2014-01-31T21:25:46.2149712+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\rust_0.xnb</Request>
     </Item>
@@ -174,7 +174,7 @@
       <Time>2013-08-21T22:07:10.8628847+01:00</Time>
       <Dependency>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\obj\Windows Phone\Debug\Models\Vampire_0.xml</Key>
-        <Value>2014-01-27T15:36:59.3713166+00:00</Value>
+        <Value>2014-01-31T21:25:46.9270113+00:00</Value>
       </Dependency>
       <Request>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\Models\Vampire_Diffuse_0.xnb</Request>
     </Item>
@@ -199,7 +199,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\metal_0.xnb</Output>
-      <Time>2014-01-27T15:36:58.0542418+00:00</Time>
+      <Time>2014-01-31T21:25:45.9209544+00:00</Time>
     </Item>
     <Item>
       <Source>Models\Ground.FBX</Source>
@@ -222,7 +222,7 @@
       </Parameters>
       <Options>None</Options>
       <Output>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\XnaEngine2012\XnaEngine2012\bin\Windows Phone\Debug\Content\rust_0.xnb</Output>
-      <Time>2014-01-27T15:36:58.5832731+00:00</Time>
+      <Time>2014-01-31T21:25:46.2069708+00:00</Time>
     </Item>
     <Item>
       <Source>Models\Vampire.x</Source>
@@ -261,8 +261,12 @@
     </Settings>
     <Assemblies>
       <Assembly>
+        <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndicesProcessor\bin\x86\Debug\VerticesIndicesProcessor.dll</Key>
+        <Value>2014-01-31T21:25:45.5559339+00:00</Value>
+      </Assembly>
+      <Assembly>
         <Key>C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelPipeline.dll</Key>
-        <Value>2014-01-27T15:36:57.7492249+00:00</Value>
+        <Value>2014-01-31T21:00:52.5403472+00:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
