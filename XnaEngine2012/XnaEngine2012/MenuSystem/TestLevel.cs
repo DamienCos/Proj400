@@ -93,6 +93,10 @@ namespace Blocker
                 camera.Update(renderContext);
             else
                 camera.Reset();
+            if (renderContext.Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed)
+            {
+                character.Reset(Vector3.Zero);
+            }
 
             base.Update(renderContext);
         }

@@ -184,6 +184,7 @@ namespace Blocker
                     //    (font, string.Format("Char Postion: {0}", .ToString())
                     //    , new Vector2(0, 170), Color.White);
                 }
+               
                 #endregion
 
 #endif

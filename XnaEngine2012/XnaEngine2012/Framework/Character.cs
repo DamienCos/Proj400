@@ -154,7 +154,7 @@ namespace Blocker
        
 
             #region Player input
-
+            
             //Handle RUN_LEFT
             if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
             {
@@ -167,25 +167,16 @@ namespace Blocker
                 _direction = -1;
                 Rotate(0, -0, 0);
 
-                //
-                // _velocity.X -= _runAcceleration * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds/10;
                 temp += renderContext.Input.screenPad.LeftStick.X * 8;
                 _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
                 Rotate(0, -temp, 0);
                 Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
 
                 #region MyRegion
-                // Create rotation matrix from rotation amount
-                //Matrix rotationMatrix =
-                //    Matrix.CreateFromAxisAngle(Right, rotationAmount.Y) *
-                //    Matrix.CreateRotationY(rotationAmount.X);
-
-                //// Rotate orientation vectors
-                //Direction = Vector3.TransformNormal(Direction, rotationMatrix);
+              
                 Up =new Vector3(0,1,0);
 
-                // Re-normalize orientation vectors
-                // Without this, the matrix transformations may introduce small rounding
+                // Re-normalize orientation vectors ,without this, the matrix transformations may introduce small rounding
                 // errors which add up over time and could destabilize the ship.
                 if (Direction != Vector3.Zero)
                     Direction.Normalize();
@@ -195,8 +186,7 @@ namespace Blocker
                 // Re-calculate Right
                 right = Vector3.Cross(Direction, Up);
 
-                // The same instability may cause the 3 orientation vectors may
-                // also diverge. Either the Up or Direction vector needs to be
+                // The same instability may cause the 3 orientation vectors may also diverge. Either the Up or Direction vector needs to be
                 // re-computed with a cross product to ensure orthagonality
                 Up = Vector3.Cross(Right, Direction); 
                 #endregion
@@ -214,10 +204,10 @@ namespace Blocker
             //Calculate new position, based on the current velocity
             var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
             var newPosition = LocalPosition + new Vector3(totalMovement, 0);
-            if (newPosition.X > 240)
-                newPosition.X = 240;
-            if (newPosition.X < -240)
-                newPosition.X = -240;
+            //if (newPosition.X > 240)
+            //    newPosition.X = 240;
+            //if (newPosition.X < -240)
+            //    newPosition.X = -240;
             Translate(newPosition);
             charInput.Update(dt);
             base.Update(renderContext);
