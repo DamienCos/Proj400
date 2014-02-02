@@ -66,7 +66,7 @@ namespace Blocker
         public override void Initialize()
         {
             char_Model = new GameAnimatedModel(modelPath);
-            char_Model.Scale(0.8f, 0.8f, 0.8f);
+            char_Model.Scale(1f, 1f, 1f);
             AddChild(char_Model);
 
             //Initialize Movement Parameters
@@ -151,30 +151,7 @@ namespace Blocker
 
             Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
 
-            // Create rotation matrix from rotation amount
-            Matrix rotationMatrix =
-                Matrix.CreateFromAxisAngle(Right, rotationAmount.Y) *
-                Matrix.CreateRotationY(rotationAmount.X);
-
-            // Rotate orientation vectors
-            Direction = Vector3.TransformNormal(Direction, rotationMatrix);
-            Up = Vector3.TransformNormal(Up, rotationMatrix);
-
-            // Re-normalize orientation vectors
-            // Without this, the matrix transformations may introduce small rounding
-            // errors which add up over time and could destabilize the ship.
-            if (Direction != Vector3.Zero)
-            Direction.Normalize();
-            if(Up != Vector3.Zero)
-            Up.Normalize();
-
-            // Re-calculate Right
-            right = Vector3.Cross(Direction, Up);
-
-            // The same instability may cause the 3 orientation vectors may
-            // also diverge. Either the Up or Direction vector needs to be
-            // re-computed with a cross product to ensure orthagonality
-            Up = Vector3.Cross(Right, Direction);
+       
 
             #region Player input
 
@@ -195,28 +172,38 @@ namespace Blocker
                 temp += renderContext.Input.screenPad.LeftStick.X * 8;
                 _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
                 Rotate(0, -temp, 0);
+                Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
+
+                #region MyRegion
+                // Create rotation matrix from rotation amount
+                //Matrix rotationMatrix =
+                //    Matrix.CreateFromAxisAngle(Right, rotationAmount.Y) *
+                //    Matrix.CreateRotationY(rotationAmount.X);
+
+                //// Rotate orientation vectors
+                //Direction = Vector3.TransformNormal(Direction, rotationMatrix);
+                Up =new Vector3(0,1,0);
+
+                // Re-normalize orientation vectors
+                // Without this, the matrix transformations may introduce small rounding
+                // errors which add up over time and could destabilize the ship.
+                if (Direction != Vector3.Zero)
+                    Direction.Normalize();
+                if (Up != Vector3.Zero)
+                    Up.Normalize();
+
+                // Re-calculate Right
+                right = Vector3.Cross(Direction, Up);
+
+                // The same instability may cause the 3 orientation vectors may
+                // also diverge. Either the Up or Direction vector needs to be
+                // re-computed with a cross product to ensure orthagonality
+                Up = Vector3.Cross(Right, Direction); 
+                #endregion
             }
             if (renderContext.Input.screenPad.LeftStick.Y == 0)
                 _velocity.X = 0;
-            //Handle RUN_FORWARD
-            //else if (renderContext.Input.IsActionTriggered((int)InputActionIds.MoveForWard))
-            //{
-            //    if (IsGrounded) char_Model.PlayAnimation("Run", true, RUN_ACCELERATION_TIME);
-
-            //    _direction = 1;
-            //    Rotate(0, 0, 0);
-            //    _velocity.X -= _runAcceleration * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds / 10;
-            //    //_velocity.X += renderContext.Input.screenPad.LeftStick.Y * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-            //}
-            ////Handle IDLE
-            //else if (IsGrounded)
-            //{
-            //    _velocity.X -= _direction * _runAcceleration * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-
-            //    if ((_direction < 0 && _velocity.X > 0) || (_direction > 0 && _velocity.X < 0)) _velocity.X = 0;
-            //    char_Model.PlayAnimation("Idle", false, RUN_ACCELERATION_TIME);
-            //}
-
+         
             //Clamp Velocity X
             _velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
 
@@ -234,6 +221,23 @@ namespace Blocker
             Translate(newPosition);
             charInput.Update(dt);
             base.Update(renderContext);
+        }
+
+        public Vector3 DirectionToTravel(bool rotationVecIsInRadians, Vector3 rotationVec)//rotation vec must not be normalized at this point
+        {
+            Vector3 result;
+
+            if (!rotationVecIsInRadians)
+            {
+                rotationVec *= MathHelper.Pi / 180f;
+            }
+
+            float angle = rotationVec.Length();
+            rotationVec /= angle; //normalizes rotation vec
+
+            result = Matrix.CreateFromAxisAngle(rotationVec, angle).Forward;
+
+            return result;
         }
 
         public void Reset(Vector3 position)

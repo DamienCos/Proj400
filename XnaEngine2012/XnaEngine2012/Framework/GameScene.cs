@@ -40,9 +40,7 @@ namespace Blocker
             Space = new Space();
             levelModelName = modelName;
         }
-
-      
-
+    
         public override bool Equals(object obj)
         {
             if (obj is GameScene)
@@ -75,8 +73,7 @@ namespace Blocker
                 SceneObjects3D.Add(sceneObject);
             }
         }
-
-        
+     
         public void RemoveSceneObject(GameObject2D sceneObject)
         {
             if (SceneObjects2D.Remove(sceneObject))
@@ -94,7 +91,7 @@ namespace Blocker
         }
 
         public virtual void Activated() {}
-        public virtual void Deactivated() { }
+        public virtual void Deactivated() {}
 
         public virtual void Initialize()
         {

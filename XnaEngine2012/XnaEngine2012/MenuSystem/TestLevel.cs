@@ -23,7 +23,7 @@ namespace Blocker
         public List<GameObject3D> gameObj3D = new List<GameObject3D>();
         public List<Object3D_Data> levelData = new List<Object3D_Data>();
         public LevelData level { get; set; }
-        //ChaseCamera camera;
+
         bool cameraSpringEnabled = false;
 
         public TestLevel() : base("Test","Ground") { }
@@ -64,21 +64,18 @@ namespace Blocker
             } 
             #endregion
 
-         
-            //var cam = new ChaseCamera();//new BaseCamera();
-           // cam.Translate(0, 0, 400);
-            //chaseCamera.ActivateChaseCameraMode(character.charInput.CharacterController.Body, new Vector3(0, 0, 0), true, 400);
+            #region Camera Setup
             camera = new ChaseCamera();
             // Set the camera offsets
-            camera.DesiredPositionOffset = new Vector3(0.0f, 200.0f, 4000.0f);
+            camera.DesiredPositionOffset = new Vector3(0.0f, 200.0f, -400.0f);
             camera.LookAtOffset = new Vector3(0.0f, 80.0f, 00.0f);
-
             // Set camera perspective
             camera.NearPlaneDistance = 1.0f;
             camera.FarPlaneDistance = 10000.0f;
             UpdateCameraChaseTarget();
             camera.Reset();
-            AddSceneObject(camera);
+            AddSceneObject(camera); 
+            #endregion
 
             SceneManager.RenderContext.Camera = camera;
             SceneManager.thisLevel = level;
@@ -92,10 +89,10 @@ namespace Blocker
 
             // The chase camera's update behavior is the springs, but we can
             // use the Reset method to have a locked, spring-less camera
-           // if (cameraSpringEnabled)
+            if (cameraSpringEnabled)
                 camera.Update(renderContext);
-            //else
-            //    camera.Reset();
+            else
+                camera.Reset();
 
             base.Update(renderContext);
         }
@@ -107,7 +104,7 @@ namespace Blocker
         {
             camera.ChasePosition = character.LocalPosition;
             camera.ChaseDirection = character.Direction;
-            camera.Up = new Vector3(0, 1, 0f);//character.Up;
+            camera.Up = character.Up;
         }
 
     }
