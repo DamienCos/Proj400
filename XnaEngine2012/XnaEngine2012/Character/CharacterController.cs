@@ -29,7 +29,7 @@ namespace Blocker
     /// Gives a physical object FPS-like control, including stepping and jumping.
     /// This is more robust/expensive than the SimpleCharacterController.
     /// </summary>
-    public class CharacterController : Updateable, IBeforeSolverUpdateable
+    public class  CharacterController : Updateable, IBeforeSolverUpdateable
     {
         /// <summary>
         /// Gets the physical body of the character.  Do not use this reference to modify the character's height and radius.  Instead, use the BodyRadius property and the StanceManager's StandingHeight and CrouchingHeight properties.
@@ -142,7 +142,7 @@ namespace Blocker
         /// Constructs a new character controller with the default configuration.
         /// </summary>
         public CharacterController()
-            : this(new Vector3(), 1.7f, 1.7f * .7f, .6f, 10)
+            : this(new Vector3(), 1.7f, 1.7f * .7f, .6f, 100)
         {
 
         }

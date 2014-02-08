@@ -11,3 +11,4 @@ C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModel
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\bin\x86\Debug\SkinnedModelData.pdb
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.dll
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.pdb
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelPipeline\obj\x86\Debug\SkinnedModelPipeline.csprojResolveAssemblyReference.cache

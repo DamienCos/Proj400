@@ -12,6 +12,11 @@ using BEPUphysics.BroadPhaseEntries;
 using BEPUphysics.MathExtensions;
 using BEPUphysics.CollisionShapes.ConvexShapes;
 using Microsoft.Xna.Framework.Graphics;
+using BEPUphysics.Paths;
+using BEPUphysics.Entities.Prefabs;
+using BEPUphysics.Entities;
+using BEPUphysics.Paths.PathFollowing;
+using System;
 
 namespace Blocker
 {
@@ -24,7 +29,6 @@ namespace Blocker
         public List<Object3D_Data> levelData = new List<Object3D_Data>();
         public LevelData level { get; set; }
 
-        bool cameraSpringEnabled = false;
 
         public TestLevel() : base("Test","Ground") { }
 
@@ -34,7 +38,8 @@ namespace Blocker
             int id = 1; // the player character will always have an id of 1
             SceneManager.LoadLevel();
             level = SceneManager.LoadLevel();
-
+            Space = new BEPUphysics.Space();
+            Space.ForceUpdater.Gravity = new Vector3(0, -19.81f, 0f);
             if (level.LevelName == this.SceneName)
             {
                 character = new Character();
@@ -44,12 +49,20 @@ namespace Blocker
                 character.LocalPosition = new Vector3(level.character.PositionX, level.character.PositionY, level.character.PositionZ);
                 character.LocalRotation = new Quaternion(level.character.RotationX, level.character.RotationY, level.character.RotationZ, level.character.RotationW);
                 AddSceneObject(character);
-                character.charInput.Activate(); SceneManager.c = character;
+                character.charInput.Activate();
+                SceneManager.c = character;
                 foreach (Object3D_Data g in level.GameObject3D)
                 {
                     if (g.GetType() == typeof(ChaseCamera))
                     {
                         continue;
+                    }
+                    else if (g.id == 0)
+                    {
+                        model = new GameModel(g.model_Path);
+                        model.LocalPosition = new Vector3(g.PositionX, g.PositionY, g.PositionZ);
+                        model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
+                        AddSceneObject(model);
                     }
                     else
                     {
@@ -57,24 +70,22 @@ namespace Blocker
                         model = new GameModel(g.model_Path);
                         model.id = id;
                         model.LocalPosition = new Vector3(g.PositionX, g.PositionY, g.PositionZ);
-                        //model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
+                        model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
                         AddSceneObject(model);
                     }
                 }
             } 
             #endregion
 
+            Entity movingEntity = new Box(new Vector3(0, 0, 0), 3000, 1, 3000);      
+            Space.Add(movingEntity);
+
             #region Camera Setup
-            camera = new ChaseCamera();
-            // Set the camera offsets
-            camera.DesiredPositionOffset = new Vector3(0.0f, 200.0f, -400.0f);
-            camera.LookAtOffset = new Vector3(0.0f, 80.0f, 00.0f);
-            // Set camera perspective
-            camera.NearPlaneDistance = 1.0f;
-            camera.FarPlaneDistance = 10000.0f;
-            UpdateCameraChaseTarget();
-            camera.Reset();
-            AddSceneObject(camera); 
+            camera = new ChaseCamera(new Vector3(0, 200, -400), new Vector3(0, 80, 0),
+                new Vector3(0, 0, 0), SceneManager.RenderContext.GraphicsDevice);
+          
+            AddSceneObject(camera);
+  
             #endregion
 
             SceneManager.RenderContext.Camera = camera;
@@ -85,31 +96,16 @@ namespace Blocker
 
         public override void Update(RenderContext renderContext)
         {
-            UpdateCameraChaseTarget();
-
-            // The chase camera's update behavior is the springs, but we can
-            // use the Reset method to have a locked, spring-less camera
-            if (cameraSpringEnabled)
-                camera.Update(renderContext);
-            else
-                camera.Reset();
-            if (renderContext.Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed)
-            {
-                character.Reset(Vector3.Zero);
-            }
-
-            base.Update(renderContext);
+            Space.Update();
+            // Move the camera to the new model's position and orientation
+            ((ChaseCamera)camera).Move(character.LocalPosition, QuaternionToEuler(character.LocalRotation));
+            // Update the camera
+            camera.Update(renderContext);     
+            base.Update(renderContext);           
         }
-
-        /// <summary>
-        /// Update the values to be chased by the camera
-        /// </summary>
-        private void UpdateCameraChaseTarget()
-        {
-            camera.ChasePosition = character.LocalPosition;
-            camera.ChaseDirection = character.Direction;
-            camera.Up = character.Up;
-        }
+      
+       
+        
 
     }
 }

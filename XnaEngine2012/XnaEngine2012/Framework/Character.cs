@@ -33,33 +33,35 @@ namespace Blocker
 
         private const int RUN_SPEED = 170;
         private const float RUN_ACCELERATION_TIME = 0.2f;
-        /// <summary>
-        /// Full speed at which ship can rotate; measured in radians per second.
-        /// </summary>
-        private const float RotationRate = 1.5f;
-
         private float _runAcceleration;
-        private Vector2 _velocity;
+
+        ///// <summary>
+        ///// Full speed at which ship can rotate; measured in radians per second.
+        ///// </summary>
+        //private const float RotationRate = 1.5f;
+
+
+        //private Vector2 _velocity;
         private int _direction;
-        float temp = 0;
-        /// <summary>
-        /// Direction player is facing.
-        /// </summary>
+        //float temp = 0;
+        ///// <summary>
+        ///// Direction player is facing.
+        ///// </summary>
         public Vector3 Direction;
 
-        /// <summary>
-        /// player's up vector.
-        /// </summary>
-        public Vector3 Up;
+        ///// <summary>
+        ///// player's up vector.
+        ///// </summary>
+        //public Vector3 Up;
 
-        private Vector3 right;
-        /// <summary>
-        /// player's right vector.
-        /// </summary>
-        public Vector3 Right
-        {
-            get { return right; }
-        }
+        //private Vector3 right;
+        ///// <summary>
+        ///// player's right vector.
+        ///// </summary>
+        //public Vector3 Right
+        //{
+        //    get { return right; }
+        //}
 
         public RenderContext renderContext { get; set; }
 
@@ -149,67 +151,68 @@ namespace Blocker
             else if (renderContext.Input.screenPad.LeftStick.Y == 0)
                 IsGrounded = false;// true;
 
-            Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
 
-       
+
 
             #region Player input
-            
-            //Handle RUN_LEFT
-            if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
-            {
+            //Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
 
-                if (IsGrounded)
-                    char_Model.PlayAnimation("Run", true, RUN_ACCELERATION_TIME);
-                else
-                    char_Model.PlayAnimation("Idle", true, RUN_ACCELERATION_TIME);
+            ////Handle RUN_LEFT
+            //if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
+            //{
 
-                _direction = -1;
-                Rotate(0, -0, 0);
+            if (IsGrounded)
+                char_Model.PlayAnimation("Run", true, RUN_ACCELERATION_TIME);
+            else
+                char_Model.PlayAnimation("Idle", true, RUN_ACCELERATION_TIME);
 
-                temp += renderContext.Input.screenPad.LeftStick.X * 8;
-                _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-                Rotate(0, -temp, 0);
-                Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
+            //    _direction = -1;
+            //    Rotate(0, -0, 0);
 
-                #region MyRegion
-              
-                Up =new Vector3(0,1,0);
+            //    temp += renderContext.Input.screenPad.LeftStick.X * 8;
+            //    _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
+            //    Rotate(0, -temp, 0);
+            //    Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
+
+            //    #region MyRegion
+
+            //    Up = new Vector3(0, 1, 0);
 
                 // Re-normalize orientation vectors ,without this, the matrix transformations may introduce small rounding
                 // errors which add up over time and could destabilize the ship.
-                if (Direction != Vector3.Zero)
-                    Direction.Normalize();
-                if (Up != Vector3.Zero)
-                    Up.Normalize();
+                //if (Direction != Vector3.Zero)
+                //    Direction.Normalize();
+                //if (Up != Vector3.Zero)
+                //    Up.Normalize();
 
-                // Re-calculate Right
-                right = Vector3.Cross(Direction, Up);
+                //// Re-calculate Right
+                //right = Vector3.Cross(Direction, Up);
 
-                // The same instability may cause the 3 orientation vectors may also diverge. Either the Up or Direction vector needs to be
-                // re-computed with a cross product to ensure orthagonality
-                Up = Vector3.Cross(Right, Direction); 
-                #endregion
-            }
-            if (renderContext.Input.screenPad.LeftStick.Y == 0)
-                _velocity.X = 0;
-         
-            //Clamp Velocity X
-            _velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
+                //// The same instability may cause the 3 orientation vectors may also diverge. Either the Up or Direction vector needs to be
+                //// re-computed with a cross product to ensure orthagonality
+                //Up = Vector3.Cross(Right, Direction);
+            //    #endregion
+            //}
+            //if (renderContext.Input.screenPad.LeftStick.Y == 0)
+            //    _velocity.X = 0;
 
-            //Handle JUMPING
-            //... 
+            ////Clamp Velocity X
+            //_velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
+
+            ////Handle JUMPING
+            ////... 
             #endregion
 
             //Calculate new position, based on the current velocity
-            var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-            var newPosition = LocalPosition + new Vector3(totalMovement, 0);
-            //if (newPosition.X > 240)
-            //    newPosition.X = 240;
-            //if (newPosition.X < -240)
-            //    newPosition.X = -240;
-            Translate(newPosition);
-            charInput.Update(dt);
+            //var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
+            //var newPosition = LocalPosition + new Vector3(totalMovement, 0);
+
+
+            ///Translate(newPosition);
+            charInput.Update(dt,renderContext);
+            charInput.Direction = Direction ;
+            //Rotate(0,charInput.Rotatation.Y,0); 
+            Translate(charInput.CharacterController.Body.Position);
             base.Update(renderContext);
         }
 
@@ -233,7 +236,7 @@ namespace Blocker
         public void Reset(Vector3 position)
         {
             Translate(position);
-            _velocity = Vector2.Zero;
+            //_velocity = Vector2.Zero;
         }
 
     }

@@ -15,7 +15,6 @@ namespace Blocker
 # endif
         public GraphicsDeviceManager graphics;
         ScreenManager screenManager;
-
         static readonly string[] preloadAssets = { @"Textures_Menu\gradient", };
 
         #endregion

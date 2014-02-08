@@ -30,7 +30,7 @@ namespace Blocker
             {
                 //Default Camera
                 //Camera = new BaseCamera(),
-                Camera = new ChaseCamera(),
+                Camera = new Camera(),
                 Input = new InputManager(),
             };
         }
@@ -115,7 +115,6 @@ namespace Blocker
                 }
                 else if (c.id == 1)
                 {
-
                     thisLevel.character.PositionX = c.WorldPosition.X;
                     thisLevel.character.PositionY = c.WorldPosition.Y;
                     thisLevel.character.PositionZ = c.WorldPosition.Z;

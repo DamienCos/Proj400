@@ -5,7 +5,7 @@
     <id>1</id>
     <modelPath>Models\\Vampire</modelPath>
     <PositionX>0</PositionX>
-    <PositionY>0</PositionY>
+    <PositionY>50</PositionY>
     <PositionZ>0</PositionZ>
     <RotationX>0</RotationX>
     <RotationY>0</RotationY>

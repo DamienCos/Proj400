@@ -12,8 +12,7 @@ namespace Blocker
         public SpriteBatch SpriteBatch { get; set; }
         public GraphicsDevice GraphicsDevice { get; set; }
         public GameTime GameTime { get; set; }
-        //public BaseCamera Camera { get; set; }
-        public ChaseCamera Camera { get; set; }
+        public Camera Camera { get; set; }
         public InputManager Input { get; set; }
         public Character Hero { get; set; }
     }
