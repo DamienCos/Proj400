@@ -3,3 +3,8 @@ F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Debu
 F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.dll
 F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.pdb
 F:\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.csprojResolveAssemblyReference.cache
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Debug\SkinnedModelData.dll
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\Bin\Debug\SkinnedModelData.pdb
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.csprojResolveAssemblyReference.cache
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.dll
+C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\SkinnedModelData\obj\Debug\SkinnedModelData.pdb

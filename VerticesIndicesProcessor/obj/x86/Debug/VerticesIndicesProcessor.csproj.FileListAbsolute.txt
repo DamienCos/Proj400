@@ -2,4 +2,3 @@ C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndi
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndicesProcessor\bin\x86\Debug\VerticesIndicesProcessor.pdb
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndicesProcessor\obj\x86\Debug\VerticesIndicesProcessor.dll
 C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndicesProcessor\obj\x86\Debug\VerticesIndicesProcessor.pdb
-C:\Users\Damien\Documents\Visual Studio 2010\Projects\XnaEngine2012\VerticesIndicesProcessor\obj\x86\Debug\VerticesIndicesProcessor.csprojResolveAssemblyReference.cache

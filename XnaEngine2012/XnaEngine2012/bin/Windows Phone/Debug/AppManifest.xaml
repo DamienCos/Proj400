@@ -2,6 +2,7 @@
   <Deployment.Parts>
     <AssemblyPart x:Name="XnaEngine2012" Source="XnaEngine2012.dll" />
     <AssemblyPart x:Name="BEPUphysics" Source="BEPUphysics.dll" />
+    <AssemblyPart x:Name="DPSFPhone" Source="DPSFPhone.dll" />
     <AssemblyPart x:Name="SkinnedModelData" Source="SkinnedModelData.dll" />
   </Deployment.Parts>
 </Deployment>

@@ -33,6 +33,7 @@ namespace Blocker
                 Camera = new Camera(),
                 Input = new InputManager(),
             };
+
         }
 
         #region Add/Remove/Activate GameScenes
@@ -151,7 +152,8 @@ namespace Blocker
                 ActiveScene.Draw2D(RenderContext, false);
 #if DEBUG
                 #region Debug info
-                //Debug2D.Draw(RenderContext.SpriteBatch);
+               // DebugDraw.Draw(font);
+
                 if (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Released)
                 {
                     RenderContext.SpriteBatch.DrawString
@@ -167,21 +169,12 @@ namespace Blocker
                        (font, string.Format("Controller Pos: {0}", c.charInput.CharacterController.Body.Position.ToString())
                        , new Vector2(0, 110), Color.Black);
                     RenderContext.SpriteBatch.DrawString
-                      (font, string.Format("Controller Rot: {0}", c.charInput.CharacterController.Body.Orientation.ToString())
+                      (font, string.Format("Char INPUT Rot: {0}", c.charInput.Rotatation.ToString())
                       , new Vector2(0, 140), Color.Black);
                     RenderContext.SpriteBatch.DrawString
                       (font, string.Format("Char Rot: {0}", c.LocalRotation.ToString())
                       , new Vector2(0, 170), Color.Black);
-                    //RenderContext.SpriteBatch.DrawString
-                    //    (font, string.Format("A: {0}", (Input.CurrentScreenPadState.Buttons.A == VirtualButtonState.Pressed).ToString()), new Vector2(0, 110), Color.Black);
-                    //RenderContext.SpriteBatch.DrawString
-                    //    (font, string.Format("B: {0}", (Input.CurrentScreenPadState.Buttons.B == VirtualButtonState.Pressed).ToString()), new Vector2(0, 140), Color.Black);
-                    //RenderContext.SpriteBatch.DrawString
-                    //    (font, string.Format("Char Postion: {0}", new Vector3(thisLevel.character.PositionX, thisLevel.character.PositionY, thisLevel.character.PositionZ).ToString())
-                    //    , new Vector2(0, 170), Color.White);
-                    //RenderContext.SpriteBatch.DrawString
-                    //    (font, string.Format("Char Postion: {0}", .ToString())
-                    //    , new Vector2(0, 170), Color.White);
+                 
                 }
                
                 #endregion
@@ -262,5 +255,7 @@ namespace Blocker
                 }
             }
         }
+
+        
     }
 }

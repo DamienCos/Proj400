@@ -35,8 +35,7 @@ namespace Blocker
 
             Components.Add(screenManager);
 
-            // attempt to deserialize the screen manager from disk. if that
-            // fails, we add our default screens.
+            // attempt to deserialize the screen manager from disk. if that fails, we add our default screens.
             if (!screenManager.DeserializeState())
             {
                 // Activate the first screens.
@@ -120,6 +119,9 @@ namespace Blocker
             graphics.GraphicsDevice.Clear(Color.CornflowerBlue);
             base.Draw(gameTime);
         }
+
+     
+
     }
 
 

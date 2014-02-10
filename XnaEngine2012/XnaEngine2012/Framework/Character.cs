@@ -14,6 +14,7 @@ namespace Blocker
         MoveLeft,
         MoveRight,
         MoveForWard,
+        MoveForWardXButton,
         MoveBackward,
         Restart,
         Rotate,
@@ -34,35 +35,31 @@ namespace Blocker
         private const int RUN_SPEED = 170;
         private const float RUN_ACCELERATION_TIME = 0.2f;
         private float _runAcceleration;
-
-        ///// <summary>
-        ///// Full speed at which ship can rotate; measured in radians per second.
-        ///// </summary>
-        //private const float RotationRate = 1.5f;
-
-
+        float temp;
+      
         //private Vector2 _velocity;
         private int _direction;
-        //float temp = 0;
-        ///// <summary>
-        ///// Direction player is facing.
-        ///// </summary>
+       
         public Vector3 Direction;
 
-        ///// <summary>
-        ///// player's up vector.
-        ///// </summary>
-        //public Vector3 Up;
+        /// <summary>
+        /// player's up vector.
+        /// </summary>
+        public Vector3 Up;
 
-        //private Vector3 right;
-        ///// <summary>
-        ///// player's right vector.
-        ///// </summary>
-        //public Vector3 Right
-        //{
-        //    get { return right; }
-        //}
-
+        private Vector3 right;
+        /// <summary>
+        /// player's right vector.
+        /// </summary>
+        public Vector3 Right
+        {
+            get { return right; }
+        }
+        public Vector3 Velocity;
+        private const float DragFactor = 0.97f;
+        private const float ThrustForce = 1.0f;
+        private const float Mass = 1.0f;
+        private const float RotationRate = 1.5f;
         public RenderContext renderContext { get; set; }
 
         public override void Initialize()
@@ -111,7 +108,7 @@ namespace Blocker
             SceneManager.Input.MapAction(inputAction);
 
 
-            inputAction = new InputAction((int)InputActionIds.MoveForWard, VirtualButtonState.Pressed)
+            inputAction = new InputAction((int)InputActionIds.MoveForWardXButton, VirtualButtonState.Pressed)
             {
 #if WINDOWS
                 GamePadButton = Buttons.X,
@@ -131,7 +128,7 @@ namespace Blocker
             };
             SceneManager.Input.MapAction(inputAction);
             #endregion
-
+            
             base.Initialize();
         }
 
@@ -151,67 +148,23 @@ namespace Blocker
             else if (renderContext.Input.screenPad.LeftStick.Y == 0)
                 IsGrounded = false;// true;
 
-
-
-
             #region Player input
-            //Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
-
-            ////Handle RUN_LEFT
-            //if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
-            //{
-
+          
             if (IsGrounded)
                 char_Model.PlayAnimation("Run", true, RUN_ACCELERATION_TIME);
             else
                 char_Model.PlayAnimation("Idle", true, RUN_ACCELERATION_TIME);
-
-            //    _direction = -1;
-            //    Rotate(0, -0, 0);
-
-            //    temp += renderContext.Input.screenPad.LeftStick.X * 8;
-            //    _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-            //    Rotate(0, -temp, 0);
-            //    Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
-
-            //    #region MyRegion
-
-            //    Up = new Vector3(0, 1, 0);
-
-                // Re-normalize orientation vectors ,without this, the matrix transformations may introduce small rounding
-                // errors which add up over time and could destabilize the ship.
-                //if (Direction != Vector3.Zero)
-                //    Direction.Normalize();
-                //if (Up != Vector3.Zero)
-                //    Up.Normalize();
-
-                //// Re-calculate Right
-                //right = Vector3.Cross(Direction, Up);
-
-                //// The same instability may cause the 3 orientation vectors may also diverge. Either the Up or Direction vector needs to be
-                //// re-computed with a cross product to ensure orthagonality
-                //Up = Vector3.Cross(Right, Direction);
-            //    #endregion
-            //}
-            //if (renderContext.Input.screenPad.LeftStick.Y == 0)
-            //    _velocity.X = 0;
-
-            ////Clamp Velocity X
-            //_velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
-
-            ////Handle JUMPING
-            ////... 
+           
             #endregion
-
-            //Calculate new position, based on the current velocity
-            //var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-            //var newPosition = LocalPosition + new Vector3(totalMovement, 0);
-
-
+            if (renderContext.Input.screenPad.LeftStick.X < -.70f || renderContext.Input.screenPad.LeftStick.X > .70f)
+            {
+                temp += renderContext.Input.screenPad.LeftStick.X * 5;
+            }
+            
             ///Translate(newPosition);
             charInput.Update(dt,renderContext);
-            charInput.Direction = Direction ;
-            //Rotate(0,charInput.Rotatation.Y,0); 
+            //charInput.Direction = Direction ;
+            Rotate(0, -temp, 0);
             Translate(charInput.CharacterController.Body.Position);
             base.Update(renderContext);
         }
@@ -232,12 +185,15 @@ namespace Blocker
 
             return result;
         }
-
-        public void Reset(Vector3 position)
+       
+        public void Reset()
         {
-            Translate(position);
-            //_velocity = Vector2.Zero;
+            Direction = Vector3.Forward;
+            Up = charInput.CharacterController.Body.OrientationMatrix.Up;
+            right = Vector3.Right;
+            Velocity = Vector3.Zero;
         }
+      
 
     }
 }

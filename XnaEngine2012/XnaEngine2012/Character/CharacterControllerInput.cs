@@ -13,26 +13,23 @@ namespace Blocker
      //</summary>
     public class CharacterControllerInput
     {
-        /// <summary>
-        /// Camera to use for input.
-        /// </summary>
-       // public Camera Camera;
+
         public ChaseCamera Camera;
-        //public RenderContext renderContext { get; set; }
         public Character player;
         public Quaternion rotation;
-        /// <summary>
-        /// Full speed at which ship can rotate; measured in radians per second.
-        /// </summary>
+
         private const int RUN_SPEED = 170;
         private const float RUN_ACCELERATION_TIME = 0.2f;
         private float _runAcceleration;
 
-
-        private Vector2 _velocity;
-        private int _direction;
-        float temp = 0;
-
+        private Vector2 velocity = Vector2.Zero;
+        //private int _direction;
+        //float temp = 0;
+        //public Vector3 Velocity;
+        //private const float DragFactor = 0.27f;
+        //private const float ThrustForce = 1.0f;
+        //private const float Mass = 1.0f;
+        //private const float RotationRate = 1.5f;
         public Vector3 Rotatation;
 
         /// <summary>
@@ -55,6 +52,7 @@ namespace Blocker
         }
 
 
+        #region MyRegion
         /// <summary>
         /// Offset from the position of the character to the 'eyes' while the character is standing.
         /// </summary>
@@ -84,24 +82,9 @@ namespace Blocker
         /// Owning space of the character.
         /// </summary>
         public Space Space { get; private set; }
-
-        /// <summary>
-        /// Constructs the character and internal physics character controller.
-        /// </summary>
-        /// <param name="owningSpace">Space to add the character to.</param>
-        /// <param name="cameraToUse">Camera to attach to the character.</param>
-        //public CharacterControllerInput(Space owningSpace, Character p,RenderContext renderC)
-        //{
-        //    CharacterController = new CharacterController();
-        //    _runAcceleration = RUN_SPEED / RUN_ACCELERATION_TIME;
-        //    Space = owningSpace;
-        //    Space.Add(CharacterController);
-        //    renderContext = renderC;
-        //    player = p;
-        //    Deactivate();
-        //}
-
-
+        
+        #endregion
+      
         /// <summary>
         /// Constructs the character and internal physics character controller.
         /// </summary>
@@ -127,6 +110,7 @@ namespace Blocker
             Space.Add(CharacterController);
             _runAcceleration = RUN_SPEED / RUN_ACCELERATION_TIME;
             player = p;
+         
             Deactivate();
         }
 
@@ -138,7 +122,6 @@ namespace Blocker
             if (!IsActive)
             {
                 IsActive = true;
-                //Camera.UseMovementControls = false;
                 Space.Add(CharacterController);
                 CharacterController.Body.Position = (player.LocalPosition - new Vector3(0, StandingCameraOffset, 0));
             }
@@ -152,96 +135,92 @@ namespace Blocker
             if (IsActive)
             {
                 IsActive = false;
-                //Camera.UseMovementControls = true;
                 Space.Remove(CharacterController);
             }
         }
 
-        public Quaternion RotateC(float pitch, float yaw, float roll)
-        {
-            return rotation= Quaternion.CreateFromYawPitchRoll(MathHelper.ToRadians(yaw), MathHelper.ToRadians(pitch), MathHelper.ToRadians(roll));
-        }
+        //public Quaternion RotateC(float pitch, float yaw, float roll)
+        //{
+        //    return rotation= Quaternion.CreateFromYawPitchRoll(MathHelper.ToRadians(yaw), MathHelper.ToRadians(pitch), MathHelper.ToRadians(roll));
+        //}
 
-        public Vector3 DirectionToTravel(bool rotationVecIsInRadians, Vector3 rotationVec)//rotation vec must not be normalized at this point
-        {
-            Vector3 result;
+        //public Vector3 DirectionToTravel(bool rotationVecIsInRadians, Vector3 rotationVec)//rotation vec must not be normalized at this point
+        //{
+        //    Vector3 result;
 
-            if (!rotationVecIsInRadians)
-            {
-                rotationVec *= MathHelper.Pi / 180f;
-            }
+        //    if (!rotationVecIsInRadians)
+        //    {
+        //        rotationVec *= MathHelper.Pi / 180f;
+        //    }
 
-            float angle = rotationVec.Length();
-            rotationVec /= angle; //normalizes rotation vec
+        //    float angle = rotationVec.Length();
+        //    rotationVec /= angle; //normalizes rotation vec
 
-            result = Matrix.CreateFromAxisAngle(rotationVec, angle).Forward;
+        //    result = Matrix.CreateFromAxisAngle(rotationVec, angle).Forward;
 
-            return result;
-        }
+        //    return result;
+        //}
 
+        //public void Reset()
+        //{
+        //    Direction = Vector3.Forward;
+        //    Up = CharacterController.Body.OrientationMatrix.Up;
+        //    right = Vector3.Right;
+        //    Velocity = Vector3.Zero;
+        //}
 
-        /// <summary>
-        /// Handles the input and movement of the character.
-        /// </summary>
-        /// <param name="dt">Time since last frame in simulation seconds.</param>
-        /// <param name="previousKeyboardInput">The last frame's keyboard state.</param>
-        /// <param name="keyboardInput">The current frame's keyboard state.</param>
-        /// <param name="previousGamePadInput">The last frame's gamepad state.</param>
-        /// <param name="gamePadInput">The current frame's keyboard state.</param>
+        float elapsed;
         public void Update(float dt, RenderContext renderContext)
         {
             if (IsActive)
             {
+                elapsed += (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
                 #region Player input
-                Vector2 rotationAmount = new Vector2(0, renderContext.Input.screenPad.LeftStick.Y);
-                //Handle RUN_LEFT
-                if (renderContext.Input.IsActionTriggered((int)InputActionIds.Rotate))
+                if (elapsed > 1)
                 {
-                    _direction = -1;
-                    RotateC(0, -0, 0);
+                    Vector2 movement = Vector2.Zero;
+                    Vector3 forward = player.WorldMatrix.Forward;
+                    forward.Y = 0;
+                    forward.Normalize();
+                    Vector3 right = player.WorldMatrix.Right;
+                    movement += -renderContext.Input.screenPad.LeftStick.Y * new Vector2(forward.X, forward.Z);
 
-                    temp += renderContext.Input.screenPad.LeftStick.X * 8;
-                    _velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-                    RotateC(0, -temp, 0);
-                    Direction = DirectionToTravel(false, new Vector3(0, -temp, 0));
+                    if (renderContext.Input.screenPad.LeftStick.X < -.70f || renderContext.Input.screenPad.LeftStick.X > .70f)
+                    {
+                        movement += renderContext.Input.screenPad.LeftStick.X * new Vector2(right.X, right.Z);
+                    }
+                    //CharacterController.HorizontalMotionConstraint.MovementDirection = Vector2.Normalize(movement);
 
-                    #region MyRegion
+                    if (renderContext.Input.screenPad.LeftStick.Y < -.70f || renderContext.Input.screenPad.LeftStick.Y > .70f)
+                    {
+                        velocity.X += _runAcceleration * (renderContext.Input.screenPad.LeftStick.Y * 2) * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
+                    }
+                    else
+                        velocity = Vector2.Zero;
 
-                    Up = CharacterController.Body.OrientationMatrix.Up;// new Vector3(0, 1, 0);
+                    var dir = Vector2.Normalize(movement);
+                    //Clamp Velocity X
+                    velocity.X = MathHelper.Clamp(velocity.X, -RUN_SPEED, RUN_SPEED);
 
-                    // Re-normalize orientation vectors ,without this, the matrix transformations may introduce small rounding
-                    // errors which add up over time and could destabilize the ship.
-                    //if (Direction != Vector3.Zero)
-                    //    Direction.Normalize();
-                    //if (Up != Vector3.Zero)
-                    //    Up.Normalize();
+                    float direction = Vector2ToRadian(movement);
+                    var totalMovement = velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
+                    var tempMovement = movement;
 
-                    //// Re-calculate Right
-                    //right = Vector3.Cross(Direction, Up);
-                    //// The same instability may cause the 3 orientation vectors may also diverge. Either the Up or Direction vector needs to be
-                    //// re-computed with a cross product to ensure orthagonality
-                    //Up = Vector3.Cross(Right, Direction);
-                    //Rotatation = new Vector3(0, -temp, 0);
-                    
-                    #endregion
+                    var newPosition = CharacterController.Body.Position + new Vector3(tempMovement.X, 0, tempMovement.Y);
+
+                    //var newPosition = CharacterController.Body.Position * direction + velocity;// new Vector3(totalMovement, 0) ;
+
+                    CharacterController.Body.Position = newPosition;
                 }
-                if (renderContext.Input.screenPad.LeftStick.Y == 0)
-                    _velocity.X = 0;
-
-                //Clamp Velocity X
-                _velocity.X = MathHelper.Clamp(_velocity.X, -RUN_SPEED, RUN_SPEED);
-
-                //Calculate new position, based on the current velocity
-                var totalMovement = _velocity * (float)renderContext.GameTime.ElapsedGameTime.TotalSeconds;
-                var newPosition = CharacterController.Body.Position + new Vector3(totalMovement, 0);// +(CharacterController.StanceManager.CurrentStance == Stance.Standing ? StandingCameraOffset : CrouchingCameraOffset) * CharacterController.Body.OrientationMatrix.Up;
-
-               // player.LocalRotation = Rotate(0, -temp, 0); 
                 #endregion
-
-
-                //Camera.LocalPosition = CharacterController.Body.Position + (CharacterController.StanceManager.CurrentStance == Stance.Standing ? StandingCameraOffset : CrouchingCameraOffset) * CharacterController.Body.OrientationMatrix.Up;
-                CharacterController.Body.Position = newPosition;
             }
+        }
+
+      
+
+        public static float Vector2ToRadian(Vector2 direction)
+        {
+            return (float)Math.Atan2(direction.X, -direction.Y);
         }
     }
 }

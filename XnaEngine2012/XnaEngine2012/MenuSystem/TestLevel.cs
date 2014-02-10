@@ -46,7 +46,7 @@ namespace Blocker
                 character.id = id;
                 character.modelPath = level.character.modelPath;
                 character.charInput = new CharacterControllerInput(Space,character);
-                character.LocalPosition = new Vector3(level.character.PositionX, level.character.PositionY, level.character.PositionZ);
+                character.LocalPosition = new Vector3(0,50,0);//new Vector3(level.character.PositionX, level.character.PositionY, level.character.PositionZ);
                 character.LocalRotation = new Quaternion(level.character.RotationX, level.character.RotationY, level.character.RotationZ, level.character.RotationW);
                 AddSceneObject(character);
                 character.charInput.Activate();
@@ -60,8 +60,8 @@ namespace Blocker
                     else if (g.id == 0)
                     {
                         model = new GameModel(g.model_Path);
-                        model.LocalPosition = new Vector3(g.PositionX, g.PositionY, g.PositionZ);
-                        model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
+                        model.LocalPosition = Vector3.Zero;//new Vector3(g.PositionX, g.PositionY, g.PositionZ);
+                        //model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
                         AddSceneObject(model);
                     }
                     else
@@ -69,8 +69,8 @@ namespace Blocker
                         id++;
                         model = new GameModel(g.model_Path);
                         model.id = id;
-                        model.LocalPosition = new Vector3(g.PositionX, g.PositionY, g.PositionZ);
-                        model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
+                        model.LocalPosition = Vector3.Zero;// new Vector3(g.PositionX, g.PositionY, g.PositionZ);
+                        //model.LocalRotation = new Quaternion(g.RotationX, g.RotationY, g.RotationZ, g.RotationW);
                         AddSceneObject(model);
                     }
                 }

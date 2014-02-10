@@ -22,7 +22,7 @@ namespace Blocker
         public GameObject3D Parent          { get; private set; }
         public List<GameObject3D> Children  { get; private set; }
 
-        protected Matrix WorldMatrix;
+        public Matrix WorldMatrix;
 
         private GameScene _scene;
         public GameScene Scene
